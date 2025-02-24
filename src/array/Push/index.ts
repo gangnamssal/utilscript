@@ -1,13 +1,13 @@
 import { Equal, Expect } from '../../commonness';
-import { AnyArray } from '../../primitive';
+import { Tuple } from '../../primitive';
 
 /**
  * Add an element to the end of an array
  *
  * 배열의 끝에 요소를 추가하는 타입
  *
- * @param T 배열
- * @param U 추가할 요소
+ * @param T Tuple / 튜플
+ * @param U Value to add / 추가할 값
  *
  * @example
  * type cases = [
@@ -17,7 +17,7 @@ import { AnyArray } from '../../primitive';
  * ]
  */
 
-export type Push<T extends AnyArray, U> = [...T, U];
+export type Push<T extends Tuple, U> = [...T, U];
 
 /**
  * 테스트 코드

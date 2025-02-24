@@ -1,14 +1,14 @@
 import { Equal, Expect } from '../../commonness';
-import { AnyArray } from '../../primitive';
+import { Tuple } from '../../primitive';
 
 /**
  * Check if an array includes a value
  *
  * 배열에 값이 포함되어 있는지 확인하는 타입
  *
- * @param T 배열
- * @param U 확인할 값
- * @returns 배열에 값이 포함되어 있는지 여부
+ * @param T Tuple / 튜플
+ * @param U Value to check / 확인할 값
+ * @returns Whether the array includes the value / 배열에 값이 포함되어 있는지 여부
  *
  * @example
  * type cases = [
@@ -19,7 +19,7 @@ import { AnyArray } from '../../primitive';
  * ]
  */
 
-export type Includes<T extends AnyArray, U> = {
+export type Includes<T extends Tuple, U> = {
   [P in keyof T]: Equal<T[P], U> extends true ? true : false;
 } extends { [key: number]: false }
   ? false

@@ -1,14 +1,14 @@
-import { AnyArray } from '../../primitive';
+import { Tuple } from '../../primitive';
 import { Equal, Expect } from '../../commonness';
 
 /**
- * Type to concatenate two arrays
+ * Type to concatenate two tuples
  *
- * 두 배열을 연결하는 타입
+ * 두 튜플을 연결하는 타입
  *
- * @param T First array / 첫 번째 배열
- * @param U Second array / 두 번째 배열
- * @returns Concatenated array / 연결된 배열
+ * @param T First tuple / 첫 번째 튜플
+ * @param U Second tuple / 두 번째 튜플
+ * @returns Concatenated tuple / 연결된 튜플
  *
  * @example
  * type cases = [
@@ -19,7 +19,7 @@ import { Equal, Expect } from '../../commonness';
  * ]
  */
 
-export type Concat<T extends AnyArray, U extends AnyArray> = [...T, ...U];
+export type Concat<T extends Tuple, U extends Tuple> = [...T, ...U];
 
 /**
  * 테스트 코드

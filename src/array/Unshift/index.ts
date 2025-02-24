@@ -1,4 +1,4 @@
-import { AnyArray } from '../../primitive';
+import { Tuple } from '../../primitive';
 import { Equal, Expect } from '../../commonness';
 
 /**
@@ -6,8 +6,8 @@ import { Equal, Expect } from '../../commonness';
  *
  * 배열의 시작에 요소를 추가하는 타입
  *
- * @param T 배열
- * @param U 추가할 요소
+ * @param T Tuple / 튜플
+ * @param U Value to add / 추가할 값
  *
  * @example
  * type cases = [
@@ -17,7 +17,7 @@ import { Equal, Expect } from '../../commonness';
  * ]
  */
 
-export type Unshift<T extends AnyArray, U> = [U, ...T];
+export type Unshift<T extends Tuple, U> = [U, ...T];
 
 /**
  * 테스트 코드

@@ -1,4 +1,4 @@
-import { AnyArray } from './../../primitive';
+import { Tuple } from './../../primitive';
 import { Expect, Equal } from './../../commonness';
 
 /**
@@ -6,7 +6,7 @@ import { Expect, Equal } from './../../commonness';
  *
  * 배열을 유니온 타입으로 변환하는 타입
  *
- * @param T 배열
+ * @param T Tuple / 튜플
  *
  * @example
  * type cases = [
@@ -15,7 +15,7 @@ import { Expect, Equal } from './../../commonness';
  * ]
  */
 
-export type ToUnion<T extends AnyArray> = T[number];
+export type ToUnion<T extends Tuple> = T[number];
 
 /**
  * 테스트 코드
