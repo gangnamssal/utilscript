@@ -8,7 +8,8 @@
   "scripts": {
     "build:ts": "tsc && tsc --project tsconfig.cjs.json && tsc --project tsconfig.json",
     "build:esbuild": "node esbuild.config.js",
-    "build": "pnpm run build:ts && pnpm run build:esbuild"
+    "build": "pnpm run build:ts && pnpm run build:esbuild",
+    "format": "prettier . --write --cache"
   },
   "keywords": [],
   "author": "",
