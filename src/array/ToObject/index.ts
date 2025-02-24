@@ -1,4 +1,5 @@
 import { Equal, Expect } from '../../commonness';
+import { Tuple } from '../../primitive';
 
 /**
  * Convert a tuple to an object
@@ -13,7 +14,7 @@ import { Equal, Expect } from '../../commonness';
  *   Expect<Equal<ToObject<['a', 'b', 'c']>, { a: 'a', b: 'b', c: 'c' }>>,
  *   ]
  */
-export type ToObject<T extends ReadonlyArray<PropertyKey>> = {
+export type ToObject<T extends Tuple<PropertyKey>> = {
   [key in T[number]]: key;
 };
 

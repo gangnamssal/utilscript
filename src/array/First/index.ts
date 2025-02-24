@@ -1,5 +1,5 @@
 import { Equal, Expect } from '../../commonness';
-
+import { AnyArray } from '../../primitive';
 /**
  * Type to return the first element of an array
  *
@@ -14,15 +14,17 @@ import { Equal, Expect } from '../../commonness';
  *   Expect<Equal<First<[() => 123, { a: string }]>, () => 123>>,
  * ]
  */
-export type First<T extends any[]> = T['length'] extends 0 ? never : T[0];
+export type First<T extends AnyArray> = T['length'] extends 0 ? never : T[0];
 
 /**
  * 테스트 코드
  */
 // @ts-ignore
 if (process.env.NODE_ENV === 'development') {
+  const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const;
   type cases = [
     Expect<Equal<First<[3, 2, 1]>, 3>>,
+    Expect<Equal<First<typeof tuple>, 'tesla'>>,
     Expect<Equal<First<[() => 123, { a: string }]>, () => 123>>,
     Expect<Equal<First<[]>, never>>,
     Expect<Equal<First<[undefined]>, undefined>>,
