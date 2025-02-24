@@ -1,5 +1,6 @@
 import { Equal } from '../Equal';
 import { Expect } from '../Expect';
+import { If } from '../If';
 import { IsNever } from '../IsNever';
 
 /**
@@ -28,14 +29,11 @@ import { IsNever } from '../IsNever';
  * ]
  */
 
-export type IsUnion<T, Original = T> =
-  IsNever<T> extends true
-    ? false
-    : T extends Original
-      ? [Original] extends [T]
-        ? false
-        : true
-      : never;
+export type IsUnion<T, Original = T> = If<
+  IsNever<T>,
+  false,
+  T extends Original ? ([Original] extends [T] ? false : true) : never
+>;
 
 /**
  * 테스트 코드

@@ -1,5 +1,7 @@
+import { Tuple } from '../../primitive';
 import { Equal } from '../Equal';
 import { Expect } from '../Expect';
+import { If } from '../If';
 import { IsNever } from '../IsNever';
 
 /**
@@ -21,14 +23,11 @@ import { IsNever } from '../IsNever';
  * ]
  */
 
-export type IsTuple<T> =
-  IsNever<T> extends true
-    ? false
-    : T extends ReadonlyArray<unknown>
-      ? number extends T['length']
-        ? false
-        : true
-      : false;
+export type IsTuple<T> = If<
+  IsNever<T>,
+  false,
+  T extends Tuple ? (number extends T['length'] ? false : true) : false
+>;
 
 /**
  * 테스트 코드
