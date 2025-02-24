@@ -1,5 +1,5 @@
-import { Equal } from '../Equal/index';
-import { Expect } from '../Expect/index';
+import { Equal } from '../Equal';
+import { Expect } from '../Expect';
 
 /**
  * Type to check if a type is never
