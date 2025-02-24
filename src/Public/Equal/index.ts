@@ -17,7 +17,8 @@ import { Expect } from '../Expect';
  *   Expect<Equal<Equal<'a', 'b'>, false>>,
  * ]
  */
-export type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
+export type Equal<X, Y> =
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
 
 /**
  * 테스트 코드
