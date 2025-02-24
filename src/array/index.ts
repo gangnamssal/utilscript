@@ -3,6 +3,7 @@ export * from './First';
 export * from './Includes';
 export * from './Last';
 export * from './Length';
+export * from './Pop';
 export * from './Push';
 export * from './ToObject';
 export * from './ToUnion';
