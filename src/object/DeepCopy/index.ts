@@ -1,5 +1,5 @@
-import { Equal } from '../Equal';
-import { Expect } from '../Expect';
+import { Equal } from '../../commonness/Equal';
+import { Expect } from '../../commonness/Expect';
 
 /**
  * DeepCopy
