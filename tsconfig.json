@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": "/",
+    "module": "ESNext",
+    "declaration": true,
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "strict": true,
+    "outDir": "./dist/esm",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "downlevelIteration": true,
+    "allowJs": true,
+    "checkJs": true,
+    "noEmitOnError": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/index.ts"],
+  "exclude": ["node_modules", "tests/", "dist/", "examples/"]
+}

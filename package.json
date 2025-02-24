@@ -1,0 +1,26 @@
+{
+  "name": "stew-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build:ts": "tsc && tsc --project tsconfig.cjs.json && tsc --project tsconfig.json",
+    "build:esbuild": "node esbuild.config.js",
+    "build": "pnpm run build:ts && pnpm run build:esbuild"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "prettier": "^3.5.2",
+    "typescript": "^5.7.3"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "unpkg": "./dist/",
+  "jsdelivr": "./dist/"
+}
