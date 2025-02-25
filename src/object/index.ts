@@ -9,3 +9,4 @@ export * from './PartialByKeys';
 export * from './PartialReadonly';
 export * from './PickByType';
 export * from './ReplaceKeys';
+export * from './RequiredByKeys';
