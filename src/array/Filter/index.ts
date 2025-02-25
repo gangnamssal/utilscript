@@ -2,14 +2,12 @@ import { Equal, Expect } from '../../commonness';
 import { Falsy, Tuple } from '../../primitive';
 
 /**
- * 배열에서 특정 요소만 필터링하는 타입
+ * Filter an array based on a specific type
+ * 특정 타입을 기준으로 배열을 필터링하는 타입
  *
- * 배열에서 특정 요소와 일치하는 요소만 남기는 타입
- *
- * @param T 원본 배열
- * @param F 필터링할 요소 타입
- * @param R 결과 배열 (내부적으로 사용)
- * @returns 필터링된 배열
+ * @param T The original array type / 원본 배열
+ * @param F The type to filter / 필터링할 요소 타입
+ * @returns The filtered array type / 필터링된 배열
  *
  * @example
  * type cases = [
