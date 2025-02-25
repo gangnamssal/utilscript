@@ -6,6 +6,7 @@ export * from './Last';
 export * from './Length';
 export * from './Pop';
 export * from './Push';
+export * from './Remove';
 export * from './ToObject';
 export * from './ToUnion';
 export * from './Unshift';
