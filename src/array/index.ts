@@ -1,4 +1,5 @@
 export * from './Concat';
+export * from './Filter';
 export * from './First';
 export * from './Includes';
 export * from './Last';
