@@ -12,9 +12,6 @@ import { Falsy, Tuple } from '../../primitive';
  * @returns 필터링된 배열
  *
  * @example
- * type Case1 = Filter<[1, 2, 3, 4, 5], 2>;
- * type Result1 = [1, 3, 4, 5];
- *
  * type cases = [
  *   Expect<Equal<Filter<[0, 1, 2], 2>, [2]>>,
  *   Expect<Equal<Filter<[0, 1, 2], 0 | 1>, [0, 1]>>,
