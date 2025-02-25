@@ -1,4 +1,5 @@
-import { Alike, Expect } from '../../commonness';
+import { Expect } from '../../commonness';
+import { Alike } from '../Alike';
 /**
  * Make some properties readonly
  *
