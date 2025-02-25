@@ -1,6 +1,7 @@
 export * from './Concat';
 export * from './Filter';
 export * from './First';
+export * from './Flatten';
 export * from './Includes';
 export * from './Last';
 export * from './Length';
