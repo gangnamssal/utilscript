@@ -5,6 +5,7 @@ export * from './DeepReadonly';
 export * from './Diff';
 export * from './LookUp';
 export * from './Merge';
+export * from './Mutable';
 export * from './PartialByKeys';
 export * from './PartialReadonly';
 export * from './PickByType';
