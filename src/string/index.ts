@@ -1,5 +1,6 @@
 export * from './Concat';
 export * from './First';
+export * from './KebabCase';
 export * from './Length';
 export * from './Replace';
 export * from './ReplaceAll';
