@@ -1,5 +1,6 @@
 export * from './CamelCase';
 export * from './Concat';
+export * from './EndWith';
 export * from './First';
 export * from './KebabCase';
 export * from './Length';
