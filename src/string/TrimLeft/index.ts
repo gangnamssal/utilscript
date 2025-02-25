@@ -1,4 +1,5 @@
 import { Equal, Expect } from '../../commonness';
+import { Blank } from '../../primitive';
 
 /**
  * Type to remove whitespace from the left side of a string
@@ -15,9 +16,7 @@ import { Equal, Expect } from '../../commonness';
  * ]
  */
 
-export type TrimLeft<S extends string> = S extends `${' ' | '\n' | '\t'}${infer Rest}`
-  ? TrimLeft<Rest>
-  : S;
+export type TrimLeft<S extends string> = S extends `${Blank}${infer Rest}` ? TrimLeft<Rest> : S;
 
 /**
  * 테스트 코드
