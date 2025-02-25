@@ -29,9 +29,12 @@ import { Equal, Expect } from '../../commonness';
  * type cases = [
  *   Expect<Equal<LookUp<Animal, 'type', 'dog'>, Dog>>,
  *   Expect<Equal<LookUp<Animal, 'type', 'cat'>, Cat>>,
+ *   Expect<Equal<LookUp<Animal, 'breeds', 'Curl'>, Cat>>,
+ *   Expect<Equal<LookUp<Animal, 'breeds', 'Boxer'>, Dog>>,
  * ]
  */
-export type LookUp<U, F extends PropertyKey, T> = U extends { [k in F]: T } ? U : never;
+
+export type LookUp<U, F extends keyof U, T> = U extends any ? (T extends U[F] ? U : never) : never;
 
 /**
  * 테스트 코드
@@ -56,5 +59,7 @@ if (process.env.NODE_ENV === 'development') {
   type cases = [
     Expect<Equal<LookUp<Animal, 'type', 'dog'>, Dog>>,
     Expect<Equal<LookUp<Animal, 'type', 'cat'>, Cat>>,
+    Expect<Equal<LookUp<Animal, 'breeds', 'Curl'>, Cat>>,
+    Expect<Equal<LookUp<Animal, 'breeds', 'Boxer'>, Dog>>,
   ];
 }
