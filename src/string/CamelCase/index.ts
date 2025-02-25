@@ -14,7 +14,7 @@ import { Equal, Expect, IsAlphabet } from '../../commonness';
  * ];
  */
 export type CamelCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
-  ? Left extends '_'
+  ? Left extends '_' | '-'
     ? IsAlphabet<Center> extends true
       ? `${Uppercase<Center>}${CamelCase<Right>}`
       : `${Left}${CamelCase<`${Center}${Right}`>}`

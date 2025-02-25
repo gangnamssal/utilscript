@@ -5,6 +5,7 @@ export * from './KebabCase';
 export * from './Length';
 export * from './Replace';
 export * from './ReplaceAll';
+export * from './SnakeCase';
 export * from './ToUnion';
 export * from './Trim';
 export * from './TrimLeft';
