@@ -1,3 +1,4 @@
+export * from './CamelCase';
 export * from './Concat';
 export * from './First';
 export * from './KebabCase';
