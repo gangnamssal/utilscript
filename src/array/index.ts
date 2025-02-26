@@ -8,6 +8,7 @@ export * from './Length';
 export * from './Pop';
 export * from './Push';
 export * from './Remove';
+export * from './Reverse';
 export * from './Shift';
 export * from './ToObject';
 export * from './ToUnion';
