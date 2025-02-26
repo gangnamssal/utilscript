@@ -6,6 +6,7 @@ export * from './Diff';
 export * from './LookUp';
 export * from './Merge';
 export * from './Mutable';
+export * from './OmitByType';
 export * from './PartialByKeys';
 export * from './PartialReadonly';
 export * from './PickByType';
