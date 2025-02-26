@@ -1,5 +1,3 @@
-import { Equal } from '../Equal';
-
 /**
  * Type to check if a value is true
  *
@@ -16,15 +14,3 @@ import { Equal } from '../Equal';
  * ]
  */
 export type Expect<T extends true> = T;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<true, true>>,
-    Expect<Equal<false, false>>,
-    Expect<Equal<Equal<true, false>, false>>,
-  ];
-}

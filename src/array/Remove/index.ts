@@ -1,5 +1,4 @@
-import { Falsy, Tuple } from '../../primitive';
-import { Equal, Expect } from '../../commonness';
+import { Tuple } from '../../primitive';
 
 /**
  * Remove specific elements from an array type
@@ -28,16 +27,3 @@ export type Remove<T extends Tuple, F, R extends Tuple = []> = T extends [
     ? Remove<Rest, F, R>
     : Remove<Rest, F, [...R, First]>
   : R;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Remove<[1, 2, 3, 4, 5], 2>, [1, 3, 4, 5]>>,
-    Expect<Equal<Remove<[1, 2, 3, 4, 5], 6>, [1, 2, 3, 4, 5]>>,
-    Expect<Equal<Remove<[1, 2, 3, 4, 5], number>, []>>,
-    Expect<Equal<Remove<[1, never, null, undefined], Falsy>, [1]>>,
-  ];
-}

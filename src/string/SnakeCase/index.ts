@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Convert a string to snake case
  *
@@ -29,21 +27,3 @@ export type SnakeCase<S extends string> = S extends `${infer Left}${infer Center
       : `${Lowercase<Left>}_${SnakeCase<`${Center}${Right}`>}`
     : `${Lowercase<Left>}${SnakeCase<`${Center}${Right}`>}`
   : Lowercase<S>;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<SnakeCase<'hello'>, 'hello'>>,
-    Expect<Equal<SnakeCase<'userName'>, 'user_name'>>,
-    Expect<Equal<SnakeCase<'getElementById'>, 'get_element_by_id'>>,
-    Expect<
-      Equal<
-        SnakeCase<'getElementById' | 'getElementByClassNames'>,
-        'get_element_by_id' | 'get_element_by_class_names'
-      >
-    >,
-  ];
-}

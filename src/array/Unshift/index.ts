@@ -1,5 +1,4 @@
 import { Tuple } from '../../primitive';
-import { Equal, Expect } from '../../commonness';
 
 /**
  * Add an element to the beginning of an array
@@ -18,16 +17,3 @@ import { Equal, Expect } from '../../commonness';
  */
 
 export type Unshift<T extends Tuple, U> = [U, ...T];
-
-/**
- * 테스트 코드
- */
-
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Unshift<[], 1>, [1]>>,
-    Expect<Equal<Unshift<[1, 2], 0>, [0, 1, 2]>>,
-    Expect<Equal<Unshift<['1', 2, '3'], boolean>, [boolean, '1', 2, '3']>>,
-  ];
-}

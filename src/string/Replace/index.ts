@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Replace a substring with another substring
  *
@@ -26,19 +24,3 @@ export type Replace<S extends string, From extends string, To extends string> = 
   : S extends `${infer Left}${From}${infer Right}`
     ? `${Left}${To}${Right}`
     : S;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Replace<'foobar', 'bar', 'foo'>, 'foofoo'>>,
-    Expect<Equal<Replace<'foobarbar', 'bar', 'foo'>, 'foofoobar'>>,
-    Expect<Equal<Replace<'foobarbar', '', 'foo'>, 'foobarbar'>>,
-    Expect<Equal<Replace<'foobarbar', 'bar', ''>, 'foobar'>>,
-    Expect<Equal<Replace<'foobarbar', 'bra', 'foo'>, 'foobarbar'>>,
-    Expect<Equal<Replace<'', '', ''>, ''>>,
-  ];
-}

@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Check if a string ends with a specific substring
  *
@@ -19,18 +17,3 @@ import { Equal, Expect } from '../../commonness';
 export type EndsWith<T extends string, U extends string> = T extends `${infer _}${U}`
   ? true
   : false;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<EndsWith<'abc', 'bc'>, true>>,
-    Expect<Equal<EndsWith<'abc', 'abc'>, true>>,
-    Expect<Equal<EndsWith<'abc', 'd'>, false>>,
-    Expect<Equal<EndsWith<'abc', 'ac'>, false>>,
-    Expect<Equal<EndsWith<'abc', ''>, true>>,
-    Expect<Equal<EndsWith<'abc', ' '>, false>>,
-  ];
-}

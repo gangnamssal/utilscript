@@ -1,5 +1,3 @@
-import { Expect } from '../Expect';
-
 /**
  * Type to check if two values are equal
  *
@@ -19,16 +17,3 @@ import { Expect } from '../Expect';
  */
 export type Equal<X, Y> =
   (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Equal<1, 1>, true>>,
-    Expect<Equal<Equal<1, 2>, false>>,
-    Expect<Equal<Equal<'a', 'a'>, true>>,
-    Expect<Equal<Equal<'a', 'b'>, false>>,
-  ];
-}

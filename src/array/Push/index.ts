@@ -1,4 +1,3 @@
-import { Equal, Expect } from '../../commonness';
 import { Tuple } from '../../primitive';
 
 /**
@@ -18,15 +17,3 @@ import { Tuple } from '../../primitive';
  */
 
 export type Push<T extends Tuple, U> = [...T, U];
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Push<[], 1>, [1]>>,
-    Expect<Equal<Push<[1, 2], '3'>, [1, 2, '3']>>,
-    Expect<Equal<Push<['1', 2, '3'], boolean>, ['1', 2, '3', boolean]>>,
-  ];
-}

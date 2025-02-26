@@ -1,5 +1,4 @@
 import { Tuple } from './../../primitive';
-import { Expect, Equal } from './../../commonness';
 
 /**
  * Last
@@ -19,21 +18,4 @@ import { Expect, Equal } from './../../commonness';
  * ];
  */
 
-export type Last<T extends Tuple> = T extends [...any, infer L] ? L : never;
-
-/**
- * 테스트 코드
- */
-
-// @ts-ignore
-
-if (process.env.NODE_ENV === 'development') {
-  const arr = [1, 2, 3];
-
-  type cases = [
-    Expect<Equal<Last<[]>, never>>,
-    Expect<Equal<Last<[2]>, 2>>,
-    Expect<Equal<Last<[3, 2, 1]>, 1>>,
-    Expect<Equal<Last<[() => 123, { a: string }]>, { a: string }>>,
-  ];
-}
+export type Last<T extends Tuple> = T extends [...Tuple, infer L] ? L : never;

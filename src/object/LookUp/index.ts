@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * LookUp
  *
@@ -35,31 +33,3 @@ import { Equal, Expect } from '../../commonness';
  */
 
 export type LookUp<U, F extends keyof U, T> = U extends any ? (T extends U[F] ? U : never) : never;
-
-/**
- * 테스트 코드
- */
-
-// @ts-ignore
-
-if (process.env.NODE_ENV === 'development') {
-  interface Cat {
-    type: 'cat';
-    breeds: 'Abyssinian' | 'Shorthair' | 'Curl' | 'Bengal';
-  }
-
-  interface Dog {
-    type: 'dog';
-    breeds: 'Hound' | 'Brittany' | 'Bulldog' | 'Boxer';
-    color: 'brown' | 'white' | 'black';
-  }
-
-  type Animal = Cat | Dog;
-
-  type cases = [
-    Expect<Equal<LookUp<Animal, 'type', 'dog'>, Dog>>,
-    Expect<Equal<LookUp<Animal, 'type', 'cat'>, Cat>>,
-    Expect<Equal<LookUp<Animal, 'breeds', 'Curl'>, Cat>>,
-    Expect<Equal<LookUp<Animal, 'breeds', 'Boxer'>, Dog>>,
-  ];
-}

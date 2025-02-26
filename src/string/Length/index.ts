@@ -1,4 +1,3 @@
-import { Equal, Expect } from '../../commonness';
 import { Tuple } from '../../primitive';
 
 /**
@@ -19,18 +18,3 @@ import { Tuple } from '../../primitive';
 export type Length<S extends string, T extends Tuple = []> = S extends `${infer _}${infer Rest}`
   ? Length<Rest, [...T, unknown]>
   : T['length'];
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [Expect<Equal<Length<'abc'>, 3>>, Expect<Equal<Length<''>, 0>>];
-
-  type errors = [
-    // @ts-expect-error
-    Length<5>,
-    // @ts-expect-error
-    Length<[1, 2, 3]>,
-  ];
-}

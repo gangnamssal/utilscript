@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Check if a string starts with a specific substring
  *
@@ -19,19 +17,3 @@ import { Equal, Expect } from '../../commonness';
 export type StartsWith<T extends string, U extends string> = T extends `${U}${infer _}`
   ? true
   : false;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<StartsWith<'abc', 'ac'>, false>>,
-    Expect<Equal<StartsWith<'abc', 'ab'>, true>>,
-    Expect<Equal<StartsWith<'abc', 'abc'>, true>>,
-    Expect<Equal<StartsWith<'abc', 'abcd'>, false>>,
-    Expect<Equal<StartsWith<'abc', ''>, true>>,
-    Expect<Equal<StartsWith<'abc', ' '>, false>>,
-    Expect<Equal<StartsWith<'', ''>, true>>,
-  ];
-}

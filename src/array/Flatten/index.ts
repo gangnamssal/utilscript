@@ -1,4 +1,3 @@
-import { Equal, Expect } from '../../commonness';
 import { Tuple } from '../../primitive';
 
 type IsDepthExist<T extends Tuple> = T extends [infer First, ...infer Rest]
@@ -41,19 +40,3 @@ export type Flatten<T extends Tuple, D extends number = 1, A extends Tuple = []>
     : A['length'] extends D
       ? T
       : Flatten<FlattenHelper<T>, D, [...A, unknown]>;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Flatten<[]>, []>>,
-    Expect<Equal<Flatten<[1, 2, 3, 4]>, [1, 2, 3, 4]>>,
-    Expect<Equal<Flatten<[1, [2]]>, [1, 2]>>,
-    Expect<Equal<Flatten<[1, 2, [3, 4], [[[5]]]], 2>, [1, 2, 3, 4, [5]]>>,
-    Expect<Equal<Flatten<[1, 2, [3, 4], [[[5]]]]>, [1, 2, 3, 4, [[5]]]>>,
-    Expect<Equal<Flatten<[1, [2, [3, [4, [5]]]]], 3>, [1, 2, 3, 4, [5]]>>,
-    Expect<Equal<Flatten<[1, [2, [3, [4, [5]]]]], 19260817>, [1, 2, 3, 4, 5]>>,
-  ];
-}

@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Pick object properties by value type
  * 특정 타입을 기준으로 객체의 키와 값을 선택하는 타입
@@ -27,22 +25,3 @@ import { Equal, Expect } from '../../commonness';
  */
 
 export type PickByType<T, U> = { [P in keyof T as T[P] extends U ? P : never]: T[P] };
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  interface Model {
-    name: string;
-    count: number;
-    isReadonly: boolean;
-    isEnable: boolean;
-  }
-
-  type cases = [
-    Expect<Equal<PickByType<Model, boolean>, { isReadonly: boolean; isEnable: boolean }>>,
-    Expect<Equal<PickByType<Model, string>, { name: string }>>,
-    Expect<Equal<PickByType<Model, number>, { count: number }>>,
-  ];
-}

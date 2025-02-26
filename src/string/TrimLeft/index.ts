@@ -1,4 +1,3 @@
-import { Equal, Expect } from '../../commonness';
 import { Blank } from '../../primitive';
 
 /**
@@ -17,20 +16,3 @@ import { Blank } from '../../primitive';
  */
 
 export type TrimLeft<S extends string> = S extends `${Blank}${infer Rest}` ? TrimLeft<Rest> : S;
-
-/**
- * 테스트 코드
- */
-
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<TrimLeft<'str'>, 'str'>>,
-    Expect<Equal<TrimLeft<' str'>, 'str'>>,
-    Expect<Equal<TrimLeft<'     str'>, 'str'>>,
-    Expect<Equal<TrimLeft<'     str     '>, 'str     '>>,
-    Expect<Equal<TrimLeft<'   \n\t foo bar '>, 'foo bar '>>,
-    Expect<Equal<TrimLeft<''>, ''>>,
-    Expect<Equal<TrimLeft<' \n\t'>, ''>>,
-  ];
-}

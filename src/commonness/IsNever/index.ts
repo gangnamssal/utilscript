@@ -1,6 +1,3 @@
-import { Equal } from '../Equal';
-import { Expect } from '../Expect';
-
 /**
  * Type to check if a type is never
  *
@@ -22,19 +19,3 @@ import { Expect } from '../Expect';
  */
 
 export type IsNever<T> = [T] extends [never] ? true : false;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<IsNever<never>, true>>,
-    Expect<Equal<IsNever<never | string>, false>>,
-    Expect<Equal<IsNever<''>, false>>,
-    Expect<Equal<IsNever<undefined>, false>>,
-    Expect<Equal<IsNever<null>, false>>,
-    Expect<Equal<IsNever<[]>, false>>,
-    Expect<Equal<IsNever<{}>, false>>,
-  ];
-}

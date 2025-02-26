@@ -1,6 +1,3 @@
-import { Equal } from '../../commonness/Equal';
-import { Expect } from '../../commonness/Expect';
-
 /**
  * DeepCopy
  *
@@ -18,16 +15,3 @@ import { Expect } from '../../commonness/Expect';
  */
 
 export type DeepCopy<T> = T extends object ? { [K in keyof T]: DeepCopy<T[K]> } : T;
-
-/**
- * 테스트 코드
- */
-
-// @ts-ignore
-
-if (process.env.NODE_ENV === 'development') {
-  type Original = { a: 1; b: 2 };
-  type Copied = DeepCopy<Original>;
-
-  type cases = [Expect<Equal<Original, Copied>>];
-}

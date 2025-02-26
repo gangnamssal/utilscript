@@ -1,5 +1,4 @@
 import { Tuple } from './../../primitive';
-import { Expect, Equal } from './../../commonness';
 
 /**
  * ToUnion
@@ -16,16 +15,3 @@ import { Expect, Equal } from './../../commonness';
  */
 
 export type ToUnion<T extends Tuple> = T[number];
-
-/**
- * 테스트 코드
- */
-
-// @ts-ignore
-
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<ToUnion<[123, '456', true]>, 123 | '456' | true>>,
-    Expect<Equal<ToUnion<[123]>, 123>>,
-  ];
-}

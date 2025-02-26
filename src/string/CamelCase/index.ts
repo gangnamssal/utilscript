@@ -1,4 +1,4 @@
-import { Equal, Expect, IsAlphabet } from '../../commonness';
+import { IsAlphabet } from '../../commonness';
 
 /**
  * Convert a string to camel case
@@ -20,25 +20,3 @@ export type CamelCase<S extends string> = S extends `${infer Left}${infer Center
       : `${Left}${CamelCase<`${Center}${Right}`>}`
     : `${Lowercase<Left>}${CamelCase<`${Center}${Right}`>}`
   : Lowercase<S>;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<CamelCase<'foobar'>, 'foobar'>>,
-    Expect<Equal<CamelCase<'FOOBAR'>, 'foobar'>>,
-    Expect<Equal<CamelCase<'foo_bar'>, 'fooBar'>>,
-    Expect<Equal<CamelCase<'foo__bar'>, 'foo_Bar'>>,
-    Expect<Equal<CamelCase<'foo_$bar'>, 'foo_$bar'>>,
-    Expect<Equal<CamelCase<'foo_bar_'>, 'fooBar_'>>,
-    Expect<Equal<CamelCase<'foo_bar__'>, 'fooBar__'>>,
-    Expect<Equal<CamelCase<'foo_bar_$'>, 'fooBar_$'>>,
-    Expect<Equal<CamelCase<'foo_bar_hello_world'>, 'fooBarHelloWorld'>>,
-    Expect<Equal<CamelCase<'HELLO_WORLD_WITH_TYPES'>, 'helloWorldWithTypes'>>,
-    Expect<Equal<CamelCase<'-'>, '-'>>,
-    Expect<Equal<CamelCase<''>, ''>>,
-    Expect<Equal<CamelCase<'😎'>, '😎'>>,
-  ];
-}

@@ -1,5 +1,4 @@
-import { Equal, Expect } from '../../commonness';
-import { Falsy, Tuple } from '../../primitive';
+import { Tuple } from '../../primitive';
 
 /**
  * Filter an array based on a specific type
@@ -28,18 +27,3 @@ export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends [
     ? Filter<Rest, F, [...R, First]>
     : Filter<Rest, F, R>
   : R;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<Filter<[0, 1, 2], 2>, [2]>>,
-    Expect<Equal<Filter<[0, 1, 2], 0 | 1>, [0, 1]>>,
-    Expect<Equal<Filter<[0, 1, 2], Falsy>, [0]>>,
-    Expect<Equal<Filter<['1', 2, null, undefined], Falsy>, [null, undefined]>>,
-    Expect<Equal<Filter<[never, never, never], never>, [never, never, never]>>,
-    Expect<Equal<Filter<['1', 2, null, undefined], number>, [2]>>,
-  ];
-}

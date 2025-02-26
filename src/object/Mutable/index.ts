@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Make all properties of an object mutable
  *
@@ -23,32 +21,3 @@ import { Equal, Expect } from '../../commonness';
  */
 
 export type Mutable<T extends Record<PropertyKey, any>> = { -readonly [P in keyof T]: T[P] };
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  interface Todo1 {
-    title: string;
-    description: string;
-    completed: boolean;
-    meta: {
-      author: string;
-    };
-  }
-
-  type List = [1, 2, 3];
-
-  type cases = [
-    Expect<Equal<Mutable<Readonly<Todo1>>, Todo1>>,
-    Expect<Equal<Mutable<Readonly<List>>, List>>,
-  ];
-
-  type errors = [
-    // @ts-expect-error
-    Mutable<'string'>,
-    // @ts-expect-error
-    Mutable<0>,
-  ];
-}

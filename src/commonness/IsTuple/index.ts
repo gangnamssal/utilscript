@@ -1,6 +1,4 @@
 import { Tuple } from '../../primitive';
-import { Equal } from '../Equal';
-import { Expect } from '../Expect';
 import { If } from '../If';
 import { IsNever } from '../IsNever';
 
@@ -28,18 +26,3 @@ export type IsTuple<T> = If<
   false,
   T extends Tuple ? (number extends T['length'] ? false : true) : false
 >;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<IsTuple<[]>, true>>,
-    Expect<Equal<IsTuple<[number]>, true>>,
-    Expect<Equal<IsTuple<readonly [1]>, true>>,
-    Expect<Equal<IsTuple<{ length: 1 }>, false>>,
-    Expect<Equal<IsTuple<number[]>, false>>,
-    Expect<Equal<IsTuple<never>, false>>,
-  ];
-}

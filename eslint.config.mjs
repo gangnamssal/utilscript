@@ -17,7 +17,7 @@ export default [
     ignores: [
       'dist/**/*',
       'node_modules/**/*',
-      'tests/**/*',
+      'tests/',
       'examples/**/*',
       '.git/**/*',
       '**/.config/',

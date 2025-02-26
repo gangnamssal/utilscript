@@ -1,5 +1,3 @@
-import { Equal, Expect } from '../../commonness';
-
 /**
  * Convert a string to a union of its characters
  *
@@ -22,18 +20,3 @@ export type ToUnion<T extends string> = T extends ''
   : T extends `${infer First}${infer Rest}`
     ? First | ToUnion<Rest>
     : T;
-
-/**
- * 테스트 코드
- */
-// @ts-ignore
-if (process.env.NODE_ENV === 'development') {
-  type cases = [
-    Expect<Equal<ToUnion<''>, never>>,
-    Expect<Equal<ToUnion<'t'>, 't'>>,
-    Expect<Equal<ToUnion<'hello'>, 'h' | 'e' | 'l' | 'l' | 'o'>>,
-    Expect<
-      Equal<ToUnion<'coronavirus'>, 'c' | 'o' | 'r' | 'o' | 'n' | 'a' | 'v' | 'i' | 'r' | 'u' | 's'>
-    >,
-  ];
-}
