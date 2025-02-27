@@ -1,3 +1,4 @@
+export * from './Chunk';
 export * from './Concat';
 export * from './Filter';
 export * from './First';
