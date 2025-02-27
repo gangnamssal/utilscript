@@ -8,6 +8,7 @@ export * from './Includes';
 export * from './IndexOf';
 export * from './Join';
 export * from './Last';
+export * from './LastIndexOf';
 export * from './Length';
 export * from './Pop';
 export * from './Push';
