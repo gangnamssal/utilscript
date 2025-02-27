@@ -16,6 +16,9 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<IndexOf<'hello', 'e'>, 1>>,
  *   Expect<Equal<IndexOf<'hello', 'o'>, 4>>,
  *   Expect<Equal<IndexOf<'hello', 'x'>, -1>>,
+ *   Expect<Equal<IndexOf<'hello', 'el'>, 1>>,
+ *   Expect<Equal<IndexOf<'hello', 'lo'>, 2>>,
+ *   Expect<Equal<IndexOf<'hello', ''>, -1>>,
  * ];
  */
 
