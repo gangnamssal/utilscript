@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Push } from '../Push';
 
 /**
  * Reverses an array.
@@ -14,5 +15,5 @@ import { Tuple } from '../../primitive';
  * ]
  */
 export type Reverse<T extends Tuple> = T extends [infer First, ...infer Rest]
-  ? [...Reverse<Rest>, First]
+  ? Push<Reverse<Rest>, First>
   : T;

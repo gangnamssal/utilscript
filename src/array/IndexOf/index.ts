@@ -1,5 +1,7 @@
 import { Equal } from '../../commonness';
 import { Tuple } from '../../primitive';
+import { Length } from '../Length';
+import { Push } from '../Push';
 
 /**
  * Type that takes an array and a value and returns the index of the value in the array
@@ -23,6 +25,6 @@ export type IndexOf<T extends Tuple, U, Accumulator extends Tuple = []> = T exte
   ...infer Rest,
 ]
   ? Equal<Current, U> extends true
-    ? Accumulator['length']
-    : IndexOf<Rest, U, [...Accumulator, unknown]>
+    ? Length<Accumulator>
+    : IndexOf<Rest, U, Push<Accumulator, unknown>>
   : -1;

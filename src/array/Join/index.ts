@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Length } from '../Length';
 
 /**
  * Type that takes an array of strings and a separator and returns a string with the array elements joined by the separator
@@ -25,7 +26,7 @@ export type Join<
   U extends string | number = ',',
   R extends string = '',
 > = T extends [infer Current extends string | number, ...infer Rest extends Tuple<string | number>]
-  ? Rest['length'] extends 0
+  ? Length<Rest> extends 0
     ? Join<Rest, U, `${R}${Current}`>
     : Join<Rest, U, `${R}${Current}${U}`>
   : R;

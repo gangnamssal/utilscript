@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Length } from '../Length';
 /**
  * Type to return the first element of an array
  *
@@ -13,4 +14,4 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<First<[() => 123, { a: string }]>, () => 123>>,
  * ]
  */
-export type First<T extends Tuple> = T['length'] extends 0 ? never : T[0];
+export type First<T extends Tuple> = Length<T> extends 0 ? never : T[0];

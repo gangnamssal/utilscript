@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Push } from '../Push';
 
 type IsDepthExist<T extends Tuple> = T extends [infer First, ...infer Rest]
   ? First extends Tuple
@@ -39,4 +40,4 @@ export type Flatten<T extends Tuple, D extends number = 1, A extends Tuple = []>
     ? T
     : A['length'] extends D
       ? T
-      : Flatten<FlattenHelper<T>, D, [...A, unknown]>;
+      : Flatten<FlattenHelper<T>, D, Push<A, unknown>>;

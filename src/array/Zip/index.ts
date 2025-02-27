@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Push } from '../Push';
 
 /**
  * Type that takes two arrays and returns a new array with elements at each index paired as tuples
@@ -23,6 +24,6 @@ export type Zip<T extends Tuple, U extends Tuple, R extends Tuple = []> = T exte
   ...infer RT,
 ]
   ? U extends [infer FU, ...infer RU]
-    ? Zip<RT, RU, [...R, [FT, FU]]>
+    ? Zip<RT, RU, Push<R, [FT, FU]>>
     : R
   : R;

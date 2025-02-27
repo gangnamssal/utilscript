@@ -26,6 +26,6 @@
  * ];
  */
 
-export type ReplaceKeys<U, T extends string, Y extends Record<any, any>> = {
+export type ReplaceKeys<U, T extends string, Y extends Record<PropertyKey, any>> = {
   [P in keyof U]: P extends T ? (P extends keyof Y ? Y[P] : never) : U[P];
 };

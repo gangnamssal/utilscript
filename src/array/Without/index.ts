@@ -1,5 +1,6 @@
 import { Tuple } from '../../primitive';
 import { Includes } from '../Includes';
+import { Push } from '../Push';
 
 /**
  * Type that takes an array and a value or array of values and returns a new array with the values removed
@@ -26,8 +27,8 @@ export type Without<
   ? U extends Tuple
     ? Includes<U, TF> extends true
       ? Without<TR, U, R>
-      : Without<TR, U, [...R, TF]>
+      : Without<TR, U, Push<R, TF>>
     : TF extends U
       ? Without<TR, U, R>
-      : Without<TR, U, [...R, TF]>
+      : Without<TR, U, Push<R, TF>>
   : R;

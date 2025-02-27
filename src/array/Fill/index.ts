@@ -1,4 +1,6 @@
 import { Tuple } from '../../primitive';
+import { Length } from '../Length';
+import { Push } from '../Push';
 
 /**
  * Type that takes an array, a value, and a start and end index and returns an array with the specified value in the specified range
@@ -30,17 +32,17 @@ export type Fill<
   T extends Tuple,
   N,
   Start extends number = 0,
-  End extends number = T['length'],
+  End extends number = Length<T>,
   Result extends Tuple = [],
   InRange extends boolean = false,
 > = T extends [infer First, ...infer Rest]
   ? Start extends End
     ? T
-    : Result['length'] extends Start
-      ? Fill<Rest, N, Start, End, [...Result, N], true>
+    : Length<Result> extends Start
+      ? Fill<Rest, N, Start, End, Push<Result, N>, true>
       : InRange extends true
-        ? Result['length'] extends End
-          ? Fill<Rest, N, Start, End, [...Result, First], false>
-          : Fill<Rest, N, Start, End, [...Result, N], true>
-        : Fill<Rest, N, Start, End, [...Result, First], false>
+        ? Length<Result> extends End
+          ? Fill<Rest, N, Start, End, Push<Result, First>, false>
+          : Fill<Rest, N, Start, End, Push<Result, N>, true>
+        : Fill<Rest, N, Start, End, Push<Result, First>, false>
   : Result;

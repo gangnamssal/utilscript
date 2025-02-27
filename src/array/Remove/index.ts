@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Push } from '../Push';
 
 /**
  * Remove specific elements from an array type
@@ -25,5 +26,5 @@ export type Remove<T extends Tuple, F, R extends Tuple = []> = T extends [
 ]
   ? [First] extends [F]
     ? Remove<Rest, F, R>
-    : Remove<Rest, F, [...R, First]>
+    : Remove<Rest, F, Push<R, First>>
   : R;

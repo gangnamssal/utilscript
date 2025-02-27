@@ -1,4 +1,6 @@
 import { Tuple } from '../../primitive';
+import { Length } from '../Length';
+import { Push } from '../Push';
 
 /**
  * Type that takes an array and a number and returns an array of arrays of the specified size
@@ -25,9 +27,9 @@ export type Chunk<
   Temp extends Tuple = [],
   R extends Tuple = [],
 > = A extends [infer AF, ...infer AR]
-  ? [...Temp, AF]['length'] extends Split
-    ? Chunk<AR, Split, [], [...R, [...Temp, AF]]>
-    : Chunk<AR, Split, [...Temp, AF], R>
-  : Temp['length'] extends 0
+  ? Length<[...Temp, AF]> extends Split
+    ? Chunk<AR, Split, [], Push<R, [...Temp, AF]>>
+    : Chunk<AR, Split, Push<Temp, AF>, R>
+  : Length<Temp> extends 0
     ? R
     : [...R, Temp];

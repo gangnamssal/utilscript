@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Push } from '../Push';
 
 /**
  * Filter an array based on a specific type
@@ -24,6 +25,6 @@ export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends [
   ...infer Rest,
 ]
   ? [First] extends [F]
-    ? Filter<Rest, F, [...R, First]>
+    ? Filter<Rest, F, Push<R, First>>
     : Filter<Rest, F, R>
   : R;

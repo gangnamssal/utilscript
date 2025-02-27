@@ -1,6 +1,7 @@
 import { Tuple } from '../../primitive';
 import { If } from '../If';
 import { IsNever } from '../IsNever';
+import { Length } from '../../array/Length';
 
 /**
  * Type to check if a type is a tuple
@@ -24,5 +25,5 @@ import { IsNever } from '../IsNever';
 export type IsTuple<T> = If<
   IsNever<T>,
   false,
-  T extends Tuple ? (number extends T['length'] ? false : true) : false
+  T extends Tuple ? (number extends Length<T> ? false : true) : false
 >;
