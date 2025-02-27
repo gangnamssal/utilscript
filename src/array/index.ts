@@ -1,5 +1,6 @@
 export * from './Chunk';
 export * from './Concat';
+export * from './Fill';
 export * from './Filter';
 export * from './First';
 export * from './Flatten';

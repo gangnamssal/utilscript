@@ -1,0 +1,46 @@
+import { Tuple } from '../../primitive';
+
+/**
+ * Type that takes an array, a value, and a start and end index and returns an array with the specified value in the specified range
+ *
+ * 배열, 값, 시작과 끝 인덱스를 받아 지정된 범위에 지정된 값을 가진 배열을 반환하는 타입
+ *
+ * @params T - Array to be filled / 채워질 배열
+ * @params N - Value to fill / 채울 값
+ * @params Start - Start index / 시작 인덱스
+ * @params End - End index / 끝 인덱스
+ * @returns Array with the specified value in the specified range / 지정된 범위에 지정된 값을 가진 배열
+ *
+ * @example
+ * type cases = [
+ *   Expect<Equal<Fill<[], 0>, []>>,
+ *   Expect<Equal<Fill<[], 0, 0, 3>, []>>,
+ *   Expect<Equal<Fill<[1, 2, 3], 0, 0, 0>, [1, 2, 3]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], 0, 2, 2>, [1, 2, 3]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], 0>, [0, 0, 0]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], true>, [true, true, true]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], true, 0, 1>, [true, 2, 3]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], true, 1, 3>, [1, true, true]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], true, 10, 0>, [1, 2, 3]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], true, 10, 20>, [1, 2, 3]>>,
+ *   Expect<Equal<Fill<[1, 2, 3], true, 0, 10>, [true, true, true]>>,
+ * ];
+ */
+export type Fill<
+  T extends Tuple,
+  N,
+  Start extends number = 0,
+  End extends number = T['length'],
+  Result extends Tuple = [],
+  InRange extends boolean = false,
+> = T extends [infer First, ...infer Rest]
+  ? Start extends End
+    ? T
+    : Result['length'] extends Start
+      ? Fill<Rest, N, Start, End, [...Result, N], true>
+      : InRange extends true
+        ? Result['length'] extends End
+          ? Fill<Rest, N, Start, End, [...Result, First], false>
+          : Fill<Rest, N, Start, End, [...Result, N], true>
+        : Fill<Rest, N, Start, End, [...Result, First], false>
+  : Result;
