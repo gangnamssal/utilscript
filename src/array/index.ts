@@ -6,6 +6,7 @@ export * from './First';
 export * from './Flatten';
 export * from './Includes';
 export * from './IndexOf';
+export * from './Join';
 export * from './Last';
 export * from './Length';
 export * from './Pop';
