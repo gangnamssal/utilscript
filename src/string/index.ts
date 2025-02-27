@@ -2,6 +2,7 @@ export * from './CamelCase';
 export * from './Concat';
 export * from './EndWith';
 export * from './First';
+export * from './IndexOf';
 export * from './KebabCase';
 export * from './Length';
 export * from './Replace';
