@@ -13,3 +13,4 @@ export * from './Shift';
 export * from './ToObject';
 export * from './ToUnion';
 export * from './Unshift';
+export * from './Zip';
