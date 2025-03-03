@@ -4,6 +4,7 @@ export * from './EndWith';
 export * from './First';
 export * from './IndexOf';
 export * from './KebabCase';
+export * from './LastIndexOf';
 export * from './Length';
 export * from './Replace';
 export * from './ReplaceAll';
