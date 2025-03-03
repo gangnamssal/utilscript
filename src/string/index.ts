@@ -12,6 +12,7 @@ export * from './Replace';
 export * from './ReplaceAll';
 export * from './Reverse';
 export * from './SnakeCase';
+export * from './Split';
 export * from './StartWith';
 export * from './ToUnion';
 export * from './Trim';
