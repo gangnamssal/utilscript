@@ -1,4 +1,4 @@
-import { Remove } from '../../array';
+import { IsUnion } from '../../commonness';
 import { Tuple } from '../../primitive';
 
 /**
@@ -9,64 +9,32 @@ import { Tuple } from '../../primitive';
  *
  * @description
  * 기존 함수 타입에 새로운 인자를 추가할 수 있습니다.
- * 최대 26개(A-Z)의 추가 인자를 지원합니다.
- * never 타입의 인자는 자동으로 제거됩니다.
+ * 단일 타입 또는 배열 형태의 타입을 추가할 수 있습니다.
  *
  * @params Fn 원본 함수 타입
- * @params A 첫 번째로 추가할 인자 타입
- * @params B 두 번째로 추가할 인자 타입 (기본값: never)
- * @params C 세 번째로 추가할 인자 타입 (기본값: never)
- * ...
- * @params Z 마지막으로 추가할 인자 타입 (기본값: never)
+ * @params A 추가할 인자 타입 또는 인자 타입 배열
  * @returns 새로운 인자가 추가된 함수 타입을 반환합니다
  *
  * @example
- * // 기본 사용법
+ * // 단일 인자 추가
  * type Case1 = Append<(a: number, b: string) => number, boolean>;
  * // 결과: (a: number, b: string, x: boolean) => number
  *
- * // 여러 인자 추가
- * type Case2 = Append<() => void, string, number, boolean>;
- * // 결과: (x: string, y: number, z: boolean) => void
+ * // 배열 형태로 여러 인자 추가
+ * type Case3 = Append<() => void, [undefined, boolean]>;
+ * // 결과: (x: undefined, y: boolean) => void
  *
- * // never 타입은 무시됨
- * type Case3 = Append<() => void, string, never, boolean>;
- * // 결과: (x: string, y: boolean) => void
+ * // 더 많은 인자 추가
+ * type Case6 = Append<() => string, [undefined, boolean, null, number, string]>;
+ * // 결과: (x: undefined, y: boolean, z: null, a: number, b: string) => string
  */
 
-export type Append<
-  Fn extends (...args: Tuple<any>) => unknown,
-  A,
-  B = never,
-  C = never,
-  D = never,
-  E = never,
-  F = never,
-  G = never,
-  H = never,
-  I = never,
-  J = never,
-  K = never,
-  L = never,
-  M = never,
-  N = never,
-  O = never,
-  P = never,
-  Q = never,
-  R = never,
-  S = never,
-  T = never,
-  U = never,
-  V = never,
-  W = never,
-  X = never,
-  Y = never,
-  Z = never,
-> = Fn extends (...args: infer Args) => infer Return
-  ? (
-      ...args: Remove<
-        [...Args, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z],
-        never
-      >
-    ) => Return
+export type Append<Fn extends (...args: Tuple<any>) => unknown, A> = Fn extends (
+  ...args: infer Args
+) => infer Return
+  ? IsUnion<A> extends true
+    ? (...args: [...Args, A]) => Return
+    : A extends [...infer Rest]
+      ? (...args: [...Args, ...Rest]) => Return
+      : (...args: [...Args, A]) => Return
   : never;

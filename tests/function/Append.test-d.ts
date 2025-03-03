@@ -7,16 +7,16 @@ type Result1 = (a: number, b: string, x: boolean) => number;
 type Case2 = Append<() => void, undefined>;
 type Result2 = (x: undefined) => void;
 
-type Case3 = Append<() => void, undefined, boolean>;
+type Case3 = Append<() => void, [undefined, boolean]>;
 type Result3 = (x: undefined, y: boolean) => void;
 
-type Case4 = Append<() => void, undefined, boolean, null>;
+type Case4 = Append<() => void, [undefined, boolean, null]>;
 type Result4 = (x: undefined, y: boolean, z: null) => void;
 
-type Case5 = Append<() => void, undefined, boolean, null, number>;
+type Case5 = Append<() => void, [undefined, boolean, null, number]>;
 type Result5 = (x: undefined, y: boolean, z: null, a: number) => void;
 
-type Case6 = Append<() => string, undefined, boolean, null, number, string>;
+type Case6 = Append<() => string, [undefined, boolean, null, number, string]>;
 type Result6 = (x: undefined, y: boolean, z: null, a: number, b: string) => string;
 
 type cases = [
