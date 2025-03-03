@@ -2,8 +2,24 @@ import { Equal, Expect } from '../../src/commonness';
 import { Split } from '../../src/string';
 
 type cases = [
-  Expect<Equal<Split<'hello world'>, ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']>>,
-  Expect<Equal<Split<'hello world', ' '>, ['hello', 'world']>>,
-  Expect<Equal<Split<'hello world', 'o'>, ['hell', ' w', 'rld']>>,
-  Expect<Equal<Split<'helloworld', 'o'>, ['hell', 'w', 'rld']>>,
+  Expect<Equal<Split<'Hi! How are you?'>, ['Hi! How are you?']>>,
+  Expect<Equal<Split<'Hi! How are you?', 'z'>, ['Hi! How are you?']>>,
+  Expect<Equal<Split<'Hi! How are you?', ' '>, ['Hi!', 'How', 'are', 'you?']>>,
+  Expect<
+    Equal<
+      Split<'Hi! How are you?', ''>,
+      ['H', 'i', '!', ' ', 'H', 'o', 'w', ' ', 'a', 'r', 'e', ' ', 'y', 'o', 'u', '?']
+    >
+  >,
+  Expect<Equal<Split<'', ''>, []>>,
+  Expect<Equal<Split<'The sine in cosine', 'in'>, ['The s', 'e ', ' cos', 'e']>>,
+  Expect<
+    Equal<
+      Split<'Never say never, forever and ever.', 'ver'>,
+      ['Ne', ' say ne', ', fore', ' and e', '.']
+    >
+  >,
+  Expect<Equal<Split<'', 'z'>, ['']>>,
+  Expect<Equal<Split<''>, ['']>>,
+  Expect<Equal<Split<string, 'whatever'>, string[]>>,
 ];
