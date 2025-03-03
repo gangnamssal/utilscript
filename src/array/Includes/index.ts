@@ -1,5 +1,4 @@
 import { Equal } from '../../commonness';
-import { Tuple } from '../../primitive';
 
 /**
  * Check if an array includes a value
@@ -19,7 +18,7 @@ import { Tuple } from '../../primitive';
  * ]
  */
 
-export type Includes<T extends Tuple, U> = {
+export type Includes<T, U> = {
   [P in keyof T]: Equal<T[P], U> extends true ? true : false;
 } extends { [key: number]: false }
   ? false
