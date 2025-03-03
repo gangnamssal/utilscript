@@ -5,6 +5,7 @@ export * from './First';
 export * from './Includes';
 export * from './IndexOf';
 export * from './KebabCase';
+export * from './Last';
 export * from './LastIndexOf';
 export * from './Length';
 export * from './Replace';
