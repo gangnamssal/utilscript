@@ -1,3 +1,4 @@
+import { IsTuple } from '../../commonness/index.js';
 import { Tuple } from '../../primitive';
 import { Includes } from '../Includes';
 import { Push } from '../Push';
@@ -17,18 +18,18 @@ import { Push } from '../Push';
  *   Expect<Equal<Without<[1, 2], 1>, [2]>>,
  *   Expect<Equal<Without<[1, 2, 4, 1, 5], [1, 2]>, [4, 5]>>,
  *   Expect<Equal<Without<[2, 3, 2, 3, 2, 3, 2, 3], [2, 3]>, []>>,
+ *   Expect<Equal<Without<['a', 'b', 'c'], ['a', 'b']>, ['c']>>,
+ *   Expect<Equal<Without<['abc', 'b', 'c'], ['a', 'b']>, ['abc', 'c']>>,
+ *   Expect<Equal<Without<[1, never, null, undefined], Falsy>, [1]>>,
+ *   Expect<Equal<Without<[1, 2, 3, never], never>, [1, 2, 3]>>,
  * ];
  */
-export type Without<
-  T extends Tuple,
-  U extends number | Tuple<number>,
-  R extends Tuple = [],
-> = T extends [infer TF, ...infer TR]
-  ? U extends Tuple
+export type Without<T extends Tuple, U, R extends Tuple = []> = T extends [infer TF, ...infer TR]
+  ? IsTuple<U> extends true
     ? Includes<U, TF> extends true
       ? Without<TR, U, R>
       : Without<TR, U, Push<R, TF>>
-    : TF extends U
+    : [TF] extends [U]
       ? Without<TR, U, R>
       : Without<TR, U, Push<R, TF>>
   : R;
