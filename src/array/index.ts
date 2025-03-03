@@ -16,6 +16,7 @@ export * from './Reverse';
 export * from './Shift';
 export * from './ToObject';
 export * from './ToUnion';
+export * from './Unique';
 export * from './Unshift';
 export * from './Without';
 export * from './Zip';
