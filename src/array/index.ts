@@ -4,6 +4,7 @@ export * from './Fill';
 export * from './Filter';
 export * from './First';
 export * from './Flatten';
+export * from './From';
 export * from './Includes';
 export * from './IndexOf';
 export * from './Join';
