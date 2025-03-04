@@ -6,6 +6,7 @@ export * from './Diff';
 export * from './Entries';
 export * from './Flip';
 export * from './LookUp';
+export * from './MapTypes';
 export * from './Merge';
 export * from './Mutable';
 export * from './OmitByType';
