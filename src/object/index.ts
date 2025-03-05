@@ -1,5 +1,6 @@
 export * from './Alike';
 export * from './Append';
+export * from './Assign';
 export * from './DeepCopy';
 export * from './DeepReadonly';
 export * from './Diff';
