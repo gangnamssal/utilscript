@@ -8,6 +8,7 @@ export * from './KebabCase';
 export * from './Last';
 export * from './LastIndexOf';
 export * from './Length';
+export * from './ParseUrlParams';
 export * from './Replace';
 export * from './ReplaceAll';
 export * from './Reverse';
