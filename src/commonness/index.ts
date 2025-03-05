@@ -4,6 +4,7 @@ export * from './If';
 export * from './IsAlphabet';
 export * from './IsAny';
 export * from './IsNever';
+export * from './IsObject';
 export * from './IsTuple';
 export * from './IsUnion';
 export * from './NotEqual';

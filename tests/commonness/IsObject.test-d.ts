@@ -1,0 +1,25 @@
+import { Equal, Expect, IsObject } from '../../src/commonness';
+
+type cases = [
+  Expect<Equal<IsObject<{}>, true>>,
+  Expect<Equal<IsObject<object>, true>>,
+  Expect<Equal<IsObject<{ a: 1 }>, true>>,
+  Expect<Equal<IsObject<{ a: 1; b: 2 }>, true>>,
+  Expect<Equal<IsObject<Record<string, unknown>>, true>>,
+  Expect<Equal<IsObject<Record<1, unknown>>, true>>,
+  Expect<Equal<IsObject<string>, false>>,
+  Expect<Equal<IsObject<[]>, false>>,
+  Expect<Equal<IsObject<[1, 2, 3]>, false>>,
+  Expect<Equal<IsObject<number>, false>>,
+  Expect<Equal<IsObject<boolean>, false>>,
+  Expect<Equal<IsObject<null>, false>>,
+  Expect<Equal<IsObject<undefined>, false>>,
+  Expect<Equal<IsObject<() => void>, false>>,
+  Expect<Equal<IsObject<(a: string) => void>, false>>,
+  Expect<Equal<IsObject<symbol>, false>>,
+  Expect<Equal<IsObject<bigint>, false>>,
+  Expect<Equal<IsObject<Date>, false>>,
+  Expect<Equal<IsObject<Error>, false>>,
+  Expect<Equal<IsObject<RegExp>, false>>,
+  Expect<Equal<IsObject<Map<string, number>>, false>>,
+];
