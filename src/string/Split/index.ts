@@ -31,6 +31,6 @@ export type Split<S extends string, D extends string | never = never> = [D] exte
       ? string[]
       : S extends `${infer First}${D}${infer Rest}`
         ? Rest extends ''
-          ? [S]
+          ? [First]
           : [First, ...Split<Rest, D>]
         : [S];

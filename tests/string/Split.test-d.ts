@@ -22,4 +22,5 @@ type cases = [
   Expect<Equal<Split<'', 'z'>, ['']>>,
   Expect<Equal<Split<''>, ['']>>,
   Expect<Equal<Split<string, 'whatever'>, string[]>>,
+  Expect<Equal<Split<'posts/:id/:user/', '/'>, ['posts', ':id', ':user']>>,
 ];
