@@ -15,6 +15,7 @@ export * from './Reverse';
 export * from './SnakeCase';
 export * from './Split';
 export * from './StartWith';
+export * from './ToNumber';
 export * from './ToUnion';
 export * from './Trim';
 export * from './TrimLeft';
