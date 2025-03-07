@@ -1,5 +1,6 @@
 /**
  * Creates a new type by excluding properties of type U from object type T.
+ *
  * 객체 타입 T에서 타입이 U인 프로퍼티를 제외한 새로운 타입을 생성합니다.
  *
  * @param T - The original object type / 원본 객체 타입
