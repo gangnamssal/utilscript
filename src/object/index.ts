@@ -13,6 +13,7 @@ export * from './Mutable';
 export * from './OmitByType';
 export * from './PartialByKeys';
 export * from './PartialReadonly';
+export * from './PickByOptional';
 export * from './PickByRequired';
 export * from './PickByType';
 export * from './ReplaceKeys';
