@@ -6,6 +6,7 @@ export * from './DeepReadonly';
 export * from './Diff';
 export * from './Entries';
 export * from './Flip';
+export * from './Get';
 export * from './LookUp';
 export * from './MapTypes';
 export * from './Merge';
