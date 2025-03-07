@@ -13,4 +13,4 @@
  * type Case5 = ToNumber<'18@7_$%'>; // never
  */
 
-export type ToNumber<S extends string> = S extends `${infer N extends number}` ? N : never;
+export type ToNumber<S> = S extends `${infer N extends number}` ? N : never;
