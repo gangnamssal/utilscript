@@ -18,3 +18,4 @@ export * from './PickByRequired';
 export * from './PickByType';
 export * from './ReplaceKeys';
 export * from './RequiredByKeys';
+export * from './RequiredKeys';

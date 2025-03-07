@@ -1,4 +1,4 @@
-import { PickByRequired } from '../PickByRequired';
+import { RequiredKeys } from '../RequiredKeys';
 /**
  * Get properties that are optional in an object
  *
@@ -13,4 +13,4 @@ import { PickByRequired } from '../PickByRequired';
  *   Expect<Equal<GetOptional<{ foo: undefined; bar?: undefined }>, { bar?: undefined }>>,
  * ];
  */
-export type GetOptional<T> = Omit<T, keyof PickByRequired<T>>;
+export type GetOptional<T> = Omit<T, RequiredKeys<T>>;
