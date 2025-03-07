@@ -11,6 +11,7 @@ export * from './MapTypes';
 export * from './Merge';
 export * from './Mutable';
 export * from './OmitByType';
+export * from './OptionalKeys';
 export * from './PartialByKeys';
 export * from './PartialReadonly';
 export * from './PickByOptional';
