@@ -1,6 +1,4 @@
-type UnionToFn<T> = (T extends any ? (arg: () => T) => any : never) extends (arg: infer R) => any
-  ? R
-  : never;
+import { ToFnIntersection } from '../ToFnIntersection';
 
 /**
  * Utility type to convert a union type to a tuple
@@ -20,4 +18,5 @@ type UnionToFn<T> = (T extends any ? (arg: () => T) => any : never) extends (arg
  *   Expect<Equal<ToUnion<ToTuple<never>>, never>>,
  * ]
  */
-export type ToTuple<T> = UnionToFn<T> extends () => infer R ? [...ToTuple<Exclude<T, R>>, R] : [];
+export type ToTuple<T> =
+  ToFnIntersection<T> extends () => infer R ? [...ToTuple<Exclude<T, R>>, R] : [];
