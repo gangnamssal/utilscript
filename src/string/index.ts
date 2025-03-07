@@ -1,4 +1,5 @@
 export * from './CamelCase';
+export * from './Capitalize';
 export * from './Concat';
 export * from './EndWith';
 export * from './First';
