@@ -20,7 +20,7 @@ import { Push } from '../Push';
  *   Expect<Equal<IndexOf<[0, 0, 0], 2>, -1>>,
  * ];
  */
-export type IndexOf<T extends Tuple, U, Accumulator extends Tuple = []> = T extends [
+export type IndexOf<T extends Tuple, U, Accumulator extends Tuple = []> = T extends readonly [
   infer Current,
   ...infer Rest,
 ]

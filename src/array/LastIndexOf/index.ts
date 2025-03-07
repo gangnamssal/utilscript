@@ -26,7 +26,7 @@ export type LastIndexOf<
   U,
   Accumulate extends Tuple = [],
   R extends number = -1,
-> = T extends [infer Current, ...infer Rest]
+> = T extends readonly [infer Current, ...infer Rest]
   ? Equal<Current, U> extends true
     ? LastIndexOf<Rest, U, Push<Accumulate, unknown>, Length<Accumulate>>
     : LastIndexOf<Rest, U, Push<Accumulate, unknown>, R>

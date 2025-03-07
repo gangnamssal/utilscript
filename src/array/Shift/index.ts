@@ -13,4 +13,4 @@ import { Tuple } from '../../primitive';
  * ]
  */
 
-export type Shift<T extends Tuple> = T extends [infer _, ...infer Rest] ? Rest : [];
+export type Shift<T extends Tuple> = T extends readonly [infer _, ...infer Rest] ? Rest : [];

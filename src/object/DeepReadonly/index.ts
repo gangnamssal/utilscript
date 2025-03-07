@@ -1,4 +1,4 @@
-import { AnyArray } from '../../primitive';
+import { Tuple } from '../../primitive';
 
 /**
  * DeepReadonly
@@ -18,7 +18,7 @@ import { AnyArray } from '../../primitive';
 
 export type DeepReadonly<T> = {
   readonly [k in keyof T]: T[k] extends Record<PropertyKey, any>
-    ? T[k] extends (...args: AnyArray<any>) => unknown
+    ? T[k] extends (...args: Tuple) => unknown
       ? T[k]
       : DeepReadonly<T[k]>
     : T[k];

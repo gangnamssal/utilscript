@@ -35,7 +35,7 @@ export type Fill<
   End extends number = Length<T>,
   Result extends Tuple = [],
   InRange extends boolean = false,
-> = T extends [infer First, ...infer Rest]
+> = T extends readonly [infer First, ...infer Rest]
   ? Start extends End
     ? T
     : Length<Result> extends Start

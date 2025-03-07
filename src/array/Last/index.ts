@@ -18,4 +18,4 @@ import { Tuple } from './../../primitive';
  * ];
  */
 
-export type Last<T extends Tuple> = T extends [...Tuple, infer L] ? L : never;
+export type Last<T extends Tuple> = T extends readonly [...Tuple, infer L] ? L : never;

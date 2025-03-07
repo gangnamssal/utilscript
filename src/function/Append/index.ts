@@ -34,7 +34,7 @@ export type Append<Fn extends (...args: Tuple<any>) => unknown, A> = Fn extends 
 ) => infer Return
   ? IsUnion<A> extends true
     ? (...args: [...Args, A]) => Return
-    : A extends [...infer Rest]
+    : A extends readonly [...infer Rest]
       ? (...args: [...Args, ...Rest]) => Return
       : (...args: [...Args, A]) => Return
   : never;

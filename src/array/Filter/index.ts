@@ -24,7 +24,7 @@ export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends [
   infer First,
   ...infer Rest,
 ]
-  ? [First] extends [F]
+  ? [First] extends readonly [F]
     ? Filter<Rest, F, Push<R, First>>
     : Filter<Rest, F, R>
   : R;

@@ -19,11 +19,11 @@ import { Push } from '../Push';
  *   Expect<Equal<Zip<[[1, 2]], [3]>, [[[1, 2], 3]]>>,
  * ];
  */
-export type Zip<T extends Tuple, U extends Tuple, R extends Tuple = []> = T extends [
+export type Zip<T extends Tuple, U extends Tuple, R extends Tuple = []> = T extends readonly [
   infer FT,
   ...infer RT,
 ]
-  ? U extends [infer FU, ...infer RU]
+  ? U extends readonly [infer FU, ...infer RU]
     ? Zip<RT, RU, Push<R, [FT, FU]>>
     : R
   : R;

@@ -1,7 +1,7 @@
 import { Tuple } from '../../primitive';
 import { Split } from '../../string';
 
-type RecursiveGetType<T, A extends Tuple> = A extends [infer First, ...infer Rest]
+type RecursiveGetType<T, A extends Tuple> = A extends readonly [infer First, ...infer Rest]
   ? First extends keyof T
     ? RecursiveGetType<T[First], Rest>
     : never

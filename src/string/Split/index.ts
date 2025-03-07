@@ -23,7 +23,7 @@ import { Equal } from '../../commonness';
  *   Expect<Equal<Split<string, 'whatever'>, string[]>>,
  * ]
  */
-export type Split<S extends string, D extends string | never = never> = [D] extends [never]
+export type Split<S extends string, D extends string | never = never> = [D] extends readonly [never]
   ? [S]
   : Equal<S, D> extends true
     ? []

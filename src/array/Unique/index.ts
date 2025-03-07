@@ -17,7 +17,7 @@ import { Includes } from '../Includes';
  * ]
  */
 
-export type Unique<T, R extends Tuple = []> = T extends [infer Current, ...infer Rest]
+export type Unique<T, R extends Tuple = []> = T extends readonly [infer Current, ...infer Rest]
   ? Includes<R, Current> extends true
     ? Unique<Rest, R>
     : Unique<Rest, [...R, Current]>

@@ -33,7 +33,7 @@ export type MapTypes<
   T extends Record<PropertyKey, any>,
   R extends Record<'mapFrom' | 'mapTo', unknown>,
 > = {
-  [P in keyof T]: [Extract<R, { mapFrom: T[P] }>] extends [never]
+  [P in keyof T]: [Extract<R, { mapFrom: T[P] }>] extends readonly [never]
     ? T[P]
     : Extract<R, { mapFrom: T[P] }>['mapTo'];
 };

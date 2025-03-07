@@ -16,4 +16,4 @@ import { Tuple } from '../../primitive';
  * ]
  */
 
-export type Pop<T extends Tuple> = T extends [...infer F, unknown] ? F : [];
+export type Pop<T extends Tuple> = T extends readonly [...infer F, unknown] ? F : [];

@@ -14,6 +14,6 @@ import { Push } from '../Push';
  *   Expect<Equal<Reverse<['a', 'b']>, ['b', 'a']>>,
  * ]
  */
-export type Reverse<T extends Tuple> = T extends [infer First, ...infer Rest]
+export type Reverse<T extends Tuple> = T extends readonly [infer First, ...infer Rest]
   ? Push<Reverse<Rest>, First>
   : T;

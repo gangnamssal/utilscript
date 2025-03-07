@@ -1,4 +1,4 @@
-import { IsTuple } from '../../commonness/index.js';
+import { IsTuple } from '../../commonness';
 import { Tuple } from '../../primitive';
 import { Includes } from '../Includes';
 import { Push } from '../Push';
@@ -24,7 +24,10 @@ import { Push } from '../Push';
  *   Expect<Equal<Without<[1, 2, 3, never], never>, [1, 2, 3]>>,
  * ];
  */
-export type Without<T extends Tuple, U, R extends Tuple = []> = T extends [infer TF, ...infer TR]
+export type Without<T extends Tuple, U, R extends Tuple = []> = T extends readonly [
+  infer TF,
+  ...infer TR,
+]
   ? IsTuple<U> extends true
     ? Includes<U, TF> extends true
       ? Without<TR, U, R>

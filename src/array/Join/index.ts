@@ -25,7 +25,10 @@ export type Join<
   T extends Tuple<string | number>,
   U extends string | number = ',',
   R extends string = '',
-> = T extends [infer Current extends string | number, ...infer Rest extends Tuple<string | number>]
+> = T extends readonly [
+  infer Current extends string | number,
+  ...infer Rest extends Tuple<string | number>,
+]
   ? Length<Rest> extends 0
     ? Join<Rest, U, `${R}${Current}`>
     : Join<Rest, U, `${R}${Current}${U}`>

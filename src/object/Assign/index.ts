@@ -1,4 +1,5 @@
 import { IsObject } from '../../commonness';
+import { Tuple } from '../../primitive';
 import { Merge } from '../Merge';
 
 /**
@@ -25,7 +26,7 @@ import { Merge } from '../Merge';
  *   Expect<Equal<Assign<Case1Target, [Case1Origin1, Case1Origin2, Case1Origin3]>, Case1Answer>>,
  * ]
  */
-export type Assign<T extends Record<string, unknown>, U extends Array<unknown>> = U extends [
+export type Assign<T extends Record<PropertyKey, unknown>, U extends Tuple> = U extends readonly [
   infer First,
   ...infer Rest,
 ]
