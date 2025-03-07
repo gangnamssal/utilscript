@@ -9,8 +9,8 @@ import { RequiredKeys } from '../RequiredKeys';
  * @example
  *
  * type cases = [
- *   Expect<Equal<GetOptional<{ foo: number; bar?: string }>, { bar?: string }>>,
- *   Expect<Equal<GetOptional<{ foo: undefined; bar?: undefined }>, { bar?: undefined }>>,
+ *   Expect<Equal<PickByOptional<{ foo: number; bar?: string }>, { bar?: string }>>,
+ *   Expect<Equal<PickByOptional<{ foo: undefined; bar?: undefined }>, { bar?: undefined }>>,
  * ];
  */
-export type GetOptional<T> = Omit<T, RequiredKeys<T>>;
+export type PickByOptional<T> = Omit<T, RequiredKeys<T>>;

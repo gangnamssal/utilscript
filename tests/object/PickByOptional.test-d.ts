@@ -1,7 +1,7 @@
 import { Expect, Equal } from '../../src/commonness';
-import { GetOptional } from '../../src/object';
+import { PickByOptional } from '../../src/object';
 
 type cases = [
-  Expect<Equal<GetOptional<{ foo: number; bar?: string }>, { bar?: string }>>,
-  Expect<Equal<GetOptional<{ foo: undefined; bar?: undefined }>, { bar?: undefined }>>,
+  Expect<Equal<PickByOptional<{ foo: number; bar?: string }>, { bar?: string }>>,
+  Expect<Equal<PickByOptional<{ foo: undefined; bar?: undefined }>, { bar?: undefined }>>,
 ];
