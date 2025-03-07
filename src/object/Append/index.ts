@@ -23,6 +23,6 @@
  * // }
  */
 
-export type Append<T, U extends string, V> = {
+export type Append<T, U extends PropertyKey, V> = {
   [P in keyof (T & Record<U, V>)]: (T & Record<U, V>)[P];
 };
