@@ -6,9 +6,15 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
+    "preinstall": "husky",
     "build": "tsup src/index.ts --format esm,cjs && tsc src/index.ts --declaration --emitDeclarationOnly --outDir dist",
     "pack": "pnpm run build && pnpm pack",
-    "format": "prettier . --write --cache"
+    "format": "prettier . --write --cache",
+    "lint": "eslint src/ --cache",
+    "patch": "pnpm run build && pnpm version patch && pnpm publish --no-git-checks",
+    "minor": "pnpm run build && pnpm version minor && pnpm publish --no-git-checks",
+    "major": "pnpm run build && pnpm version major && pnpm publish --no-git-checks",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +23,7 @@
     "@eslint/js": "^9.21.0",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "prettier": "^3.5.2",
     "tsup": "^8.4.0",
     "typescript": "^5.7.3",
