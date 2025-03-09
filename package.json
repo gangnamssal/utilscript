@@ -2,25 +2,39 @@
   "name": "stew-ts",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build:ts": "tsc && tsc --project tsconfig.cjs.json && tsc --project tsconfig.json",
-    "build:esbuild": "node esbuild.config.js",
-    "build": "pnpm run build:ts && pnpm run build:esbuild"
+    "build": "tsup src/index.ts --format esm,cjs && tsc src/index.ts --declaration --emitDeclarationOnly --outDir dist",
+    "pack": "pnpm run build && pnpm pack",
+    "format": "prettier . --write --cache"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "esbuild": "^0.25.0",
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
     "prettier": "^3.5.2",
-    "typescript": "^5.7.3"
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0"
   },
   "files": [
     "dist/**/*"
   ],
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    },
+    "require": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "unpkg": "./dist/",
   "jsdelivr": "./dist/"
 }
