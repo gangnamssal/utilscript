@@ -1,7 +1,20 @@
 {
-  "name": "stew-ts",
-  "version": "1.0.1",
-  "description": "",
+  "name": "utilscript",
+  "author": {
+    "name": "Tommy",
+    "email": "24691116@naver.com"
+  },
+  "version": "0.0.1",
+  "description": "Utility types and functions for TypeScript",
+  "homepage": "https://github.com/gangnamssal/utilscript",
+  "bugs": {
+    "url": "https://github.com/gangnamssal/utilscript/issues",
+    "email": "24691116@naver.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gangnamssal/utilscript"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -16,8 +29,13 @@
     "major": "pnpm run build && pnpm version major && pnpm publish --no-git-checks",
     "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "utilscript",
+    "typescript",
+    "utility",
+    "types",
+    "utility types"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
