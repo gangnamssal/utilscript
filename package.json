@@ -19,7 +19,6 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "preinstall": "husky",
     "build": "tsup src/index.ts --format esm,cjs && tsc src/index.ts --declaration --emitDeclarationOnly --outDir dist",
     "pack": "pnpm run build && pnpm pack",
     "format": "prettier . --write --cache",
