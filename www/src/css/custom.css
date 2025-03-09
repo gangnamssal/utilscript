@@ -1,0 +1,40 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-code-font-size: 95%;
+  --ifm-color-primary: #3b82f6; /* 딥 블루: 세련되고 기술적인 주요 색상 */
+  --ifm-color-primary-dark: #2563eb; /* 약간 진한 블루, 깊이 추가 */
+  --ifm-color-primary-darker: #1d4ed8; /* 더 진한 톤, 대비 강화 */
+  --ifm-color-primary-darkest: #1e40af; /* 가장 진한 블루, 강조 요소 */
+  --ifm-color-primary-light: #60a5fa; /* 더 밝은 블루, 부드러운 느낌 */
+  --ifm-color-primary-lighter: #93c5fd; /* 더욱 밝은 톤, 가독성 개선 */
+  --ifm-color-primary-lightest: #bfdbfe; /* 가장 밝은 블루, 하이라이트 */
+  --docusaurus-highlighted-code-line-bg: rgba(
+    59,
+    130,
+    246,
+    0.1
+  ); /* 코드 하이라이트, 주요 색상의 투명 버전 */
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa; /* 밝은 딥 블루: 다크 모드에서 세련되게 눈에 띔 */
+  --ifm-color-primary-dark: #3b82f6; /* 약간 진한 블루, 깊이 추가 */
+  --ifm-color-primary-darker: #2563eb; /* 더 진한 톤, 대비 강화 */
+  --ifm-color-primary-darkest: #1d4ed8; /* 가장 진한 블루, 강조 요소 */
+  --ifm-color-primary-light: #93c5fd; /* 더 밝은 블루, 부드러운 느낌 */
+  --ifm-color-primary-lighter: #bfdbfe; /* 더욱 밝은 톤, 가독성 개선 */
+  --ifm-color-primary-lightest: #dbeafe; /* 가장 밝은 블루, 하이라이트 */
+  --docusaurus-highlighted-code-line-bg: rgba(
+    96,
+    165,
+    250,
+    0.2
+  ); /* 다크 모드에 맞춘 코드 하이라이트 */
+}
