@@ -1,22 +1,47 @@
 {
-  "name": "stew-ts",
-  "version": "1.0.0",
-  "description": "",
+  "name": "utilscript",
+  "author": {
+    "name": "Tommy",
+    "email": "24691116@naver.com"
+  },
+  "version": "0.0.1",
+  "description": "Utility types and functions for TypeScript",
+  "homepage": "https://github.com/gangnamssal/utilscript",
+  "bugs": {
+    "url": "https://github.com/gangnamssal/utilscript/issues",
+    "email": "24691116@naver.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gangnamssal/utilscript"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
+    "preinstall": "husky",
     "build": "tsup src/index.ts --format esm,cjs && tsc src/index.ts --declaration --emitDeclarationOnly --outDir dist",
     "pack": "pnpm run build && pnpm pack",
-    "format": "prettier . --write --cache"
+    "format": "prettier . --write --cache",
+    "lint": "eslint src/ --cache",
+    "patch": "pnpm run build && pnpm version patch && pnpm publish --no-git-checks",
+    "minor": "pnpm run build && pnpm version minor && pnpm publish --no-git-checks",
+    "major": "pnpm run build && pnpm version major && pnpm publish --no-git-checks",
+    "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "utilscript",
+    "typescript",
+    "utility",
+    "types",
+    "utility types"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "prettier": "^3.5.2",
     "tsup": "^8.4.0",
     "typescript": "^5.7.3",
