@@ -1,0 +1,30 @@
+---
+sidebar_position: 7
+---
+
+# From
+
+`From`은 주어진 길이(L)를 받아 해당 길이의 튜플을 생성하는 TypeScript 유틸리티 타입입니다.
+
+## 사용법
+
+```ts
+import { A } from 'utilscript';
+
+type T = A.From<0>; // []
+
+type T2 = A.From<2>; // [unknown, unknown]
+```
+
+## 주의 사항
+
+:::warning
+TypeScript의 재귀 제한으로 인해 `From`은 최대 999 길이의 배열만 생성할 수 있습니다. 1000 이상의 길이를 지정하면 타입 오류가 발생합니다.
+:::
+
+```ts
+import { A } from 'utilscript';
+
+// @ts-expect-error: type error
+type T = A.From<1000>['length']; // 형식 인스턴스화는 깊이가 매우 깊으며 무한할 수도 있습니다.
+```

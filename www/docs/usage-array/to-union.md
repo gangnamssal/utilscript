@@ -1,0 +1,30 @@
+---
+sidebar_position: 21
+---
+
+# ToUnion
+
+`ToUnion`은 튜플을 유니온 타입으로 변환하는 TypeScript 유틸리티 타입입니다. 이 타입은 튜플의 모든 요소를 유니온 타입으로 결합합니다.
+
+## 사용법
+
+```ts
+import { A } from 'utilscript';
+
+type T = A.ToUnion<[123, '456', true]>; //  123 | '456' | true
+
+type T2 = A.ToUnion<[123]>; // 123
+```
+
+## 주의 사항
+
+:::warning  
+튜플이 아닌 일반 Array 타입이 입력으로 주어질 경우 예상과 다른 결과가 나올 수 있습니다.
+:::
+
+```ts
+import { A } from 'utilscript';
+
+const arr = [123, '456', true];
+type T = A.ToUnion<typeof arr>; // string | number | boolean
+```

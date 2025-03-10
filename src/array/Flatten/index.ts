@@ -31,7 +31,7 @@ type FlattenHelper<T extends Tuple> = T extends [infer First, ...infer Rest]
  *   Expect<Equal<Flatten<[1, 2, [3, 4], [[[5]]]], 2>, [1, 2, 3, 4, [5]]>>,
  *   Expect<Equal<Flatten<[1, 2, [3, 4], [[[5]]]]>, [1, 2, 3, 4, [[5]]]>>,
  *   Expect<Equal<Flatten<[1, [2, [3, [4, [5]]]]>, 3>, [1, 2, 3, 4, [5]]>>,
- *   Expect<Equal<Flatten<[1, [2, [3, [4, [5]]]]>, 19260817>, [1, 2, 3, 4, 5]>>,
+ *   Expect<Equal<Flatten<[1, [2, [3, [4, [5]]]]], 19260817>, [1, 2, 3, 4, 5]>>,
  * ]
  */
 
