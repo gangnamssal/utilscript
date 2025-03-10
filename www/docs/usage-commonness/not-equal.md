@@ -1,0 +1,17 @@
+---
+sidebar_position: 10
+---
+
+# NotEqual
+
+`NotEqual`은 두 타입이 서로 다른지 확인하는 TypeScript 유틸리티 타입입니다. 두 타입이 다르면 `true`를 반환하고, 같으면 `false`를 반환합니다.
+
+## 사용 예시
+
+```ts
+import { C } from 'utilscript';
+
+type T = C.NotEqual<1, 2>; // true
+
+type T2 = C.NotEqual<'a', 'b'>; // true
+```
