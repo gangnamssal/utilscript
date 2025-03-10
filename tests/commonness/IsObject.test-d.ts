@@ -2,6 +2,7 @@ import { Equal, Expect, IsObject } from '../../src/commonness';
 
 type cases = [
   Expect<Equal<IsObject<{}>, true>>,
+  Expect<Equal<IsObject<unknown>, false>>,
   Expect<Equal<IsObject<object>, true>>,
   Expect<Equal<IsObject<{ a: 1 }>, true>>,
   Expect<Equal<IsObject<{ a: 1; b: 2 }>, true>>,
