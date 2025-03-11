@@ -4,12 +4,15 @@ import { Length } from '../../array/Length';
 import { StartsWith } from '../StartWith';
 
 /**
+ *
  * Type to find the last index of a substring in a string
  *
  * 문자열에서 특정 부분 문자열의 마지막 인덱스를 찾는 타입
  *
  * @param T String to search in / 검색할 문자열
+ *
  * @param U Substring to find / 찾을 부분 문자열
+ *
  * @returns Last index of the substring, -1 if not found / 부분 문자열의 마지막 인덱스, 찾지 못한 경우 -1
  *
  * @example
@@ -19,6 +22,9 @@ import { StartsWith } from '../StartWith';
  *   Expect<Equal<LastIndexOf<'aaaaa', 'a'>, 4>>,
  *   Expect<Equal<LastIndexOf<'abcabc', 'd'>, -1>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-string/last-index-of
+ *
  */
 
 export type LastIndexOf<

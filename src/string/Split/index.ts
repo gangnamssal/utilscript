@@ -1,12 +1,15 @@
 import { Equal } from '../../commonness';
 
 /**
+ *
  * Split a string into an array of strings
  *
  * 문자열을 문자열 배열로 분리하는 타입
  *
  * @param S String to split / 분리할 문자열
+ *
  * @param D Delimiter to split by / 분리할 문자
+ *
  * @returns Array of split strings / 분리된 문자열 배열
  *
  * @example
@@ -22,6 +25,9 @@ import { Equal } from '../../commonness';
  *   Expect<Equal<Split<''>, ['']>>,
  *   Expect<Equal<Split<string, 'whatever'>, string[]>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-string/split
+ *
  */
 export type Split<S extends string, D extends string | never = never> = [D] extends readonly [never]
   ? [S]

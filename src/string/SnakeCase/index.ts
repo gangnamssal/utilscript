@@ -1,9 +1,11 @@
 /**
+ *
  * Convert a string to snake case
  *
  * 문자열을 스네이크 케이스로 변환
  *
  * @param S String / 문자열
+ *
  * @returns Snake case string / 스네이크 케이스 문자열
  *
  * @example
@@ -18,6 +20,9 @@
  *     >
  *   >,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-string/snake-case
+ *
  */
 
 export type SnakeCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
