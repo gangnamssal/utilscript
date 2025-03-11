@@ -17,8 +17,8 @@ function HomepageHeader() {
         </Heading>
         <p className='hero__subtitle'>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link className='button button--secondary button--lg' to='/docs/intro'>
-            Docusaurus Tutorial - 5min ⏱️
+          <Link className='button button--secondary button--lg' to='/docs/getting_started'>
+            Getting Started
           </Link>
         </div>
       </div>
@@ -30,7 +30,10 @@ export default function Home(): ReactNode {
   return (
     <Layout title={'Welcome to utils'} description='UtilScript is a utility library for TypeScript'>
       <HomepageHeader />
-      <main></main>
+
+      <main className={styles.main}>
+        <span className='text-2xl font-bold'>contents are preparing...</span>
+      </main>
     </Layout>
   );
 }

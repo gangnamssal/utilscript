@@ -76,8 +76,32 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Array(A)',
+              to: '/docs/category/arraya',
+            },
+            {
+              label: 'Commonness(C)',
+              to: '/docs/category/commonnessc',
+            },
+            {
+              label: 'Function(F)',
+              to: '/docs/category/functionf',
+            },
+            {
+              label: 'Object(O)',
+              to: '/docs/category/objecto',
+            },
+            {
+              label: 'Primitive(P)',
+              to: '/docs/category/primitivep',
+            },
+            {
+              label: 'String(S)',
+              to: '/docs/category/strings',
+            },
+            {
+              label: 'Union(U)',
+              to: '/docs/category/unionu',
             },
           ],
         },
@@ -85,16 +109,12 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/in/tommy971013/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/gangnamssal',
             },
           ],
         },
@@ -103,16 +123,12 @@ const config: Config = {
           items: [
             {
               label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              to: 'https://blog.naver.com/24691116',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} UtilScript. Made by gangnamssal.`,
     },
     prism: {
       theme: prismThemes.github,

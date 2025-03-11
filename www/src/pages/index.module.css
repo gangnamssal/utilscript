@@ -21,3 +21,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 1 0 0;
+
+  height: 100%;
+}
