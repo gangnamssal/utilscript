@@ -25,8 +25,7 @@
     "lint": "eslint src/ --cache",
     "patch": "pnpm run build && pnpm version patch && pnpm publish --no-git-checks",
     "minor": "pnpm run build && pnpm version minor && pnpm publish --no-git-checks",
-    "major": "pnpm run build && pnpm version major && pnpm publish --no-git-checks",
-    "prepare": "husky"
+    "major": "pnpm run build && pnpm version major && pnpm publish --no-git-checks"
   },
   "keywords": [
     "utilscript",
