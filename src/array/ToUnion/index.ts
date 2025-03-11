@@ -1,9 +1,10 @@
 import { Tuple } from './../../primitive';
 
 /**
- * ToUnion
  *
- * 배열을 유니온 타입으로 변환하는 타입
+ * Convert an array to a union
+ *
+ * 튜플을 유니온 타입으로 변환하는 타입
  *
  * @param T Tuple / 튜플
  *
@@ -12,6 +13,9 @@ import { Tuple } from './../../primitive';
  *   Expect<Equal<ToUnion<[123, '456', true]>, 123 | '456' | true>>,
  *   Expect<Equal<ToUnion<[123]>, 123>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-array/to-union
+ *
  */
 
 export type ToUnion<T extends Tuple> = T[number];

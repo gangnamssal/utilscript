@@ -3,15 +3,20 @@ import { Length } from '../Length';
 import { Push } from '../Push';
 
 /**
+ *
  * Type that takes an array, a value, and a start and end index and returns an array with the specified value in the specified range
  *
- * 배열, 값, 시작과 끝 인덱스를 받아 지정된 범위에 지정된 값을 가진 배열을 반환하는 타입
+ * 튜플, 값, 시작과 끝 인덱스를 받아 지정된 범위에 지정된 값을 가진 튜플을 반환하는 타입
  *
- * @params T - Array to be filled / 채워질 배열
+ * @params T - Array to be filled / 채워질 튜플
+ *
  * @params N - Value to fill / 채울 값
+ *
  * @params Start - Start index / 시작 인덱스
+ *
  * @params End - End index / 끝 인덱스
- * @returns Array with the specified value in the specified range / 지정된 범위에 지정된 값을 가진 배열
+ *
+ * @returns Array with the specified value in the specified range / 지정된 범위에 지정된 값을 가진 튜플
  *
  * @example
  * type cases = [
@@ -27,6 +32,9 @@ import { Push } from '../Push';
  *   Expect<Equal<Fill<[1, 2, 3], true, 10, 20>, [1, 2, 3]>>,
  *   Expect<Equal<Fill<[1, 2, 3], true, 0, 10>, [true, true, true]>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-array/fill
+ *
  */
 export type Fill<
   T extends Tuple,
