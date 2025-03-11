@@ -1,0 +1,25 @@
+---
+sidebar_position: 7
+---
+
+# Entries
+
+`Entries`는 객체의 키와 값을 배열로 반환하는 TypeScript 유틸리티 타입입니다. 이 타입은 객체의 각 속성을 `[키, 값]` 형태의 튜플 유니온 타입으로 변환합니다.
+
+:::tip
+이 유틸리티 타입은 객체의 구조를 배열 형태로 다루고 싶을 때 유용하며, JavaScript의 `Object.entries()` 메서드와 유사한 타입 수준의 기능을 제공합니다.
+:::
+
+## 사용 예시
+
+```ts
+import { O } from 'utilscript';
+
+interface Model {
+  name: string;
+  age: number;
+  locations: string[] | null;
+}
+
+type T = O.Entries<Model>; // ['name', string] | ['age', number] | ['locations', string[] | null]
+```

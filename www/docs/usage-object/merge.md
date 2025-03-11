@@ -1,0 +1,21 @@
+---
+sidebar_position: 12
+---
+
+# Merge
+
+`Merge`는 두 객체를 병합하는 TypeScript 유틸리티 타입입니다. 이 타입은 두 객체의 속성을 하나로 합치며, 속성 이름이 중복될 경우 두 번째 객체의 속성이 우선합니다.
+
+:::tip
+두 객체를 합치면서 속성 충돌을 자동으로 해결하고 싶을 때 유용합니다.
+:::
+
+## 사용 예시
+
+```ts
+import { O } from 'utilscript';
+
+type T = O.Merge<{ a: 1 }, { b: 2 }>; // { a: 1; b: 2 }
+
+type T2 = O.Merge<{ a: 1 }, { a: 2 }>; // { a: 2 }
+```

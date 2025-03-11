@@ -9,7 +9,7 @@ import { Tuple } from '../../primitive';
  * @returns DeepReadonly object / 읽기 전용 객체
  *
  * @example
- * const X = { x: { y: { z: string } } };
+ * type X = { x: { y: { z: string } } };
  *
  * type cases = [
  *   Expect<Equal<DeepReadonly<X>, { readonly x: { readonly y: { readonly z: string } } }>>,
