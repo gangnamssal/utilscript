@@ -1,5 +1,5 @@
 import { Expect, Equal } from '../../src/commonness';
-import { ObjectEntries } from '../../src/object';
+import { Entries } from '../../src/object';
 
 interface Model {
   name: string;
@@ -10,9 +10,9 @@ interface Model {
 type ModelEntries = ['name', string] | ['age', number] | ['locations', string[] | null];
 
 type cases = [
-  Expect<Equal<ObjectEntries<Model>, ModelEntries>>,
-  Expect<Equal<ObjectEntries<Partial<Model>>, ModelEntries>>,
-  Expect<Equal<ObjectEntries<{ key?: undefined }>, ['key', undefined]>>,
-  Expect<Equal<ObjectEntries<{ key: undefined }>, ['key', undefined]>>,
-  Expect<Equal<ObjectEntries<{ key: string | undefined }>, ['key', string | undefined]>>,
+  Expect<Equal<Entries<Model>, ModelEntries>>,
+  Expect<Equal<Entries<Partial<Model>>, ModelEntries>>,
+  Expect<Equal<Entries<{ key?: undefined }>, ['key', undefined]>>,
+  Expect<Equal<Entries<{ key: undefined }>, ['key', undefined]>>,
+  Expect<Equal<Entries<{ key: string | undefined }>, ['key', string | undefined]>>,
 ];

@@ -16,14 +16,14 @@
  * type ModelEntries = ['name', string] | ['age', number] | ['locations', string[] | null];
  *
  * type cases = [
- *   Expect<Equal<ObjectEntries<Model>, ModelEntries>>,
- *   Expect<Equal<ObjectEntries<Partial<Model>>, ModelEntries>>,
- *   Expect<Equal<ObjectEntries<{ key?: undefined }>, ['key', undefined]>>,
- *   Expect<Equal<ObjectEntries<{ key: undefined }>, ['key', undefined]>>,
- *   Expect<Equal<ObjectEntries<{ key: string | undefined }>, ['key', string | undefined]>>,
+ *   Expect<Equal<Entries<Model>, ModelEntries>>,
+ *   Expect<Equal<Entries<Partial<Model>>, ModelEntries>>,
+ *   Expect<Equal<Entries<{ key?: undefined }>, ['key', undefined]>>,
+ *   Expect<Equal<Entries<{ key: undefined }>, ['key', undefined]>>,
+ *   Expect<Equal<Entries<{ key: string | undefined }>, ['key', string | undefined]>>,
  * ]
  */
-export type ObjectEntries<T extends Record<PropertyKey, any>, K = keyof T> = K extends keyof T
+export type Entries<T extends Record<PropertyKey, any>, K = keyof T> = K extends keyof T
   ? Required<T>[K] extends never
     ? [K, T[K]]
     : [K, Required<T>[K]]
