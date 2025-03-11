@@ -1,9 +1,11 @@
 /**
+ *
  * Type to check if a type is never
  *
  * 타입이 never인지 확인하는 타입
  *
  * @param T Type to check / 타입
+ *
  * @returns Whether the type is never / 타입이 never인지 여부
  *
  * @example
@@ -16,6 +18,9 @@
  *   Expect<Equal<IsNever<[]>, false>>,
  *   Expect<Equal<IsNever<{}>, false>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-commonness/is-never
+ *
  */
 
 export type IsNever<T> = [T] extends readonly [never] ? true : false;
