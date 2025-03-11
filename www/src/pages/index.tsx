@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-
+import { Analytics } from '@vercel/analytics/react';
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -34,6 +34,8 @@ export default function Home(): ReactNode {
       <main className={styles.main}>
         <span className='text-2xl font-bold'>contents are preparing...</span>
       </main>
+
+      <Analytics />
     </Layout>
   );
 }
