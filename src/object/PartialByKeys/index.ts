@@ -1,9 +1,11 @@
 /**
+ *
  * Make certain properties of an object optional
  *
  * 특정 프로퍼티를 선택하여 부분적으로 만들어주는 타입
  *
  * @param T The original object type / 원본 객체 타입
+ *
  * @param K The keys to make optional / 선택적으로 만들 키
  *
  * @example
@@ -20,6 +22,9 @@
  * type cases = [
  *   Expect<Equal<PartialByKeys<User, 'name'>, UserPartialName>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-object/partial-by-keys
+ *
  */
 
 export type PartialByKeys<T, K extends keyof T = keyof T> = Omit<
