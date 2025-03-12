@@ -28,7 +28,10 @@ function HomepageHeader() {
 
 export default function Home(): ReactNode {
   return (
-    <Layout title={'Welcome to utils'} description='UtilScript is a utility library for TypeScript'>
+    <Layout
+      title={'utility library for TypeScript'}
+      description='타입스크립트를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리'
+    >
       <HomepageHeader />
 
       <main className={styles.main}>
