@@ -2,13 +2,15 @@ import { Tuple } from '../../primitive';
 import { Length } from '../Length';
 
 /**
+ *
  * Type that takes an array of strings and a separator and returns a string with the array elements joined by the separator
  *
- * 문자열 배열과 구분자를 받아 배열 요소를 구분자로 결합한 문자열을 반환하는 타입
+ * 문자열 튜플과 구분자를 받아 튜플 요소를 구분자로 결합한 문자열을 반환하는 타입
  *
- * @params T - Array of strings to join / 결합할 문자열 배열
- * @params U - Separator to join the array elements / 배열 요소를 결합할 구분자
- * @params R - Accumulator for the joined string / 결합된 문자열을 누적할 누적기
+ * @params T - Array of strings to join / 결합할 문자열 튜플
+ *
+ * @params U - Separator to join the array elements / 튜플 요소를 결합할 구분자
+ *
  * @returns Joined string / 결합된 문자열
  *
  * @example
@@ -20,6 +22,9 @@ import { Length } from '../Length';
  *   Expect<Equal<Join<[], 'u'>, ''>>,
  *   Expect<Equal<Join<['1', '1', '1']>, '1,1,1'>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-array/join
+ *
  */
 export type Join<
   T extends Tuple<string | number>,

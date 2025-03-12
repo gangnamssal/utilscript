@@ -7,13 +7,11 @@ import { Tuple } from '../../primitive';
  *
  * 함수에 인자를 추가하는 유틸리티 타입
  *
- * @description
- * 기존 함수 타입에 새로운 인자를 추가할 수 있습니다.
- * 단일 타입 또는 배열 형태의 타입을 추가할 수 있습니다.
+ * @param Fn Original function type / 원본 함수 타입
  *
- * @params Fn 원본 함수 타입
- * @params A 추가할 인자 타입 또는 인자 타입 배열
- * @returns 새로운 인자가 추가된 함수 타입을 반환합니다
+ * @param A Type of argument or array of argument types to append / 추가할 인자 타입 또는 인자 타입 배열
+ *
+ * @returns A function type with new arguments appended / 새로운 인자가 추가된 함수 타입
  *
  * @example
  * // 단일 인자 추가
@@ -27,6 +25,9 @@ import { Tuple } from '../../primitive';
  * // 더 많은 인자 추가
  * type Case6 = Append<() => string, [undefined, boolean, null, number, string]>;
  * // 결과: (x: undefined, y: boolean, z: null, a: number, b: string) => string
+ *
+ * @link https://www.utilscript.site/docs/usage-function/append
+ *
  */
 
 export type Append<Fn extends (...args: Tuple<any>) => unknown, A> = Fn extends (

@@ -4,13 +4,15 @@ import { Equal } from '../../commonness';
 import { Tuple } from '../../primitive';
 
 /**
+ *
  * Type that takes a string and a value and returns the index of the value in the string
  *
  * 문자열과 값을 받아 문자열에서 값의 인덱스를 반환하는 타입
  *
  * @params S - String to search in / 검색할 문자열
+ *
  * @params U - Value to search for / 검색할 값
- * @params Accumulator - Accumulator for the index / 인덱스를 누적할 누적기
+ *
  * @returns Index of the value in the string / 문자열에서 값의 인덱스
  *
  * @example
@@ -22,6 +24,9 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<IndexOf<'hello', 'lo'>, 2>>,
  *   Expect<Equal<IndexOf<'hello', ''>, -1>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-string/index-of
+ *
  */
 
 export type IndexOf<

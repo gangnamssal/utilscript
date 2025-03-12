@@ -1,9 +1,11 @@
 /**
+ *
  * Convert a string to kebab case
  *
  * 문자열을 케밥 케이스로 변환
  *
  * @param S String / 문자열
+ *
  * @returns Kebab case string / 케밥 케이스 문자열
  *
  * @example
@@ -15,6 +17,9 @@
  *   Expect<Equal<KebabCase<'Foo-Bar'>, 'foo--bar'>>,
  *   Expect<Equal<KebabCase<'ABC'>, 'a-b-c'>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-string/kebab-case
+ *
  */
 export type KebabCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
   ? Center extends Uppercase<Center>

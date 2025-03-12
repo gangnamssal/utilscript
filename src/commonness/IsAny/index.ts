@@ -1,11 +1,13 @@
 import { Equal } from '../Equal';
 
 /**
+ *
  * Type to check if a type is any
  *
  * 타입이 any인지 확인하는 타입
  *
  * @param T Type to check / 타입
+ *
  * @returns Whether the type is any / 타입이 any인지 여부
  *
  * @example
@@ -19,6 +21,8 @@ import { Equal } from '../Equal';
  *   Expect<Equal<IsAny<2>, false>>,
  *   Expect<Equal<IsAny<'123'>, false>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-commonness/is-any
  *
  */
 export type IsAny<T> = Equal<any, T>;

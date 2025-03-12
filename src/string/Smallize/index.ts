@@ -1,11 +1,13 @@
 import { IsAlphabet } from '../../commonness';
 
 /**
+ *
  * Smallize the first letter of a string
  *
  * 문자열의 첫 번째 문자를 소문자로 변환하는 타입
  *
  * @param S String to convert / 소문자로 변환할 문자열
+ *
  * @param R Result string / 결과 문자열
  *
  * @example
@@ -17,6 +19,9 @@ import { IsAlphabet } from '../../commonness';
  *   Expect<Equal<Smallize<'FooBar'>, 'fooBar'>>,
  *   Expect<Equal<Smallize<'foobar'>, 'foobar'>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-string/smallize
+ *
  */
 export type Smallize<
   S extends string,

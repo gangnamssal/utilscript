@@ -4,13 +4,16 @@ import { Length } from '../Length';
 import { Tuple } from '../../primitive';
 
 /**
+ *
  * Type that takes an array and a value and returns the last index of the value in the array
  *
- * 배열과 값을 받아 배열에서 해당 값의 마지막 인덱스를 반환하는 타입
+ * 튜플과 값을 받아 튜플에서 해당 값의 마지막 인덱스를 반환하는 타입
  *
- * @params T - Array to search / 검색할 배열
+ * @params T - Array to search / 검색할 튜플
+ *
  * @params U - Value to search for / 검색할 값
- * @returns Last index of the value in the array / 배열에서 해당 값의 마지막 인덱스
+ *
+ * @returns Last index of the value in the array / 튜플에서 해당 값의 마지막 인덱스
  *
  * @example
  * type cases = [
@@ -20,6 +23,9 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<LastIndexOf<[string, 2, number, 'a', number, 1], number>, 4>>,
  *   Expect<Equal<LastIndexOf<[string, any, 1, number, 'a', any, 1], any>, 5>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-array/last-index-of
+ *
  */
 export type LastIndexOf<
   T extends Tuple,

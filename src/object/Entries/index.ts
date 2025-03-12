@@ -1,10 +1,12 @@
 /**
+ *
  * Returns an array of keys and values from an object.
  *
  * 객체의 키와 값을 배열로 반환합니다.
  *
- * @param T - The object type whose entries are to be extracted / 객체 타입
- * @param K - The key type used for iteration (internal parameter) / 키 타입
+ * @param T - Object type whose entries are to be extracted / 키와 값을 추출할 객체 타입
+ *
+ * @returns An array of keys and values from an object / 객체의 키와 값을 배열로 반환
  *
  * @example
  * interface Model {
@@ -22,6 +24,9 @@
  *   Expect<Equal<Entries<{ key: undefined }>, ['key', undefined]>>,
  *   Expect<Equal<Entries<{ key: string | undefined }>, ['key', string | undefined]>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-object/entries
+ *
  */
 export type Entries<T extends Record<PropertyKey, any>, K = keyof T> = K extends keyof T
   ? Required<T>[K] extends never

@@ -2,11 +2,13 @@ import { AnyArray } from '../../primitive';
 import { Equal } from '../Equal';
 
 /**
+ *
  * Check if the type is an object
  *
  * 타입이 객체인지 확인하는 타입
  *
  * @param T Type to check / 확인할 타입
+ *
  * @returns Whether the type is an object / 타입이 객체인지 여부
  *
  * @example
@@ -16,6 +18,9 @@ import { Equal } from '../Equal';
  *   Expect<Equal<IsObject<{ a: 1 }>, true>>,
  *   Expect<Equal<IsObject<string>, false>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-commonness/is-object
+ *
  */
 export type IsObject<T> =
   Equal<unknown, T> extends true

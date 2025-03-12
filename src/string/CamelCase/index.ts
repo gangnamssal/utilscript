@@ -1,9 +1,13 @@
 import { IsAlphabet } from '../../commonness';
 
 /**
+ *
  * Convert a string to camel case
  *
+ * 문자열을 카멜 케이스로 변환
+ *
  * @param S String / 문자열
+ *
  * @returns Camel case string / 카멜 케이스 문자열
  *
  * @example
@@ -12,6 +16,9 @@ import { IsAlphabet } from '../../commonness';
  *   Expect<Equal<CamelCase<'foo_$bar'>, 'foo_$bar'>>,
  *   Expect<Equal<CamelCase<'foo_bar_'>, 'fooBar_'>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-string/camel-case
+ *
  */
 export type CamelCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
   ? Left extends '_' | '-'

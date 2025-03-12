@@ -4,14 +4,18 @@ import { Includes } from '../Includes';
 import { Push } from '../Push';
 
 /**
+ *
  * Type that takes an array and a value or array of values and returns a new array with the values removed
  *
- * 배열과 값 또는 배열을 받아 지정된 값을 제거한 새로운 배열을 반환하는 타입
+ * 튜플과 값 또는 튜플을 받아 지정된 값을 제거한 새로운 튜플을 반환하는 타입
  *
- * @params T - Array to remove values from / 값을 제거할 배열
- * @params U - Values to remove / 제거할 값 또는 값 배열
- * @params R - Resulting array / 결과 배열
- * @returns Array with the values removed / 지정된 값을 제거한 배열
+ * @params T - Tuple to remove values from / 값을 제거할 튜플
+ *
+ * @params U - Values to remove / 제거할 값 또는 값 튜플
+ *
+ * @params R - Resulting array / 결과 튜플
+ *
+ * @returns Tuple with the values removed / 지정된 값을 제거한 튜플
  *
  * @example
  * type cases = [
@@ -23,6 +27,9 @@ import { Push } from '../Push';
  *   Expect<Equal<Without<[1, never, null, undefined], Falsy>, [1]>>,
  *   Expect<Equal<Without<[1, 2, 3, never], never>, [1, 2, 3]>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-array/without
+ *
  */
 export type Without<T extends Tuple, U, R extends Tuple = []> = T extends readonly [
   infer TF,

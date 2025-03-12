@@ -2,11 +2,13 @@ import { Append } from '../../object';
 import { Tuple } from '../../primitive';
 
 /**
+ *
  * Convert a tuple of tuples to a map
  *
  * 튜플의 튜플을 맵으로 변환
  *
  * @param T - Tuple of tuples to convert / 변환할 튜플의 튜플
+ *
  * @returns Converted map / 변환된 맵
  *
  * @example
@@ -14,6 +16,9 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<ZipToMap<[[1, 2], [3, 4], [5, 6]]>, { 1: 2; 3: 4; 5: 6 }>>,
  *   Expect<Equal<ZipToMap<[[1, 2], [3, 4], [5, 6], [7, 8]]>, { 1: 2; 3: 4; 5: 6; 7: 8 }>>,
  * ];
+ *
+ * @link https://www.utilscript.site/docs/usage-array/zip-to-map
+ *
  */
 
 export type ZipToMap<T extends Tuple<Tuple>, R = unknown> = T extends readonly [

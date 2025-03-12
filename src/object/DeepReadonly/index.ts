@@ -1,11 +1,13 @@
 import { Tuple } from '../../primitive';
 
 /**
- * DeepReadonly
+ *
+ * Make all properties of an object read-only
  *
  * 객체의 모든 속성을 읽기 전용으로 만드는 타입
  *
  * @param T Object / 객체
+ *
  * @returns DeepReadonly object / 읽기 전용 객체
  *
  * @example
@@ -14,6 +16,9 @@ import { Tuple } from '../../primitive';
  * type cases = [
  *   Expect<Equal<DeepReadonly<X>, { readonly x: { readonly y: { readonly z: string } } }>>,
  * ]
+ *
+ * @link https://www.utilscript.site/docs/usage-object/deepreadonly
+ *
  */
 
 export type DeepReadonly<T> = {
