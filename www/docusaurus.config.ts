@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'UtilScript',
-  tagline: 'A utility library for TypeScript',
+  tagline: 'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -46,7 +46,76 @@ const config: Config = {
     ],
   ],
 
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org/',
+        '@type': 'Organization',
+        name: 'UtilScript',
+        url: 'https://www.utilscript.site/',
+        logo: 'https://www.utilscript.site/img/logo.png',
+      }),
+    },
+  ],
+
   themeConfig: {
+    metadata: [
+      {
+        name: 'title',
+        content: 'utility library for TypeScript | UtilScript',
+      },
+      {
+        name: 'description',
+        content:
+          'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
+      },
+
+      // Open Graph
+      {
+        property: 'og:title',
+        content: 'utility library for TypeScript | UtilScript',
+      },
+      {
+        property: 'og:description',
+        content:
+          'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
+      },
+      {
+        property: 'og:image',
+        content: 'https://www.utilscript.site/img/logo.png',
+      },
+      {
+        property: 'og:url',
+        content: 'https://www.utilscript.site/',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+
+      // Twitter
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:title',
+        content: 'utility library for TypeScript | UtilScript',
+      },
+      {
+        name: 'twitter:description',
+        content:
+          'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
+      },
+      {
+        name: 'twitter:image',
+        content: 'https://www.utilscript.site/img/logo.png',
+      },
+    ],
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
