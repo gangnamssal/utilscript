@@ -1,36 +1,34 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import dotenv from 'dotenv';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+dotenv.config();
 
 const config: Config = {
   title: 'UtilScript',
   tagline: 'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
   url: 'https://www.utilscript.site',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'gangnamssal', // Usually your GitHub org/user name.
-  projectName: 'utilScript', // Usually your repo name.
+  organizationName: 'gangnamssal',
+  projectName: 'utilScript',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'ko',
     locales: ['ko', 'en'],
   },
 
+  /**
+   *
+   * 프리셋 설정
+   *
+   */
   presets: [
     [
       'classic',
@@ -46,6 +44,11 @@ const config: Config = {
     ],
   ],
 
+  /**
+   *
+   * 헤드 태그 설정
+   *
+   */
   headTags: [
     {
       tagName: 'script',
@@ -62,6 +65,11 @@ const config: Config = {
     },
   ],
 
+  /**
+   *
+   * 테마 설정
+   *
+   */
   themeConfig: {
     metadata: [
       {
@@ -116,8 +124,14 @@ const config: Config = {
         content: 'https://www.utilscript.site/img/logo.png',
       },
     ],
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+
+    image: 'img/logo.png',
+
+    /**
+     *
+     * 네비게이션 바 설정
+     *
+     */
     navbar: {
       title: 'UtilScript',
       logo: {
@@ -138,6 +152,23 @@ const config: Config = {
         },
       ],
     },
+
+    /**
+     *
+     * algolia 설정
+     *
+     */
+    algolia: {
+      appId: process.env.ALGOLIA_APP_ID,
+      apiKey: process.env.ALGOLIA_API_KEY,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+    },
+
+    /**
+     *
+     * 푸터 설정
+     *
+     */
     footer: {
       style: 'dark',
       links: [
@@ -199,6 +230,12 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} UtilScript. Made by gangnamssal.`,
     },
+
+    /**
+     *
+     * prism 설정
+     *
+     */
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
