@@ -3,7 +3,7 @@ import { Replace } from '../Replace/index.js';
 import { Split } from '../Split';
 import { StartsWith } from '../StartWith/index.js';
 
-type Recursive<T extends Tuple, R = never> = T extends [
+type Recursive<T extends Tuple, R = never> = T extends readonly [
   infer First extends string,
   ...infer Rest extends string[],
 ]

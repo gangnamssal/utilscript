@@ -1,13 +1,13 @@
 import { Tuple } from '../../primitive';
 import { Push } from '../Push';
 
-type IsDepthExist<T extends Tuple> = T extends [infer First, ...infer Rest]
+type IsDepthExist<T extends Tuple> = T extends readonly [infer First, ...infer Rest]
   ? First extends Tuple
     ? true
     : IsDepthExist<Rest>
   : false;
 
-type FlattenHelper<T extends Tuple> = T extends [infer First, ...infer Rest]
+type FlattenHelper<T extends Tuple> = T extends readonly [infer First, ...infer Rest]
   ? First extends Tuple
     ? [...First, ...FlattenHelper<Rest>]
     : [First, ...FlattenHelper<Rest>]

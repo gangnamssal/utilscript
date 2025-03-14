@@ -27,7 +27,7 @@ import { Push } from '../Push';
  *
  */
 
-export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends [
+export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends readonly [
   infer First,
   ...infer Rest,
 ]
