@@ -7,14 +7,15 @@ dotenv.config();
 
 const config: Config = {
   title: 'UtilScript',
-  tagline: 'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리',
+  tagline:
+    '타입스크립트를 위한 현대적인 유틸리티 라이브러리로, 다양한 유틸리티 타입과 함수를 제공합니다.',
   favicon: 'img/favicon.ico',
 
   url: 'https://www.utilscript.site',
   baseUrl: '/',
 
   organizationName: 'gangnamssal',
-  projectName: 'utilScript',
+  projectName: 'UtilScript',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -63,6 +64,36 @@ const config: Config = {
         logo: 'https://www.utilscript.site/img/logo.png',
       }),
     },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preload',
+        href: 'static/fonts/Montserrat-SemiBold.ttf',
+        as: 'font',
+        type: 'font/ttf',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preload',
+        href: 'static/fonts/Montserrat-Medium.ttf',
+        as: 'font',
+        type: 'font/ttf',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preload',
+        href: 'static/fonts/Montserrat-Regular.ttf',
+        as: 'font',
+        type: 'font/ttf',
+        crossorigin: 'anonymous',
+      },
+    },
   ],
 
   /**
@@ -74,23 +105,23 @@ const config: Config = {
     metadata: [
       {
         name: 'title',
-        content: 'utility library for TypeScript | UtilScript',
+        content: '타입스크립트 유틸리티 라이브러리 | UtilScript',
       },
       {
         name: 'description',
         content:
-          'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
+          '유틸스크립트는 TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
       },
 
       // Open Graph
       {
         property: 'og:title',
-        content: 'utility library for TypeScript | UtilScript',
+        content: '타입스크립트 유틸리티 라이브러리 | UtilScript',
       },
       {
         property: 'og:description',
         content:
-          'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
+          '유틸스크립트는 TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
       },
       {
         property: 'og:image',
@@ -112,12 +143,12 @@ const config: Config = {
       },
       {
         name: 'twitter:title',
-        content: 'utility library for TypeScript | UtilScript',
+        content: '타입스크립트 유틸리티 라이브러리 | UtilScript',
       },
       {
         name: 'twitter:description',
         content:
-          'TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
+          '유틸스크립트는 TypeScript를 위한 다양한 유틸리티 타입과 함수를 제공하는 라이브러리로, 타입 조작과 유니온, 인터섹션 등 고급 타입 기능을 쉽게 활용할 수 있습니다.',
       },
       {
         name: 'twitter:image',
@@ -138,22 +169,24 @@ const config: Config = {
         alt: 'UtilScript Logo',
         src: 'img/logo.png',
       },
+      hideOnScroll: true,
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
-          position: 'right',
+          position: 'left',
           label: 'Docs',
         },
         {
           href: 'https://www.typescriptlang.org/play/?#code/PQKhCgAIUweDcSP3IHUCmAbAxgewLYsgC5aQCuBAlmgM4YBO5ADgZAApoCGAngOa1YkA7ACYBCSIF4NwAF7UGDMgAVABbkqkFZHaQqDdhnxFIKAB4MU9PAOYB3cgUWQABmUo16TBwBpIczQyxWzADMSNFIKNFtOSAiAI1p2WijArFoFTlMAZTpGAjFxQHJdwApyOTkAMRR0SEDaCsJiYwY0FPx2YUIUKmYANwTyflVnCIIo4dMqADo5AAl2BgYo7CFyAW48wGA9mWBwcHIcP1pmAG9IAEEvAGEvUq8AeS8WLwyvAFVIAF8qvhxIAHJB1xyPwA3NtsAJOhpaKkALyQADaAEYvAAmLwAZi8ABYvABWAC6GlUYM6IPAo3wpUoBDMQhOUMgsJO40paGptAAPOSsIFIbQUQA+IFAA',
           label: 'Playground',
-          position: 'right',
+          position: 'left',
         },
+
         {
           href: 'https://github.com/gangnamssal/utilScript',
           label: 'GitHub',
-          position: 'right',
+          position: 'left',
         },
       ],
     },

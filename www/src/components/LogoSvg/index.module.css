@@ -1,0 +1,288 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  width: fit-content;
+}
+
+.svg {
+  width: 420px;
+  height: 140px;
+}
+
+.TLine {
+  stroke: var(--ifm-color-primary);
+  opacity: 0;
+  animation: TLine 6s steps(1) infinite;
+}
+
+@keyframes TLine {
+  12.5% {
+    opacity: 0;
+  }
+
+  17.5% {
+    opacity: 0;
+  }
+
+  22.5% {
+    opacity: 0;
+  }
+
+  27.5% {
+    opacity: 1;
+  }
+
+  32.5% {
+    opacity: 1;
+  }
+
+  62.5% {
+    opacity: 1;
+  }
+
+  67.5% {
+    opacity: 0;
+  }
+
+  72.5% {
+    opacity: 0;
+  }
+}
+
+.leftArrow {
+  opacity: 0;
+  d: path('M22 3L2 17L22 31');
+  stroke: var(--ifm-color-primary-darkest);
+  animation: leftArrow 6s steps(1) infinite;
+}
+
+@keyframes leftArrow {
+  12.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  17.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  22.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  27.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  32.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  62.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  67.5% {
+    opacity: 1;
+    d: path('M22 3L2 17L22 31');
+  }
+
+  72.5% {
+    opacity: 0;
+  }
+}
+
+.rightArrow {
+  opacity: 0;
+  d: path('M30 31L50 17L30 3');
+  stroke: var(--ifm-color-primary-darkest);
+  animation: rightArrow 6s steps(1) infinite;
+}
+
+@keyframes rightArrow {
+  12.5% {
+    opacity: 0;
+  }
+
+  17.5% {
+    opacity: 1;
+    d: path('M30 31L50 17L30 3');
+  }
+
+  22.5% {
+    opacity: 1;
+    d: path('M30 31L50 17L30 3');
+  }
+
+  27.5% {
+    opacity: 1;
+    d: path('M61 31L81 17L61 3');
+  }
+
+  32.5% {
+    opacity: 1;
+    d: path('M61 31L81 17L61 3');
+  }
+
+  62.5% {
+    opacity: 0;
+  }
+
+  67.5% {
+    opacity: 0;
+  }
+
+  72.5% {
+    opacity: 0;
+  }
+}
+
+.cursorWrapper {
+  position: absolute;
+  top: 0;
+  left: 6.7%;
+  animation: cursorWrapper 6s steps(1) infinite;
+}
+
+@keyframes cursorWrapper {
+  12.5% {
+    left: 34.7%;
+  }
+
+  17.5% {
+    left: 64.3%;
+  }
+
+  22.5% {
+    left: 34.7%;
+  }
+
+  27.5% {
+    left: 65.7%;
+  }
+
+  32.5% {
+    left: 95%;
+  }
+
+  62.5% {
+    left: 65.7%;
+  }
+
+  67.5% {
+    left: 34.7%;
+  }
+
+  72.5% {
+    left: 6.7%;
+  }
+}
+
+.cursor {
+  position: absolute;
+  width: 2px;
+  height: 140px;
+  background-color: var(--ifm-color-primary-background-dark);
+  transform: translateX(-50%);
+  animation: blink 6s steps(1) infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  7.5% {
+    opacity: 0;
+  }
+
+  12.5% {
+    opacity: 1;
+  }
+
+  17.5% {
+    opacity: 1;
+  }
+
+  22.5% {
+    opacity: 1;
+  }
+
+  27.5% {
+    opacity: 1;
+  }
+
+  32.5% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  47.5% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  62.5% {
+    opacity: 1;
+  }
+
+  67.5% {
+    opacity: 1;
+  }
+
+  72.5% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  87.5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (width <= 996px) {
+  .svg {
+    width: 300px;
+    height: 100px;
+  }
+
+  .cursor {
+    height: 100px;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .svg {
+    width: 180px;
+    height: 60px;
+  }
+
+  .cursor {
+    height: 60px;
+  }
+}
