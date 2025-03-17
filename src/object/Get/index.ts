@@ -1,11 +1,12 @@
-import { Tuple } from '../../primitive';
-import { Split } from '../../string';
-
-type RecursiveGetType<T, A extends Tuple> = A extends readonly [infer First, ...infer Rest]
+type RecursiveGetType<T, K extends string> = K extends `${infer First}.${infer Rest}`
   ? First extends keyof T
-    ? RecursiveGetType<T[First], Rest>
+    ? Rest extends ''
+      ? T[First]
+      : RecursiveGetType<T[First], Rest>
     : never
-  : T;
+  : K extends keyof T
+    ? T[K]
+    : never;
 
 /**
  *
@@ -29,6 +30,4 @@ type RecursiveGetType<T, A extends Tuple> = A extends readonly [infer First, ...
  * @link https://www.utilscript.site/docs/usage-object/get
  *
  */
-export type Get<T, K extends string> = K extends keyof T
-  ? T[K]
-  : RecursiveGetType<T, Split<K, '.'>>;
+export type Get<T, K extends string> = K extends keyof T ? T[K] : RecursiveGetType<T, K>;
