@@ -26,3 +26,11 @@ interface Todo1 {
 
 type T = O.Mutable<Readonly<Todo1>>; // Equal Todo1
 ```
+
+## 지원 버전
+
+`Mutable` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

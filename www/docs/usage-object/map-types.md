@@ -23,3 +23,11 @@ type T = O.MapTypes<{ stringToNumber: string }, { mapFrom: string; mapTo: number
 
 type T2 = O.MapTypes<{ name: string }, { mapFrom: boolean; mapTo: never }>; // { name: string }
 ```
+
+## 지원 버전
+
+`MapTypes` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |
