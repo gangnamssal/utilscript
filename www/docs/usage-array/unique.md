@@ -32,3 +32,11 @@ import { A } from 'utilscript';
 const arr = [1, 1, 2, 2, 3, 3];
 type T = A.Unique<typeof arr>; // []
 ```
+
+## 지원 버전
+
+`Unique` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

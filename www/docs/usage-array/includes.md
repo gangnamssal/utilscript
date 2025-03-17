@@ -35,3 +35,11 @@ const arr = [1, 2, 3, 4, 5];
 type T = A.Includes<typeof arr, 5>; // false
 type T2 = A.Includes<typeof arr, number>; // true
 ```
+
+## 지원 버전
+
+`Includes` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

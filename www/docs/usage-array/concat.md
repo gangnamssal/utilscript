@@ -36,3 +36,11 @@ type T = A.Concat<typeof arr1, typeof arr2>; // number[]
 const arr3 = ['a', 'b', 'c'];
 type T2 = A.Concat<typeof arr1, typeof arr3>; // (number | string)[]
 ```
+
+## 지원 버전
+
+`Concat` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |
