@@ -32,3 +32,11 @@ import { A } from 'utilscript';
 const arr = ['a', 'b', 'c'];
 type T = A.ToIndex<typeof arr>; // never[]
 ```
+
+## 지원 버전
+
+`ToIndex` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

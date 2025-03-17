@@ -1,5 +1,5 @@
 ---
-sidebar_position: 19
+sidebar_position: 21
 ---
 
 # PickByRequired
@@ -19,3 +19,11 @@ type T = O.PickByRequired<{ foo: number; bar?: string }>; // { foo: number }
 
 type T2 = O.PickByRequired<{ foo: undefined; bar?: undefined }>; // { foo: undefined }
 ```
+
+## 지원 버전
+
+`PickByRequired` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

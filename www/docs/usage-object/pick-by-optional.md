@@ -1,5 +1,5 @@
 ---
-sidebar_position: 18
+sidebar_position: 20
 ---
 
 # PickByOptional
@@ -19,3 +19,11 @@ type T = O.PickByOptional<{ foo: number; bar?: string }>; // { bar?: string }
 
 type T2 = O.PickByOptional<{ foo: undefined; bar?: undefined }>; // { bar?: undefined }
 ```
+
+## 지원 버전
+
+`PickByOptional` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

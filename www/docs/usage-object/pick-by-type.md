@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 22
 ---
 
 # PickByType
@@ -26,3 +26,11 @@ type T = O.PickByType<Model, boolean>; // { isReadonly: boolean; isEnable: boole
 
 type T2 = O.PickByType<Model, string>; // { name: string }
 ```
+
+## 지원 버전
+
+`PickByType` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

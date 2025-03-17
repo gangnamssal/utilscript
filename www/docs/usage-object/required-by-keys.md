@@ -1,5 +1,5 @@
 ---
-sidebar_position: 22
+sidebar_position: 24
 ---
 
 # RequiredByKeys
@@ -37,3 +37,11 @@ type T = O.RequiredByKeys<User, 'name'>; // UserRequiredName
 
 type T2 = O.RequiredByKeys<User, 'name' | 'age'>; // UserRequiredNameAndAge
 ```
+
+## 지원 버전
+
+`RequiredByKeys` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

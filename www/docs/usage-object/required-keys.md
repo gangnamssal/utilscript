@@ -1,5 +1,5 @@
 ---
-sidebar_position: 23
+sidebar_position: 25
 ---
 
 # RequiredKeys
@@ -25,3 +25,11 @@ type T2 = O.RequiredKeys<{ a: undefined; b?: undefined }>; // 'a'
 
 type T3 = O.RequiredKeys<{ a: undefined; b?: undefined; c: string; d: null }>; // 'a' | 'c' | 'd'
 ```
+
+## 지원 버전
+
+`RequiredKeys` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

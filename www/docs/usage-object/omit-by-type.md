@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 16
 ---
 
 # OmitByType
@@ -26,3 +26,11 @@ type T = O.OmitByType<Model, boolean>; // { name: string; count: number }
 
 type T2 = O.OmitByType<Model, string>; // { count: number; isReadonly: boolean; isEnable: boolean }
 ```
+
+## 지원 버전
+
+`OmitByType` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |

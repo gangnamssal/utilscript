@@ -21,3 +21,11 @@ type T2 = S.KebabCase<'fooBarBaz'>; // 'foo-bar-baz'
 
 type T3 = S.KebabCase<'Foo-Bar'>; // 'foo--bar'
 ```
+
+## 지원 버전
+
+`KebabCase` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |
