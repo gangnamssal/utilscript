@@ -50,8 +50,8 @@ import { GetToObject } from '../GetToObject';
 
 export type DeepPick<T, K> = (
   K extends string
-    ? (arg: IsNever<GetToObject<T, K>> extends true ? unknown : GetToObject<T, K>) => any
+    ? (arg: IsNever<GetToObject<T, K>> extends true ? unknown : GetToObject<T, K>) => unknown
     : never
-) extends (arg: infer U) => any
+) extends (arg: infer U) => unknown
   ? U
   : never;
