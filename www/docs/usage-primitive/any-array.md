@@ -21,3 +21,11 @@ import { P } from 'utilscript';
 
 type T = P.AnyArray<string>; // string[] | readonly string[]
 ```
+
+## 지원 버전
+
+`AnyArray` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |
