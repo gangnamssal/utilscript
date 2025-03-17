@@ -19,3 +19,11 @@ type T = S.Split<'Hi! How are you?'>; // ['Hi! How are you?']
 
 type T2 = S.Split<'Hi! How are you?', ' '>; // ['Hi!', 'How', 'are', 'you?']
 ```
+
+## 지원 버전
+
+`Split` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
+
+| 버전   | 지원 여부 |
+| ------ | --------- |
+| 0.0.8+ | ✅        |
