@@ -3,7 +3,7 @@ import styles from '../index.module.css';
 export function Intuitive() {
   return (
     <svg
-      className={styles.intuitiveIcon}
+      className={styles.descriptionCardIcon}
       xmlns='http://www.w3.org/2000/svg'
       width='48'
       height='48'

@@ -3,7 +3,7 @@ import styles from '../index.module.css';
 export function Bundle() {
   return (
     <svg
-      className={styles.bundleIcon}
+      className={styles.descriptionCardIcon}
       xmlns='http://www.w3.org/2000/svg'
       width='48'
       height='48'
