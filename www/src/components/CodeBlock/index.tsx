@@ -38,7 +38,6 @@ export function CodeBlock({ code }: { code: string }) {
         <motion.div
           className={styles.codeBlock}
           layout='size'
-          style={{ minHeight: '100px' }}
           transition={{
             duration: 1,
             type: 'spring',
