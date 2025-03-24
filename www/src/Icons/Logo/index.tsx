@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 
-export function LogoSvg() {
+export function Logo() {
   return (
     <div className={styles.wrapper}>
       <svg
