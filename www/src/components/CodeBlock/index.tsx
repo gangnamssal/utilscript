@@ -34,6 +34,21 @@ export function CodeBlock({ code }: { code: string }) {
 
   return (
     <div className={styles.codeBlockWrapper}>
+      <motion.div
+        className={styles.buttonGroup}
+        layout='size'
+        transition={{
+          duration: 1,
+          type: 'spring',
+          stiffness: 300,
+          damping: 30,
+        }}
+      >
+        <button className={styles.button} data-type='close' />
+        <button className={styles.button} data-type='minimize' />
+        <button className={styles.button} data-type='maximize' />
+      </motion.div>
+
       <AnimatePresence mode='wait'>
         <motion.div
           className={styles.codeBlock}
@@ -82,12 +97,6 @@ export function CodeBlock({ code }: { code: string }) {
           ))}
         </motion.div>
       </AnimatePresence>
-
-      <div className={styles.buttonGroup}>
-        <button className={styles.button} data-type='close' />
-        <button className={styles.button} data-type='minimize' />
-        <button className={styles.button} data-type='maximize' />
-      </div>
     </div>
   );
 }

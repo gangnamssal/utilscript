@@ -5,6 +5,7 @@
 }
 
 .codeBlock {
+  min-width: 473.5px;
   min-height: 100px;
   max-height: calc(100vh - 160px);
   overflow-y: auto;
@@ -12,7 +13,7 @@
 
   padding: 40px 30px 30px;
   border: 1px solid var(--ifm-color-primary-lightest);
-  border-radius: 10px;
+  border-radius: 8px;
 
   background-color: #1e1e1e;
 
@@ -23,6 +24,7 @@
   &::-webkit-scrollbar-track {
     background: #2d2d2d;
     border-radius: 5px;
+    margin: 4px 0;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -37,10 +39,20 @@
 
 .buttonGroup {
   display: flex;
+  align-items: center;
   gap: 10px;
+
+  min-width: 56px;
+  width: calc(100% - 25px);
+  height: 39px;
+  background-color: #1e1e1e;
+
   position: absolute;
-  top: 15px;
+  top: 1px;
   left: 15px;
+  z-index: 1;
+
+  border-radius: 8px;
 }
 
 .button {
