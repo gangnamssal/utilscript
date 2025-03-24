@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    url('/static/fonts/Montserrat-SemiBold.ttf') format('ttf'),
+    url('/static/fonts/Montserrat-Medium.ttf') format('ttf'),
+    url('/static/fonts/Montserrat-Regular.ttf') format('ttf');
+  font-weight: 700 500 400;
+}
+
+html {
+  font-family: 'Montserrat';
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat';
+}
