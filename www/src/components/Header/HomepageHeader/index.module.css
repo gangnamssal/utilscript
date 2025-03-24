@@ -1,7 +1,9 @@
 .header {
-  min-height: calc(100vh - 60px);
+  max-height: 100dvh;
   padding: 12rem 2rem;
   position: relative;
+
+  align-content: center;
 
   overflow: hidden;
 
