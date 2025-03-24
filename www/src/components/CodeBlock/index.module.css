@@ -1,0 +1,69 @@
+.codeBlockWrapper {
+  position: relative;
+  max-width: fit-content;
+  width: 100%;
+}
+
+.codeBlock {
+  padding: 40px 30px 30px;
+  border: 1px solid var(--ifm-color-primary-lightest);
+  border-radius: 10px;
+
+  background-color: #1e1e1e;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.button {
+  all: unset;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  background-color: #fff;
+
+  cursor: pointer;
+
+  &[data-type='close'] {
+    background-color: #ff605c;
+  }
+
+  &[data-type='minimize'] {
+    background-color: #ffbd44;
+  }
+
+  &[data-type='maximize'] {
+    background-color: #00ca4e;
+  }
+}
+
+.highlightCustomStyle {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.highlightLineProps {
+  white-space: pre-wrap;
+  opacity: 0;
+  animation: slideIn 0.5s ease-in-out 0.1s forwards;
+  transform: translateY(20px);
+}
