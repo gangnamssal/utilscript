@@ -1,3 +1,5 @@
+import type { ActiveTextMap, PositionMap } from '../../types';
+
 /**
  *
  * utilscript Array(Tuple) 관련 position 맵
@@ -59,7 +61,7 @@ type PromiseAllResponse = [SuccessA, SuccessB];
     
 type PromiseAllResponseUnion = A.Union<PromiseAllResponse>;`,
   },
-};
+} as PositionMap<'0' | '8' | '16' | '24'>;
 
 /**
  *
@@ -130,7 +132,7 @@ interface User {
 
 type GetUserProfileImageUrl =  O.Get<User, 'profile.imageUrl'>`,
   },
-};
+} as PositionMap<'34' | '42' | '50' | '58'>;
 
 /**
  *
@@ -177,10 +179,21 @@ type SplitUserName = S.Split<CapitalizedUserName<typeof userName>, ' '>;
 type FirstUserName = A.First<SplitUserName>;
 type LastUserName = A.Last<SplitUserName>;`,
   },
-};
+} as PositionMap<'67' | '75' | '83' | '91'>;
 
 export const positionMap = {
   ...positionAMap,
   ...positionOMap,
   ...positionSMap,
 };
+
+/**
+ *
+ * 탭 활성화 상태 맵
+ *
+ */
+export const activeTextMap = {
+  67: 'String',
+  37: 'Object',
+  1: 'Array',
+} as ActiveTextMap<'67' | '37' | '1'>;

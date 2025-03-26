@@ -1,10 +1,11 @@
+import type { BrandedCode } from '../../types';
 import styles from './index.module.css';
 import { Fragment, useCallback, useRef, useLayoutEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export function CodeBlock({ code }: { code: string }) {
+export function CodeBlock({ code }: { code: BrandedCode }) {
   const prevCode = useRef('');
 
   const splitCode = code.split('\n');

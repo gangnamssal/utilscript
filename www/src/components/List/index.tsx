@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { P } from 'utilscript';
 
-type ListProps<T extends ReadonlyArray<unknown>> =
-  T extends ReadonlyArray<infer U>
-    ? { list: T; render: (args: U, index: number) => ReactNode }
+type ListProps<T extends P.Tuple> =
+  T extends P.Tuple<infer U>
+    ? { list: T; render: (args: U, index: number) => React.JSX.Element }
     : never;
 
-export function List<T extends ReadonlyArray<unknown>>({ list, render }: ListProps<T>) {
+export function List<T extends P.Tuple>({ list, render }: ListProps<T>) {
   return <>{list.map((item, index) => render(item, index))}</>;
 }
