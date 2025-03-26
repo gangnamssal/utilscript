@@ -169,7 +169,6 @@ const config: Config = {
         alt: 'UtilScript Logo',
         src: 'img/logo.png',
       },
-      hideOnScroll: true,
       items: [
         {
           type: 'docSidebar',

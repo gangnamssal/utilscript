@@ -22,6 +22,8 @@ export default [
       '.git/**/*',
       '**/.config/',
       'www/**/*',
+      'build/**/*',
+      '.docusaurus/**/*',
     ],
     rules: {
       'no-unused-vars': 'warn',
