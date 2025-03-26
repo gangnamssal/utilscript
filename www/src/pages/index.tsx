@@ -179,7 +179,7 @@ function AnimatedCodeDescription({
           <motion.span
             key='array-text'
             initial={{ opacity: 0, padding: 0 }}
-            animate={{ opacity: 1, padding: '1rem 0 1.6rem' }}
+            animate={{ opacity: 1, padding: '0 0 1.6rem' }}
             transition={{
               opacity: { delay: 0.3, ...motionTransition },
               padding: { ...motionTransition },

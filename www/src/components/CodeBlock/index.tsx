@@ -34,23 +34,31 @@ export function CodeBlock({ code }: { code: BrandedCode }) {
   }, [code]);
 
   return (
-    <div className={styles.codeBlockWrapper}>
+    <AnimatePresence mode='wait'>
       <motion.div
-        className={styles.buttonGroup}
+        className={styles.codeBlockWrapper}
         layout='size'
+        initial={{ boxShadow: '0' }}
+        animate={{ boxShadow: '0 0 20px 0 rgba(0, 0, 0, 0.1)' }}
         transition={{
-          duration: 1,
-          type: 'spring',
-          stiffness: 300,
-          damping: 30,
+          boxShadow: { duration: 0.1, type: 'spring', stiffness: 300, damping: 30 },
         }}
       >
-        <button className={styles.button} data-type='close' />
-        <button className={styles.button} data-type='minimize' />
-        <button className={styles.button} data-type='maximize' />
-      </motion.div>
+        <motion.div
+          className={styles.buttonGroup}
+          layout='size'
+          transition={{
+            duration: 1,
+            type: 'spring',
+            stiffness: 300,
+            damping: 30,
+          }}
+        >
+          <button className={styles.button} data-type='close' />
+          <button className={styles.button} data-type='minimize' />
+          <button className={styles.button} data-type='maximize' />
+        </motion.div>
 
-      <AnimatePresence mode='wait'>
         <motion.div
           className={styles.codeBlock}
           layout='size'
@@ -95,7 +103,7 @@ export function CodeBlock({ code }: { code: BrandedCode }) {
             </div>
           ))}
         </motion.div>
-      </AnimatePresence>
-    </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
