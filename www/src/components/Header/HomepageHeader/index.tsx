@@ -3,7 +3,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Heading from '@theme/Heading';
 import { ScrollIndicator } from '../../ScrollIndicator';
 import { Logo } from '../../../Icons';
-import clsx from 'clsx';
 import styles from './index.module.css';
 import { useMemo } from 'react';
 
@@ -20,7 +19,7 @@ export function HomepageHeader() {
   }, []);
 
   return (
-    <header className={clsx(styles.header, 'main-grid-layout')}>
+    <header className={styles.header}>
       <Logo />
 
       <div className={styles.headerContainer}>

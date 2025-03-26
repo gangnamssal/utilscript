@@ -1,13 +1,10 @@
 .codeBlockWrapper {
   position: relative;
-  max-width: fit-content;
-  width: 100%;
 }
 
 .codeBlock {
-  min-width: 473.5px;
-  min-height: 100px;
-  max-height: calc(100vh - 130px);
+  max-height: calc(100dvh - 220px);
+
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -34,6 +31,10 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: #888888;
+  }
+
+  @media screen and (width <= 768px) {
+    max-height: calc(100dvh - 300px);
   }
 }
 

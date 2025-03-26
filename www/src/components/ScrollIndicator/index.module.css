@@ -72,4 +72,8 @@
     color: var(--ifm-color-primary);
     animation: scroll3 2s infinite;
   }
+
+  @media screen and (width <= 768px) {
+    font-size: 1.4rem;
+  }
 }
