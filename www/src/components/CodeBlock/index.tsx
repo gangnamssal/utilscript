@@ -69,7 +69,7 @@ export function CodeBlock({ code }: { code: BrandedCode }) {
               {code.split(' ').map((char, secondIndex) => (
                 <Fragment key={`${firstIndex}-${secondIndex}-${char}`}>
                   <motion.span
-                    style={{ color: 'white', display: 'inline-block' }}
+                    className={styles.codeChar}
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 30 }}
@@ -86,8 +86,6 @@ export function CodeBlock({ code }: { code: BrandedCode }) {
                       style={vscDarkPlus}
                       wrapLines={true}
                       customStyle={{ margin: 0, padding: 0, background: 'transparent' }}
-                      codeTagProps={{ style: { fontSize: '16px' } }}
-                      lineProps={{ style: { whiteSpace: 'pre-wrap' } }}
                     >
                       {char}
                     </SyntaxHighlighter>

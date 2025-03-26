@@ -35,6 +35,11 @@
 
   @media screen and (width <= 768px) {
     max-height: calc(100dvh - 300px);
+    padding: 40px 25px 25px;
+  }
+
+  @media screen and (width <= 520px) {
+    padding: 40px 20px 20px;
   }
 }
 
@@ -102,4 +107,22 @@
   opacity: 0;
   animation: slideIn 0.5s ease-in-out 0.1s forwards;
   transform: translateY(20px);
+}
+
+.codeChar {
+  color: white;
+  display: inline-block;
+
+  span {
+    font-size: 1rem;
+    white-space: pre-wrap;
+
+    @media screen and (width <= 768px) {
+      font-size: 0.9rem;
+    }
+
+    @media screen and (width <= 520px) {
+      font-size: 0.7rem;
+    }
+  }
 }
