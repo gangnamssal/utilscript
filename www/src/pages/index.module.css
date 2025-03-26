@@ -3,17 +3,166 @@
   flex-direction: column;
   align-items: center;
 
+  max-width: 1300px;
+
   position: relative;
+
+  padding: 0 6rem;
+  margin: 0 auto;
+
+  @media screen and (width <= 996px) {
+    padding: 0 2rem;
+  }
+
+  @media screen and (width <= 768px) {
+    padding: 0 1rem;
+  }
 }
+
+/* library description section */
+
+.libraryDescriptionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+
+  width: 100%;
+
+  padding-bottom: 12rem;
+
+  @media screen and (width <= 768px) {
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.libraryDescriptionSectionCardWrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @media screen and (width <= 996px) {
+    gap: 1rem;
+  }
+
+  @media screen and (width <= 768px) {
+    gap: 0.5rem;
+  }
+}
+
+.libraryDescriptionSectionCardH2 {
+  text-align: center;
+  line-height: 150%;
+  font-size: 1.5rem;
+  font-weight: 500;
+  word-break: keep-all;
+
+  @media screen and (width <= 768px) {
+    padding: 0 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* code description section */
 
 .codeDescriptionSection {
   width: 100%;
-  height: 7500px;
-  padding: 2rem;
+  height: 470rem;
+  margin-bottom: 12rem;
 }
 
 .codeDescriptionSectionArticle {
   position: sticky;
-  top: calc(6rem);
+  top: 12rem;
   width: 100%;
+
+  @media screen and (width <= 768px) {
+    top: 5rem;
+  }
+}
+
+.codeDescriptionSectionArticleContents {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 3fr;
+  align-items: flex-start;
+
+  & > *:first-child {
+    justify-self: start;
+  }
+
+  @media screen and (width <= 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.codeDescriptionTextBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.codeDescriptionTextBoxP {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  strong {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: all 0.15s linear;
+
+    @media screen and (width <= 996px) {
+      font-size: 2.2rem;
+    }
+
+    @media screen and (width <= 768px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  span {
+    word-break: keep-all;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+
+    @media screen and (width <= 996px) {
+      font-size: 1rem;
+    }
+
+    @media screen and (width <= 768px) {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.codeDescriptionTextBoxP[data-state='active'] {
+  strong {
+    color: var(--ifm-color-primary-dark);
+
+    &::before {
+      content: '< ';
+    }
+
+    &::after {
+      content: ' >';
+    }
+  }
+}
+
+.codeDescriptionTextBoxP[data-state='inactive'] {
+  strong {
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 0.4;
+
+    @media screen and (width <= 768px) {
+      font-size: 1.2rem;
+    }
+  }
 }

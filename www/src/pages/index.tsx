@@ -1,58 +1,84 @@
+import '../css/reset.css';
+import '../css/normalize.css';
+import { useMemo, useRef } from 'react';
 import type { ReactNode } from 'react';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
 import { Analytics } from '@vercel/analytics/react';
 import styles from './index.module.css';
-import { LogoSvg } from '../components';
-
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={styles.header}>
-      <LogoSvg />
-
-      <div className={styles.headerContainer}>
-        <div className={styles.titleWrapper}>
-          <Heading as='h1' className={styles.title}>
-            {siteConfig.title}
-          </Heading>
-
-          <p className={styles.subtitle}>
-            A modern utility library for TypeScript, <br /> providing a variety of utility types.
-          </p>
-        </div>
-
-        <div className={styles.buttons}>
-          <Link
-            className='button'
-            to='https://www.typescriptlang.org/play/?#code/PQKhCgAIUweDcSP3IHUCmAbAxgewLYsgC5aQCuBAlmgM4YBO5ADgZAApoCGAngOa1YkA7ACYBCSIF4NwAF7UGDMgAVABbkqkFZHaQqDdhnxFIKAB4MU9PAOYB3cgUWQABmUo16TBwBpIczQyxWzADMSNFIKNFtOSAiAI1p2WijArFoFTlMAZTpGAjFxQHJdwApyOTkAMRR0SEDaCsJiYwY0FPx2YUIUKmYANwTyflVnCIIo4dMqADo5AAl2BgYo7CFyAW48wGA9mWBwcHIcP1pmAG9IAEEvAGEvUq8AeS8WLwyvAFVIAF8qvhxIAHJB1xyPwA3NtsAJOhpaKkALyQADaAEYvAAmLwAZi8ABYvABWAC6GlUYM6IPAo3wpUoBDMQhOUMgsJO40paGptAAPOSsIFIbQUQA+IFAA'
-          >
-            Try it
-          </Link>
-
-          <Link className='button' to='/docs/getting_started'>
-            Getting Started
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-/**
- *
- * Todo List
- *
- * 1. 전체 색상 변경, 기존의 흰색 -> 검정색 계열로 혹은 흰색이면서 투명도 추가
- * 2. 스크롤을 하면서 요소가 멈춰있는 듯한 효과
- * 2-1. 들어갈 요소는 utilscript의 장점을 소개하거나 혹은 특정 기능을 소개하는 것이 좋을 것 같음
- * 3. 애니메이션 추가
- *
- */
+import { CodeBlock, DescriptionCard, HomepageHeader, List } from '../components';
+import { useCallback, useState } from 'react';
+import { AnimatePresence, useMotionValueEvent, useScroll } from 'motion/react';
+import {
+  activeTextMap,
+  animatedCodeDescriptionList,
+  descriptionList,
+  positionMap,
+} from '../fixtures';
+import {
+  BrandedActiveText,
+  ActiveTextMap,
+  PositionMap,
+  BrandedCode,
+  BrandedAnimatedCodeDescriptionDescription,
+} from '../types';
+import { motion } from 'motion/react';
 
 export default function Home(): ReactNode {
+  const ref = useRef(null);
+
+  const [code, setCode] = useState<BrandedCode>('' as BrandedCode);
+  const [activeText, setActiveText] = useState<BrandedActiveText>('Array' as BrandedActiveText);
+
+  /**
+   *
+   * motion
+   *
+   */
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+
+  /**
+   *
+   * 스크롤 위치에 따라 코드 예제를 업데이트하는 함수
+   *
+   * @param positionMap scrollPercentage 스크롤 진행률(0-100), code 코드 예제
+   *
+   */
+  const updateCodeByScrollPosition = useCallback(
+    (currentPercentage: number, positionMap: PositionMap) => {
+      Object.entries(positionMap).forEach(([scrollPercentage, { code }]) => {
+        if (currentPercentage >= parseInt(scrollPercentage)) setCode(code);
+      });
+    },
+    [setCode],
+  );
+
+  /**
+   *
+   * 스크롤 위치에 따라 활성화된 탭을 업데이트하는 함수
+   *
+   */
+  const updateActiveTextByScrollPosition = useCallback(
+    (scrollPercentage: number, activeTextMap: ActiveTextMap) => {
+      Object.entries(activeTextMap).forEach(([position, value]) => {
+        if (scrollPercentage >= parseInt(position)) return setActiveText(value);
+      });
+    },
+    [setActiveText],
+  );
+
+  /**
+   *
+   * motion scrollYProgress값이 변경될 때 실행되는 함수
+   *
+   */
+  useMotionValueEvent(scrollYProgress, 'change', value => {
+    const scrollPercentage = value * 100;
+
+    updateCodeByScrollPosition(scrollPercentage, positionMap);
+
+    updateActiveTextByScrollPosition(scrollPercentage, activeTextMap);
+  });
+
   return (
     <Layout
       title={'타입스크립트 유틸리티 라이브러리'}
@@ -60,21 +86,109 @@ export default function Home(): ReactNode {
     >
       <HomepageHeader />
 
-      {/* <main className={styles.main}>
-        <div style={{ height: '2000px', position: 'sticky', top: '60px' }}>
-          contents are preparing 1...
-        </div>
+      <main className={styles.main}>
+        {/* library description section */}
+        <section className={styles.libraryDescriptionSection}>
+          <h2 className={styles.libraryDescriptionSectionCardH2}>
+            간결하고 강력한 TypeScript 유틸리티 타입을 제공합니다. <br />
+            가볍고 직관적인 설계로 더 효율적인 개발을 경험하세요.
+          </h2>
 
-        <div style={{ height: '2000px', position: 'sticky', top: '60px' }}>
-          contents are preparing 2...
-        </div>
+          <div className={styles.libraryDescriptionSectionCardWrap}>
+            <List
+              list={descriptionList}
+              render={({ icon, title, description }, index) => (
+                <DescriptionCard
+                  key={`${title}-${description}-${index}`}
+                  icon={icon}
+                  title={title}
+                  description={description}
+                />
+              )}
+            />
+          </div>
+        </section>
 
-        <div style={{ height: '2000px', position: 'sticky', top: '60px' }}>
-          contents are preparing 3...
-        </div>
-      </main> */}
+        {/* code description section */}
+        <section className={styles.codeDescriptionSection} ref={ref}>
+          <article className={styles.codeDescriptionSectionArticle}>
+            <div className={styles.codeDescriptionSectionArticleContents}>
+              <div className={styles.codeDescriptionTextBox}>
+                <List
+                  list={animatedCodeDescriptionList}
+                  render={({ title, description }, index) => (
+                    <AnimatedCodeDescription
+                      key={`${title}-${description}-${index}`}
+                      title={title}
+                      description={description}
+                      currentActivateText={activeText}
+                    />
+                  )}
+                />
+              </div>
+
+              <CodeBlock code={code} />
+            </div>
+          </article>
+        </section>
+      </main>
 
       <Analytics />
     </Layout>
+  );
+}
+
+/**
+ *
+ * 코드 예제 옆 설명을 추가하는 컴포넌트
+ *
+ */
+
+function AnimatedCodeDescription({
+  title,
+  description,
+  currentActivateText,
+}: {
+  title: BrandedActiveText;
+  description: BrandedAnimatedCodeDescriptionDescription;
+  currentActivateText: BrandedActiveText;
+}) {
+  /**
+   *
+   * 탭 활성 여부
+   *
+   */
+  const isActive = useMemo(() => currentActivateText === title, [currentActivateText, title]);
+
+  /**
+   *
+   * 모션 트랜지션
+   *
+   */
+  const motionTransition = useMemo(
+    () => ({ opacity: { duration: 0.5, type: 'spring', stiffness: 300, damping: 30 } }),
+    [],
+  );
+
+  return (
+    <p className={styles.codeDescriptionTextBoxP} data-state={isActive ? 'active' : 'inactive'}>
+      <strong>{title}</strong>
+
+      <AnimatePresence mode='popLayout'>
+        {isActive && (
+          <motion.span
+            key='array-text'
+            initial={{ opacity: 0, padding: 0 }}
+            animate={{ opacity: 1, padding: '1rem 0 1.6rem' }}
+            transition={{
+              opacity: { delay: 0.3, ...motionTransition },
+              padding: { ...motionTransition },
+            }}
+          >
+            {description}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </p>
   );
 }
