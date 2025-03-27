@@ -17,6 +17,7 @@ import { Tuple } from '../../primitive';
  * ]
  *
  * @link https://www.utilscript.site/docs/usage-array/shift
+ *
  */
 
 export type Shift<T extends Tuple> = T extends readonly [infer _, ...infer Rest] ? Rest : [];
