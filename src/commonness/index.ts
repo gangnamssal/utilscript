@@ -9,3 +9,4 @@ export * from './IsObject';
 export * from './IsTuple';
 export * from './IsUnion';
 export * from './NotEqual';
+export * from './UnBox';

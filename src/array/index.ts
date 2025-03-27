@@ -7,7 +7,6 @@ export * from './Flatten';
 export * from './From';
 export * from './Includes';
 export * from './IndexOf';
-export * from './Infer';
 export * from './Join';
 export * from './Last';
 export * from './LastIndexOf';
