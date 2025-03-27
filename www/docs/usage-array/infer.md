@@ -45,4 +45,9 @@ type T2 = A.Infer<123>; // type error
 
 | 버전    | 지원 여부 |
 | ------- | --------- |
+| 0.0.11+ | ❌        |
 | 0.0.10+ | ✅        |
+
+:::danger 지원 종료
+`Infer` 유틸리티 타입은 0.0.11 버전부터 `commonness/UnBox`로 통합되었습니다. 0.0.11 이상 버전에서는 [`UnBox`](https://www.utilscript.site/docs/usage-commonness/unbox)를 사용하시기 바랍니다.
+:::
