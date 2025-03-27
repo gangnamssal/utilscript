@@ -33,10 +33,37 @@ type T = O.LookUp<Animal, 'type', 'dog'>; // Dog
 type T2 = O.LookUp<Animal, 'breeds', 'Curl'>; // Cat
 ```
 
+```ts
+import { O } from 'utilscript';
+
+type Foo = {
+  foo: string;
+  common: boolean;
+};
+
+type Bar = {
+  bar: number;
+  common: boolean;
+};
+
+type Other = {
+  other: string;
+};
+
+type T = O.LookUp<Foo | Bar, 'foo'>; // Foo
+
+type T2 = O.LookUp<Foo | Bar | Other, 'common'>; // Foo | Bar
+```
+
 ## 지원 버전
 
 `LookUp` 유틸리티 타입은 다음 버전부터 안정적으로 사용할 수 있습니다:
 
-| 버전   | 지원 여부 |
-| ------ | --------- |
-| 0.0.8+ | ✅        |
+| 버전    | 지원 여부 |
+| ------- | --------- |
+| 0.0.11+ | ✅        |
+| 0.0.8+  | ✅        |
+
+:::note
+0.0.11 버전부터는 추출할 속성값을 지정하지 않고도 해당 키를 가진 타입을 추출할 수 있습니다.
+:::
