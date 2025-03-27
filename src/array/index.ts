@@ -16,6 +16,7 @@ export * from './Pop';
 export * from './Push';
 export * from './Reverse';
 export * from './Shift';
+export * from './Take';
 export * from './ToEnum';
 export * from './ToIndex';
 export * from './ToObject';
