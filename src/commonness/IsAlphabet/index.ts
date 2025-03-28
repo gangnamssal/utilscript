@@ -19,4 +19,11 @@
  *
  */
 
-export type IsAlphabet<S extends string> = Uppercase<S> extends Lowercase<S> ? false : true;
+export type IsAlphabet<
+  S extends string,
+  R extends boolean = false,
+> = S extends `${infer First}${infer Rest}`
+  ? Uppercase<First> extends Lowercase<First>
+    ? false
+    : IsAlphabet<Rest, true>
+  : R;
