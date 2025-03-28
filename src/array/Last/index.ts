@@ -1,3 +1,4 @@
+import { IsTuple, UnBox } from '../../commonness';
 import { Tuple } from './../../primitive';
 
 /**
@@ -22,4 +23,5 @@ import { Tuple } from './../../primitive';
  *
  */
 
-export type Last<T extends Tuple> = T extends readonly [...Tuple, infer L] ? L : never;
+export type Last<T extends Tuple> =
+  IsTuple<T> extends true ? (T extends readonly [...Tuple, infer L] ? L : never) : UnBox<T, 1>;
