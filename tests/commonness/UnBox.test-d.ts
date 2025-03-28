@@ -57,4 +57,26 @@ type cases = [
 
   // 복잡한 중첩 구조
   Expect<Equal<UnBox<Promise<() => [Promise<number[]>]>>, number>>,
+
+  // 엣지 케이스
+  Expect<Equal<UnBox<any>, any>>,
+  Expect<Equal<UnBox<unknown>, unknown>>,
+  Expect<Equal<UnBox<never>, never>>,
+  Expect<Equal<UnBox<void>, void>>,
+  Expect<Equal<UnBox<undefined>, undefined>>,
+  Expect<Equal<UnBox<null>, null>>,
+  Expect<Equal<UnBox<Promise<any>>, any>>,
+  Expect<Equal<UnBox<Promise<unknown>>, unknown>>,
+  Expect<Equal<UnBox<Promise<never>>, never>>,
+  Expect<Equal<UnBox<() => void>, void>>,
+  Expect<Equal<UnBox<() => undefined>, undefined>>,
+  Expect<Equal<UnBox<() => null>, null>>,
+  Expect<Equal<UnBox<() => never>, never>>,
+  Expect<Equal<UnBox<() => any>, any>>,
+  Expect<Equal<UnBox<() => unknown>, unknown>>,
+  Expect<Equal<UnBox<readonly number[]>, number>>,
+  Expect<Equal<UnBox<ReadonlyArray<string>>, string>>,
+  Expect<Equal<UnBox<Promise<Promise<never>>>, never>>,
+  Expect<Equal<UnBox<Promise<() => never>>, never>>,
+  Expect<Equal<UnBox<() => Promise<never>>, never>>,
 ];
