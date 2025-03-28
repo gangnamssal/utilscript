@@ -12,4 +12,12 @@ type cases = [
     >
   >,
   Expect<Equal<Unique<[unknown, unknown, any, any, never, never]>, [unknown, any, never]>>,
+  Expect<Equal<Unique<[]>, []>>,
+  Expect<Equal<Unique<[null, null, undefined, undefined]>, [null, undefined]>>,
+  Expect<Equal<Unique<[symbol, symbol, bigint, bigint]>, [symbol, bigint]>>,
+  Expect<Equal<Unique<[1, 1, 1, 1, 1]>, [1]>>,
+  Expect<Equal<Unique<[object, object, {}]>, [object, {}]>>,
+  Expect<Equal<Unique<readonly [1, 1, 2, 2, 3, 3]>, readonly [1, 2, 3]>>,
+  Expect<Equal<Unique<readonly [1, 'a', 2, 'b', 2, 'a']>, readonly [1, 'a', 2, 'b']>>,
+  Expect<Equal<Unique<readonly [string, number, string, number]>, readonly [string, number]>>,
 ];

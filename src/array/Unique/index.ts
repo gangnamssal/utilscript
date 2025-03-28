@@ -1,5 +1,6 @@
 import { Tuple } from '../../primitive';
 import { Includes } from '../Includes';
+import { MatchReadonly } from '../MatchReadonly';
 
 /**
  *
@@ -22,8 +23,11 @@ import { Includes } from '../Includes';
  *
  */
 
-export type Unique<T, R extends Tuple = []> = T extends readonly [infer Current, ...infer Rest]
+export type Unique<T extends Tuple, R extends Tuple = []> = T extends readonly [
+  infer Current,
+  ...infer Rest,
+]
   ? Includes<R, Current> extends true
-    ? Unique<Rest, R>
-    : Unique<Rest, [...R, Current]>
-  : R;
+    ? Unique<MatchReadonly<T, Rest>, R>
+    : Unique<MatchReadonly<T, Rest>, [...R, Current]>
+  : MatchReadonly<T, R>;
