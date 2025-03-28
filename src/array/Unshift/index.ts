@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 
 /**
  *
@@ -23,4 +24,4 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type Unshift<T extends Tuple, U> = [U, ...T];
+export type Unshift<T extends Tuple, U> = MatchReadonly<T, [U, ...T]>;
