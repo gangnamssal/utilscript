@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 import { Push } from '../Push';
 
 /**
@@ -21,5 +22,5 @@ import { Push } from '../Push';
  *
  */
 export type Reverse<T extends Tuple> = T extends readonly [infer First, ...infer Rest]
-  ? Push<Reverse<Rest>, First>
+  ? MatchReadonly<T, Push<Reverse<Rest>, First>>
   : T;
