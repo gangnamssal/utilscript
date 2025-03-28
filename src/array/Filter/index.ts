@@ -1,4 +1,6 @@
+import { IsAny } from '../../commonness';
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 import { Push } from '../Push';
 
 /**
@@ -32,6 +34,8 @@ export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends readonl
   ...infer Rest,
 ]
   ? [First] extends readonly [F]
-    ? Filter<Rest, F, Push<R, First>>
-    : Filter<Rest, F, R>
-  : R;
+    ? IsAny<First> extends true
+      ? Filter<MatchReadonly<T, Rest>, F, R>
+      : Filter<MatchReadonly<T, Rest>, F, Push<R, First>>
+    : Filter<MatchReadonly<T, Rest>, F, R>
+  : MatchReadonly<T, R>;
