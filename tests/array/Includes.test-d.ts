@@ -21,4 +21,12 @@ type cases = [
   Expect<Equal<Includes<[null], undefined>, false>>,
   Expect<Equal<Includes<[undefined], null>, false>>,
   Expect<Equal<Includes<typeof tuple, 'Kars'>, true>>,
+  // 추가된 엣지 케이스
+  Expect<Equal<Includes<[], 1>, false>>,
+  Expect<Equal<Includes<[any], 1>, false>>,
+  Expect<Equal<Includes<[unknown], 1>, false>>,
+  Expect<Equal<Includes<[never], 1>, false>>,
+  Expect<Equal<Includes<[1, 2, 3], 1 & 2>, false>>,
+  Expect<Equal<Includes<[{}], { toString(): string }>, false>>,
+  Expect<Equal<Includes<[null, undefined], null | undefined>, false>>,
 ];
