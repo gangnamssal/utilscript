@@ -19,6 +19,16 @@ type Result5 = (x: undefined, y: boolean, z: null, a: number) => void;
 type Case6 = Append<() => string, [undefined, boolean, null, number, string]>;
 type Result6 = (x: undefined, y: boolean, z: null, a: number, b: string) => string;
 
+// 엣지 케이스 추가
+type Case7 = Append<(a: string) => Promise<boolean>, never>;
+type Result7 = (a: string, x: never) => Promise<boolean>;
+
+type Case8 = Append<(a: number, b: string) => number, []>;
+type Result8 = (a: number, b: string) => number;
+
+type Case9 = Append<(a: number) => string, any>;
+type Result9 = (a: number, x: any) => string;
+
 type cases = [
   Expect<Equal<Case1, Result1>>,
   Expect<Equal<Case2, Result2>>,
@@ -26,7 +36,14 @@ type cases = [
   Expect<Equal<Case4, Result4>>,
   Expect<Equal<Case5, Result5>>,
   Expect<Equal<Case6, Result6>>,
+  Expect<Equal<Case7, Result7>>,
+  Expect<Equal<Case8, Result8>>,
+  Expect<Equal<Case9, Result9>>,
 
   // @ts-expect-error: type error
   Append<unknown, undefined>,
+  // @ts-expect-error: 함수 타입이 아닌 경우
+  Append<string, boolean>,
+  // @ts-expect-error: 함수 타입이 아닌 경우
+  Append<number, string>,
 ];

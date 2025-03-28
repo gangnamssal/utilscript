@@ -1,4 +1,4 @@
-import { IsUnion } from '../../commonness';
+import { If, IsAny, IsNever, IsUnion } from '../../commonness';
 import { Tuple } from '../../primitive';
 
 /**
@@ -33,9 +33,19 @@ import { Tuple } from '../../primitive';
 export type Append<Fn extends (...args: Tuple<any>) => unknown, A> = Fn extends (
   ...args: infer Args
 ) => infer Return
-  ? IsUnion<A> extends true
-    ? (...args: [...Args, A]) => Return
-    : A extends readonly [...infer Rest]
-      ? (...args: [...Args, ...Rest]) => Return
-      : (...args: [...Args, A]) => Return
+  ? If<
+      IsNever<A>,
+      (...args: [...Args, A]) => Return,
+      If<
+        IsAny<A>,
+        (...args: [...Args, A]) => Return,
+        If<
+          IsUnion<A>,
+          (...args: [...Args, A]) => Return,
+          A extends readonly [...infer Rest]
+            ? (...args: [...Args, ...Rest]) => Return
+            : (...args: [...Args, A]) => Return
+        >
+      >
+    >
   : never;
