@@ -1,3 +1,8 @@
+import { Equal } from '../Equal';
+import { If } from '../If';
+import { IsAny } from '../IsAny';
+import { IsUnknown } from '../IsUnknown';
+
 /**
  *
  * Get the absolute value of a number or string
@@ -19,12 +24,20 @@
  *
  */
 
-export type Absolute<T extends number | string | bigint> = `${T}` extends `-${infer Rest}`
-  ? Absolute<Rest>
-  : T extends `${number}`
-    ? `${T}`
-    : T extends number
-      ? `${T}`
-      : T extends bigint
+export type Absolute<T extends number | string | bigint> = If<
+  IsAny<T>,
+  never,
+  If<
+    IsUnknown<T>,
+    never,
+    `${T}` extends `-${infer Rest extends number | bigint}`
+      ? Absolute<Rest>
+      : T extends `${number}`
         ? `${T}`
-        : never;
+        : T extends number
+          ? If<Equal<T, number>, never, `${T}`>
+          : T extends bigint
+            ? If<Equal<T, bigint>, never, `${T}`>
+            : never
+  >
+>;
