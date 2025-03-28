@@ -11,6 +11,7 @@ export * from './Join';
 export * from './Last';
 export * from './LastIndexOf';
 export * from './Length';
+export * from './MatchReadonly';
 export * from './Pop';
 export * from './Push';
 export * from './Reverse';
