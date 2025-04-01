@@ -20,4 +20,4 @@
  * @link https://www.utilscript.site/docs/usage-union/to-object
  *
  */
-export type ToObject<T> = { [K in T as K extends PropertyKey ? K : never]: K };
+export type ToObject<T extends PropertyKey> = { [K in T as K extends PropertyKey ? K : never]: K };
