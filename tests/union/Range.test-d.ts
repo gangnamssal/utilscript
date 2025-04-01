@@ -149,4 +149,17 @@ type cases = [
   Expect<Equal<Range<2, 9>, Result1>>,
   Expect<Equal<Range<0, 2>, Result2>>,
   Expect<Equal<Range<0, 140>, Result3>>,
+  // 엣지 케이스
+  Expect<Equal<Range<0, 0>, 0>>,
+  Expect<Equal<Range<2, 2>, 2>>,
+  Expect<Equal<Range<-5, 0>, -5 | -4 | -3 | -2 | -1 | 0>>,
+  Expect<Equal<Range<1, 1>, 1>>,
+  Expect<Equal<Range<5, 2>, never>>,
+  Expect<Equal<Range<-2, 5>, -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5>>,
+  // 추가 엣지 케이스
+  Expect<Equal<Range<-10, -5>, -10 | -9 | -8 | -7 | -6 | -5>>,
+  Expect<Equal<Range<-5, -10>, never>>,
+  Expect<Equal<Range<-1, -1>, -1>>,
+  Expect<Equal<Range<0, 1>, 0 | 1>>,
+  Expect<Equal<Range<9, 0>, never>>,
 ];
