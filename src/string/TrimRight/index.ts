@@ -1,4 +1,4 @@
-import { Reversed } from '../Reverse';
+import { Reverse } from '../Reverse';
 import { TrimLeft } from '../TrimLeft';
 
 /**
@@ -25,4 +25,4 @@ import { TrimLeft } from '../TrimLeft';
  * @link https://www.utilscript.site/docs/usage-string/trim-right
  *
  */
-export type TrimRight<S extends string> = Reversed<TrimLeft<Reversed<S>>>;
+export type TrimRight<S extends string> = Reverse<TrimLeft<Reverse<S>>>;

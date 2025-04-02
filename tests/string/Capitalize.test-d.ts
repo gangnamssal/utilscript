@@ -14,4 +14,18 @@ type cases = [
     >
   >,
   Expect<Equal<Capitalize<''>, ''>>,
+
+  // 엣지 케이스
+  Expect<Equal<Capitalize<'123abc'>, '123Abc'>>,
+  Expect<Equal<Capitalize<'_abc'>, '_Abc'>>,
+  Expect<Equal<Capitalize<'!abc'>, '!Abc'>>,
+  Expect<Equal<Capitalize<' abc'>, ' Abc'>>,
+  Expect<Equal<Capitalize<'a'>, 'A'>>,
+  Expect<Equal<Capitalize<'A'>, 'A'>>,
+  Expect<Equal<Capitalize<'1'>, '1'>>,
+  Expect<Equal<Capitalize<'!'>, '!'>>,
+  Expect<Equal<Capitalize<'🤣'>, '🤣'>>,
+  Expect<Equal<Capitalize<'한글'>, '한글'>>,
+  Expect<Equal<Capitalize<'한글 테스트'>, '한글 테스트'>>,
+  Expect<Equal<Capitalize<'a한글'>, 'A한글'>>,
 ];

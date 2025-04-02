@@ -8,4 +8,13 @@ type cases = [
   Expect<Equal<Smallize<'foo-bar'>, 'foo-bar'>>,
   Expect<Equal<Smallize<'FooBar'>, 'fooBar'>>,
   Expect<Equal<Smallize<'foobar'>, 'foobar'>>,
+  // 엣지 케이스
+  Expect<Equal<Smallize<''>, ''>>,
+  Expect<Equal<Smallize<'A'>, 'a'>>,
+  Expect<Equal<Smallize<'a'>, 'a'>>,
+  Expect<Equal<Smallize<'123'>, '123'>>,
+  Expect<Equal<Smallize<'123ABC'>, '123aBC'>>,
+  Expect<Equal<Smallize<'F123'>, 'f123'>>,
+  Expect<Equal<Smallize<'_FooBar'>, '_fooBar'>>,
+  Expect<Equal<Smallize<'-FooBar'>, '-fooBar'>>,
 ];

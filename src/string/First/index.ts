@@ -20,4 +20,4 @@
  *
  */
 
-export type First<S extends string> = S extends `${infer First}${infer _}` ? First : never;
+export type First<S extends string> = S extends `${infer First}${string}` ? First : never;
