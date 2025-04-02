@@ -1,6 +1,8 @@
 export * as A from './array';
+export * as B from './boolean';
 export * as C from './commonness';
 export * as F from './function';
+export * as N from './number';
 export * as O from './object';
 export * as P from './primitive';
 export * as S from './string';
