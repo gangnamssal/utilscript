@@ -1,4 +1,4 @@
-import { Equal } from '../../commonness';
+import { Equal, If, IsNever } from '../../commonness';
 
 /**
  *
@@ -29,14 +29,16 @@ import { Equal } from '../../commonness';
  * @link https://www.utilscript.site/docs/usage-string/split
  *
  */
-export type Split<S extends string, D extends string | never = never> = [D] extends readonly [never]
-  ? [S]
-  : Equal<S, D> extends true
-    ? []
-    : string extends S
+export type Split<S extends string, D extends string | never = never> = If<
+  IsNever<D>,
+  [S],
+  If<
+    Equal<S, ''>,
+    If<Equal<D, ''>, [], [S]>,
+    string extends S
       ? string[]
       : S extends `${infer First}${D}${infer Rest}`
-        ? Rest extends ''
-          ? [First]
-          : [First, ...Split<Rest, D>]
-        : [S];
+        ? [First, ...Split<Rest, D>]
+        : [S]
+  >
+>;
