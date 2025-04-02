@@ -1,3 +1,5 @@
+import { Equal, If } from '../../commonness';
+
 /**
  *
  * Check if a string starts with a specific substring
@@ -19,6 +21,8 @@
  * @link https://www.utilscript.site/docs/usage-string/starts-with
  *
  */
-export type StartsWith<T extends string, U extends string> = T extends `${U}${infer _}`
-  ? true
-  : false;
+export type StartsWith<T extends string, U extends string> = If<
+  Equal<T, string>,
+  boolean,
+  If<Equal<U, string>, false, T extends `${U}${string}` ? true : false>
+>;
