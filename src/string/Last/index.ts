@@ -19,8 +19,8 @@
  *
  */
 
-export type Last<S extends string, R extends string = ''> = S extends `${infer _}${infer Rest}`
+export type Last<S extends string, R extends string = ''> = S extends `${string}${infer Rest}`
   ? Rest extends ''
-    ? R
+    ? S
     : Last<Rest, Rest>
   : R;
