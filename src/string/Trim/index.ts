@@ -1,4 +1,5 @@
-import { Blank } from '../../primitive';
+import { TrimLeft } from '../TrimLeft';
+import { TrimRight } from '../TrimRight';
 
 /**
  *
@@ -17,6 +18,4 @@ import { Blank } from '../../primitive';
  *
  */
 
-export type Trim<S extends string> = S extends `${Blank}${infer Rest}` | `${infer Rest}${Blank}`
-  ? Trim<Rest>
-  : S;
+export type Trim<S extends string> = TrimLeft<TrimRight<S>>;
