@@ -7,4 +7,4 @@
  * @link https://www.utilscript.site/docs/usage-primitive/blank
  *
  */
-export type Blank = ' ' | '\n' | '\t';
+export type Blank = ' ' | '\n' | '\t' | '\r' | '\f' | '\v';
