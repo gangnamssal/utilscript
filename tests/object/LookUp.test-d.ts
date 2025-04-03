@@ -103,4 +103,16 @@ type cases = [
   Expect<Equal<LookUp<MaybeUser, 'id'>, { id: number; username: string }>>,
   // 기본값 T가 never인 경우 (키만으로 필터링)
   Expect<Equal<LookUp<Animal | { size: 'large' }, 'size'>, { size: 'large' }>>,
+
+  // 엣지 케이스
+  Expect<Equal<LookUp<{}, 'key'>, never>>,
+  Expect<Equal<LookUp<{ a: null }, 'a'>, { a: null }>>,
+  Expect<Equal<LookUp<{ a: undefined }, 'a'>, { a: undefined }>>,
+  Expect<Equal<LookUp<{ '': string }, ''>, { '': string }>>,
+  Expect<Equal<LookUp<{ [key: string]: number }, 'anyKey'>, { [key: string]: number }>>,
+  Expect<Equal<LookUp<{ a: 1 } | { a: 2 }, 'a', 1>, { a: 1 }>>,
+  Expect<Equal<LookUp<{ a: 1 } | { a: 2 }, 'a', 3>, never>>,
+  Expect<Equal<LookUp<{ a: { b: 1 } } | { a: { b: 2 } }, 'a', { b: 1 }>, { a: { b: 1 } }>>,
+  Expect<Equal<LookUp<{ a: any }, 'a'>, { a: any }>>,
+  Expect<Equal<LookUp<{ a: unknown }, 'a'>, { a: unknown }>>,
 ];

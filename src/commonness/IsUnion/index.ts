@@ -1,3 +1,4 @@
+import { Equal } from '../Equal';
 import { If } from '../If';
 import { IsNever } from '../IsNever';
 
@@ -35,5 +36,5 @@ import { IsNever } from '../IsNever';
 export type IsUnion<T, Original = T> = If<
   IsNever<T>,
   false,
-  T extends Original ? ([Original] extends readonly [T] ? false : true) : never
+  T extends Original ? (Equal<Original, T> extends true ? false : true) : never
 >;

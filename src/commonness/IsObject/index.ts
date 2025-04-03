@@ -1,5 +1,8 @@
 import { AnyArray } from '../../primitive';
 import { Equal } from '../Equal';
+import { If } from '../If';
+import { IsAny } from '../IsAny';
+import { IsNever } from '../IsNever';
 
 /**
  *
@@ -22,15 +25,22 @@ import { Equal } from '../Equal';
  * @link https://www.utilscript.site/docs/usage-commonness/is-object
  *
  */
-export type IsObject<T> =
-  Equal<unknown, T> extends true
-    ? false
-    : T extends (...args: AnyArray) => unknown
+export type IsObject<T> = If<
+  IsNever<T>,
+  false,
+  If<
+    IsAny<T>,
+    false,
+    Equal<unknown, T> extends true
       ? false
-      : T extends AnyArray
+      : T extends (...args: AnyArray) => unknown
         ? false
-        : T extends Record<PropertyKey, unknown>
-          ? true
-          : object extends T
+        : T extends AnyArray
+          ? false
+          : T extends Record<PropertyKey, unknown>
             ? true
-            : false;
+            : object extends T
+              ? true
+              : false
+  >
+>;

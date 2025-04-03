@@ -11,4 +11,10 @@ type cases = [
   Expect<Equal<LastIndexOf<'abcabc', 'd'>, -1>>,
   Expect<Equal<LastIndexOf<'abcabc', 'bc'>, 4>>,
   Expect<Equal<LastIndexOf<'abcabc', 'c'>, 5>>,
+  // 엣지 케이스 추가
+  Expect<Equal<LastIndexOf<'', 'a'>, -1>>,
+  Expect<Equal<LastIndexOf<'a', ''>, -1>>,
+  Expect<Equal<LastIndexOf<'', ''>, -1>>,
+  Expect<Equal<LastIndexOf<'abc', 'abc'>, 0>>,
+  Expect<Equal<LastIndexOf<'123', '2'>, 1>>,
 ];

@@ -1,0 +1,8 @@
+{
+  "label": "Boolean(B)",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Boolean 관련 유틸리티 함수 사용법을 알아보세요."
+  }
+}

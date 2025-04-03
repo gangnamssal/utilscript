@@ -30,5 +30,5 @@
  */
 
 export type Append<T, U extends PropertyKey, V> = {
-  [P in keyof (T & Record<U, V>)]: (T & Record<U, V>)[P];
+  [P in keyof (Omit<T, U> & Record<U, V>)]: (Omit<T, U> & Record<U, V>)[P];
 };

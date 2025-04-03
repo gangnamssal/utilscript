@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 
 /**
  *
@@ -23,4 +24,4 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type Push<T extends Tuple, U> = [...T, U];
+export type Push<T extends Tuple, U> = MatchReadonly<T, [...T, U]>;

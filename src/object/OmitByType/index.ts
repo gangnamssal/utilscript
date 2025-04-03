@@ -25,4 +25,6 @@
  * @link https://www.utilscript.site/docs/usage-object/omit-by-type
  *
  */
-export type OmitByType<T, U> = { [P in keyof T as T[P] extends U ? never : P]: T[P] };
+export type OmitByType<T, U> = {
+  [P in keyof T as Exclude<T[P], U> extends never ? never : P]: Exclude<T[P], U>;
+};

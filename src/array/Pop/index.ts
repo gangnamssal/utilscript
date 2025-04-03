@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 
 /**
  *
@@ -21,4 +22,8 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type Pop<T extends Tuple> = T extends readonly [...infer F, unknown] ? F : [];
+export type Pop<T extends Tuple> = T extends [...infer First, unknown]
+  ? First
+  : T extends readonly [...infer ReadonlyFirst, unknown]
+    ? readonly [...ReadonlyFirst]
+    : MatchReadonly<T, []>;

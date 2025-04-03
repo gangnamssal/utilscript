@@ -19,6 +19,13 @@
  * @link https://www.utilscript.site/docs/usage-array/from
  *
  */
-export type From<L extends number, Tuple extends Array<unknown> = []> = Tuple['length'] extends L
-  ? Tuple
-  : From<L, [...Tuple, unknown]>;
+export type From<L extends number, T extends unknown[] = []> =
+  // 음수인 경우 never 반환
+  `${L}` extends `-${number}`
+    ? never
+    : // 소수인 경우 never 반환
+      `${L}` extends `${number}.${number}`
+      ? never
+      : T['length'] extends L
+        ? T
+        : From<L, [...T, unknown]>;

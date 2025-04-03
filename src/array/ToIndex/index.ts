@@ -1,4 +1,4 @@
-import { ToNumber } from './../../string/ToNumber';
+import { ToNumber } from './../../string';
 import { Tuple } from '../../primitive';
 
 /**

@@ -10,4 +10,13 @@ type cases = [
       (() => () => 'foo') & (() => (i: 42) => true)
     >
   >,
+  // 엣지 케이스
+  Expect<Equal<ToFnIntersection<never>, unknown>>,
+  Expect<Equal<ToFnIntersection<any>, () => any>>,
+  Expect<Equal<ToFnIntersection<unknown>, () => unknown>>,
+  Expect<Equal<ToFnIntersection<boolean>, (() => true) & (() => false)>>,
+  Expect<Equal<ToFnIntersection<null | undefined>, (() => null) & (() => undefined)>>,
+  Expect<Equal<ToFnIntersection<{}>, () => {}>>,
+  Expect<Equal<ToFnIntersection<[]>, () => []>>,
+  Expect<Equal<ToFnIntersection<string | number>, (() => string) & (() => number)>>,
 ];

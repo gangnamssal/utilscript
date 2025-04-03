@@ -10,4 +10,10 @@ type cases = [
   Expect<Equal<Without<['abc', 'b', 'c'], ['a', 'b']>, ['abc', 'c']>>,
   Expect<Equal<Without<[1, never, null, undefined], Falsy>, [1]>>,
   Expect<Equal<Without<[1, 2, 3, never], never>, [1, 2, 3]>>,
+  // 엣지 케이스 추가
+  Expect<Equal<Without<[], 1>, []>>,
+  Expect<Equal<Without<[1], 1>, []>>,
+  Expect<Equal<Without<readonly [1, 2, 3], 1>, readonly [2, 3]>>,
+  Expect<Equal<Without<[1, 2, 3], []>, [1, 2, 3]>>,
+  Expect<Equal<Without<[1, 2, 3], readonly [1]>, [2, 3]>>,
 ];

@@ -11,4 +11,10 @@ type cases = [
   Expect<Equal<KebabCase<'-'>, '-'>>,
   Expect<Equal<KebabCase<''>, ''>>,
   Expect<Equal<KebabCase<'😎'>, '😎'>>,
+  Expect<Equal<KebabCase<'123'>, '123'>>,
+  Expect<Equal<KebabCase<'F'>, 'f'>>,
+  Expect<Equal<KebabCase<'FooBar123'>, 'foo-bar123'>>,
+  Expect<Equal<KebabCase<'Foo Bar'>, 'foo -bar'>>,
+  Expect<Equal<KebabCase<'Foo--Bar'>, 'foo---bar'>>,
+  Expect<Equal<KebabCase<'__FOO_BAR__'>, '__-f-o-o_-b-a-r__'>>,
 ];

@@ -7,8 +7,12 @@ const spaceX = ['FALCON 9', 'FALCON HEAVY', 'DRAGON', 'STARSHIP', 'HUMAN SPACEFL
 type cases = [
   Expect<Equal<Length<typeof tesla>, 4>>,
   Expect<Equal<Length<typeof spaceX>, 5>>,
+  Expect<Equal<Length<[]>, 0>>,
+  Expect<Equal<Length<[1]>, 1>>,
   // @ts-expect-error: type error
   Length<5>,
   // @ts-expect-error: type error
   Length<'hello world'>,
+  // @ts-expect-error: type error
+  Length<{ length: 10 }>,
 ];

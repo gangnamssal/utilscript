@@ -38,8 +38,38 @@ type testExpect3 = {
   moon: false | undefined;
 };
 
+// 엣지 케이스
+type emptyObject = {};
+type emptyObjectExpect = {
+  key: string;
+};
+
+type existingKeyObject = {
+  key: number;
+};
+
+type existingKeyObjectExpect = {
+  key: string;
+};
+
+type readonlyObject = {
+  readonly prop: string;
+};
+
+type readonlyObjectExpect = {
+  readonly prop: string;
+  newProp: boolean;
+};
+
 type cases = [
   Expect<Equal<Append<test1, 'home', boolean>, testExpect1>>,
   Expect<Equal<Append<test2, 'home', 1>, testExpect2>>,
   Expect<Equal<Append<test3, 'moon', false | undefined>, testExpect3>>,
+
+  // 엣지 케이스
+  Expect<Equal<Append<emptyObject, 'key', string>, emptyObjectExpect>>,
+  Expect<Equal<Append<existingKeyObject, 'key', string>, existingKeyObjectExpect>>,
+  Expect<Equal<Append<readonlyObject, 'newProp', boolean>, readonlyObjectExpect>>,
+  Expect<Equal<Append<{}, never, never>, {}>>,
+  Expect<Equal<Append<{}, any, any>, { [key: string]: any }>>,
 ];

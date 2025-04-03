@@ -41,12 +41,14 @@ bun install utilscript -dev
 `utilscript`는 다음과 같은 모듈로 구성되어 있습니다:
 
 ```ts
-import { A, C, F, O, P, S, U } from 'utilscript';
+import { A, B, C, F, N, O, P, S, U } from 'utilscript';
 ```
 
 - `A`: 배열(Array, Tuple) 관련 유틸리티 타입
+- `B`: 불리언(Boolean) 관련 유틸리티 타입
 - `C`: 공통(Commonness) 유틸리티 타입 (조건부 타입, 타입 검사 등)
 - `F`: 함수(Function) 관련 유틸리티 타입
+- `N`: 숫자(Number) 관련 유틸리티 타입
 - `O`: 객체(Object) 관련 유틸리티 타입
 - `P`: 기본 타입(Primitive) 관련 유틸리티 타입
 - `S`: 문자열(String) 관련 유틸리티 타입

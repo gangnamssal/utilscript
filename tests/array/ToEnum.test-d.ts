@@ -16,8 +16,16 @@ const Command = [
   'shift',
 ] as const;
 
+// 엣지 케이스 추가
+const SingleItem = ['item'] as const;
+const EmptyArray = [] as const;
+const MixedCaseItems = ['camelCase', 'PascalCase', 'snake_case', 'kebab-case'] as const;
+
 type cases = [
   Expect<Equal<ToEnum<[]>, {}>>,
+  Expect<Equal<ToEnum<typeof EmptyArray>, {}>>,
+  Expect<Equal<ToEnum<typeof SingleItem>, { readonly Item: 'item' }>>,
+  Expect<Equal<ToEnum<typeof SingleItem, true>, { readonly Item: 0 }>>,
   Expect<
     Equal<
       ToEnum<typeof OperatingSystem>,
@@ -69,6 +77,17 @@ type cases = [
         readonly Tail: 7;
         readonly Xargs: 8;
         readonly Shift: 9;
+      }
+    >
+  >,
+  Expect<
+    Equal<
+      ToEnum<typeof MixedCaseItems>,
+      {
+        readonly CamelCase: 'camelCase';
+        readonly PascalCase: 'PascalCase';
+        readonly Snake_case: 'snake_case';
+        readonly 'Kebab-case': 'kebab-case';
       }
     >
   >,

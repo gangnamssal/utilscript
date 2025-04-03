@@ -36,4 +36,25 @@ type cases = [
   Expect<
     Equal<DeepPick<Obj, 'a' | 'obj.e' | ''>, { a: number } & { obj: { e: string } } & unknown>
   >,
+
+  // 엣지 케이스
+  Expect<Equal<DeepPick<Obj, never>, unknown>>,
+  Expect<Equal<DeepPick<{}, 'a'>, unknown>>,
+  Expect<Equal<DeepPick<Obj, 'nonexistent'>, unknown>>,
+  Expect<Equal<DeepPick<Obj, 'obj.nonexistent'>, unknown>>,
+  Expect<Equal<DeepPick<Obj, 'obj.obj2.nonexistent'>, unknown>>,
+  Expect<
+    Equal<
+      DeepPick<Obj, 'a' | 'b' | 'c'>,
+      {
+        a: number;
+      } & {
+        b: string;
+      } & {
+        c: boolean;
+      }
+    >
+  >,
+  Expect<Equal<DeepPick<Obj, 'obj3'>, { obj3: { j: number; k: string; l: boolean } }>>,
+  Expect<Equal<DeepPick<Obj, 'obj.obj2'>, { obj: { obj2: { g: number; h: string; i: boolean } } }>>,
 ];

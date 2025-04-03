@@ -17,6 +17,6 @@
  * @link https://www.utilscript.site/docs/usage-string/reverse
  *
  */
-export type Reversed<S extends string> = S extends `${infer First}${infer Rest}`
-  ? `${Reversed<Rest>}${First}`
+export type Reverse<S extends string> = S extends `${infer First}${infer Rest}`
+  ? `${Reverse<Rest>}${First}`
   : S;

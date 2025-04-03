@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 
 /**
  *
@@ -20,4 +21,6 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type Shift<T extends Tuple> = T extends readonly [infer _, ...infer Rest] ? Rest : [];
+export type Shift<T extends Tuple> = T extends readonly [unknown, ...infer Rest]
+  ? MatchReadonly<T, [...Rest]>
+  : MatchReadonly<T, []>;

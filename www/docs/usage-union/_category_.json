@@ -1,6 +1,6 @@
 {
   "label": "Union(U)",
-  "position": 8,
+  "position": 10,
   "link": {
     "type": "generated-index",
     "description": "Union 관련 유틸리티 함수 사용법을 알아보세요."

@@ -1,11 +1,14 @@
 import { Tuple } from '../../primitive';
+import { MatchReadonly } from '../MatchReadonly';
 import { Reverse } from '../Reverse';
 
 type TakePositive<N, A extends Tuple, R extends Tuple = []> = R['length'] extends N
-  ? R
-  : A extends readonly [infer First, ...infer Rest]
+  ? MatchReadonly<A, R>
+  : A extends [infer First, ...infer Rest]
     ? TakePositive<N, Rest, [...R, First]>
-    : R;
+    : A extends readonly [infer First, ...infer Rest]
+      ? readonly [...TakePositive<N, Rest, [...R, First]>]
+      : MatchReadonly<A, R>;
 
 type TakeNegative<N extends number, A extends Tuple> = Reverse<TakePositive<N, Reverse<A>>>;
 

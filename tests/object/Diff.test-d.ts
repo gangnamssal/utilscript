@@ -22,4 +22,13 @@ type cases = [
   Expect<Equal<Diff<Bar, Foo>, { gender: number }>>,
   Expect<Equal<Diff<Foo, Coo>, { age: string; gender: number }>>,
   Expect<Equal<Diff<Coo, Foo>, { age: string; gender: number }>>,
+
+  // 엣지 케이스
+  Expect<Equal<Diff<{}, {}>, {}>>,
+  Expect<Equal<Diff<{}, { a: number }>, { a: number }>>,
+  Expect<Equal<Diff<{ a: number }, {}>, { a: number }>>,
+  Expect<Equal<Diff<{ a: string }, { a: number }>, { a: number }>>,
+  Expect<Equal<Diff<{ a: string; b: number }, { a: string }>, { b: number }>>,
+  Expect<Equal<Diff<{ a?: string }, { a: string }>, { a: string }>>,
+  Expect<Equal<Diff<{ readonly a: string }, { a: string }>, {}>>,
 ];
