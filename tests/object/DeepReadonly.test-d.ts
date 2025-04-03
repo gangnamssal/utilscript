@@ -4,6 +4,16 @@ import { Equal, Expect } from '../../src/commonness';
 type cases = [
   Expect<Equal<DeepReadonly<X1>, Expected1>>,
   Expect<Equal<DeepReadonly<X2>, Expected2>>,
+  // 엣지 케이스
+  Expect<Equal<DeepReadonly<{}>, {}>>,
+  Expect<Equal<DeepReadonly<[]>, readonly []>>,
+  Expect<Equal<DeepReadonly<null>, null>>,
+  Expect<Equal<DeepReadonly<undefined>, undefined>>,
+  Expect<Equal<DeepReadonly<string>, string>>,
+  Expect<Equal<DeepReadonly<number>, number>>,
+  Expect<Equal<DeepReadonly<boolean>, boolean>>,
+  Expect<Equal<DeepReadonly<{ readonly a: number }>, { readonly a: number }>>,
+  Expect<Equal<DeepReadonly<readonly string[]>, readonly string[]>>,
 ];
 
 type X1 = {

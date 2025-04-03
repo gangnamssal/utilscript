@@ -1,7 +1,7 @@
-import { Tuple } from '../../primitive/index.js';
-import { Replace } from '../Replace/index.js';
+import { Tuple } from '../../primitive';
+import { Replace } from '../Replace';
 import { Split } from '../Split';
-import { StartsWith } from '../StartWith/index.js';
+import { StartsWith } from '../StartWith';
 
 type Recursive<T extends Tuple, R = never> = T extends readonly [
   infer First extends string,
