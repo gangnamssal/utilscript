@@ -28,8 +28,8 @@
  * @link https://www.utilscript.site/docs/usage-object/entries
  *
  */
-export type Entries<T extends Record<PropertyKey, any>, K = keyof T> = K extends keyof T
-  ? Required<T>[K] extends never
-    ? [K, T[K]]
-    : [K, Required<T>[K]]
-  : never;
+export type Entries<T extends Record<PropertyKey, any>> = NonNullable<
+  {
+    [K in keyof T]: [K, Required<T>[K] extends never ? T[K] : Required<T>[K]];
+  }[keyof T]
+>;
