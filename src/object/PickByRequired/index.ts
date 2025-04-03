@@ -17,7 +17,6 @@
  * @link https://www.utilscript.site/docs/usage-object/pick-by-required
  *
  */
-export type PickByRequired<T> = Omit<
-  { [K in keyof T as T[K] extends Required<T>[K] ? K : never]: T[K] },
-  never
->;
+export type PickByRequired<T> = {
+  [K in keyof T as Pick<T, K> extends Pick<Required<T>, K> ? K : never]: T[K];
+};
