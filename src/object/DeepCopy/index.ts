@@ -1,3 +1,5 @@
+import { If, IsObject } from '../../commonness';
+
 /**
  *
  * Copy an object recursively
@@ -18,4 +20,4 @@
  *
  */
 
-export type DeepCopy<T> = T extends object ? { [K in keyof T]: DeepCopy<T[K]> } : T;
+export type DeepCopy<T> = If<IsObject<T>, { [K in keyof T]: DeepCopy<T[K]> }, T>;
