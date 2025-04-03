@@ -1,3 +1,5 @@
+import { Equal, If } from '../../commonness';
+
 /**
  *
  * Make some properties readonly
@@ -24,6 +26,8 @@
  *
  */
 
-export type PartialReadonly<T, K extends keyof T = keyof T> = {
-  readonly [P in K]: T[P];
-} & Omit<T, K>;
+export type PartialReadonly<T, K extends keyof T = keyof T> = If<
+  Equal<keyof T, K>,
+  Readonly<T>,
+  Readonly<Pick<T, K>> & Omit<T, K>
+>;

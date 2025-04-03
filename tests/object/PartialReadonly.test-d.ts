@@ -1,4 +1,4 @@
-import { Expect } from '../../src/commonness';
+import { Expect, Equal } from '../../src/commonness';
 import { PartialReadonly, Alike } from '../../src/object';
 
 interface Todo1 {
@@ -30,6 +30,24 @@ type cases = [
       { readonly name: string; age: number }
     >
   >,
+
+  // @ts-expect-error: not working in production
+  Expect<Equal<PartialReadonly<{}, 'key'>, {}>>,
+
+  // 엣지 케이스
+  Expect<Equal<PartialReadonly<{ a: undefined }, 'a'>, { readonly a: undefined }>>,
+  Expect<Equal<PartialReadonly<{ a: null }, 'a'>, { readonly a: null }>>,
+  Expect<Equal<PartialReadonly<{ a: never }, 'a'>, { readonly a: never }>>,
+  Expect<Equal<PartialReadonly<{ a: unknown }, 'a'>, { readonly a: unknown }>>,
+  Expect<Equal<PartialReadonly<{ a: any }, 'a'>, { readonly a: any }>>,
+  Expect<Equal<PartialReadonly<{ 'a-b': number }, 'a-b'>, { readonly 'a-b': number }>>,
+  Expect<
+    Equal<
+      PartialReadonly<{ [k: string]: number }, string | number>,
+      { readonly [k: string]: number }
+    >
+  >,
+  Expect<Equal<PartialReadonly<{ [k: number]: string }, number>, { readonly [k: number]: string }>>,
 ];
 
 // @ts-expect-error: not working in production
