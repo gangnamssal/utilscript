@@ -1,21 +1,22 @@
-import { Length } from '../../array';
-import * as B from '../../boolean';
+import { Push, Length } from '../../array';
+import { Reverse } from '../../boolean';
+import { Tuple } from '../../primitive';
 import { ToString } from '../ToString';
 
 type NumberToArray<
   S extends string,
-  T extends Array<number> = [],
+  T extends Tuple<number> = [],
 > = S extends `${infer Digit extends number}${infer Rest}`
-  ? NumberToArray<Rest, [...T, Digit]>
+  ? NumberToArray<Rest, Push<T, Digit>>
   : S extends `-${infer Digit extends number}${infer Rest}`
-    ? NumberToArray<Rest, [...T, Digit]>
+    ? NumberToArray<Rest, Push<T, Digit>>
     : T;
 
 type CompareDigit<
   T extends number,
   U extends number,
-  A extends Array<unknown> = [],
-  B extends Array<unknown> = [],
+  A extends Tuple<unknown> = [],
+  B extends Tuple<unknown> = [],
 > =
   Length<A> extends T
     ? Length<B> extends U
@@ -23,14 +24,14 @@ type CompareDigit<
       : 'less'
     : Length<B> extends U
       ? 'greater'
-      : CompareDigit<T, U, [...A, unknown], [...B, unknown]>;
+      : CompareDigit<T, U, Push<A, unknown>, Push<B, unknown>>;
 
 type GreaterThanHelper<
   T extends number,
   U extends number,
-  A extends Array<number> = NumberToArray<ToString<T>>,
-  B extends Array<number> = NumberToArray<ToString<U>>,
-  Index extends Array<unknown> = [],
+  A extends Tuple<number> = NumberToArray<ToString<T>>,
+  B extends Tuple<number> = NumberToArray<ToString<U>>,
+  Index extends Tuple<unknown> = [],
 > =
   CompareDigit<Length<A>, Length<B>> extends 'greater'
     ? true
@@ -40,9 +41,9 @@ type GreaterThanHelper<
         ? true
         : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'less'
           ? false
-          : Length<[...Index, unknown]> extends Length<A> | Length<B>
+          : Length<Push<Index, unknown>> extends Length<A> | Length<B>
             ? false
-            : GreaterThanHelper<T, U, A, B, [...Index, unknown]>;
+            : GreaterThanHelper<T, U, A, B, Push<Index, unknown>>;
 
 /**
  *
@@ -71,7 +72,7 @@ type GreaterThanHelper<
  */
 export type GreaterThan<T extends number, U extends number> = `${T}` extends `-${number}`
   ? `${U}` extends `-${number}`
-    ? B.Reverse<GreaterThanHelper<T, U>>
+    ? Reverse<GreaterThanHelper<T, U>>
     : false
   : `${U}` extends `-${number}`
     ? true

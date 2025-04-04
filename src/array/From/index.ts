@@ -1,3 +1,5 @@
+import { Length } from '../Length';
+
 /**
  *
  * Create an array of a given length
@@ -26,6 +28,6 @@ export type From<L extends number, T extends unknown[] = []> =
     : // 소수인 경우 never 반환
       `${L}` extends `${number}.${number}`
       ? never
-      : T['length'] extends L
+      : Length<T> extends L
         ? T
         : From<L, [...T, unknown]>;

@@ -1,3 +1,5 @@
+import { Tuple } from '../../primitive';
+
 /**
  *
  * Type to check if a type is never
@@ -23,4 +25,4 @@
  *
  */
 
-export type IsNever<T> = [T] extends readonly [never] ? true : false;
+export type IsNever<T> = [T] extends Tuple<never> ? true : false;

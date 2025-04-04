@@ -1,3 +1,5 @@
+import { Concat } from '../../array/Concat';
+import { Push } from '../../array/Push';
 import { If, IsAny, IsNever, IsUnion } from '../../commonness';
 import { Tuple } from '../../primitive';
 
@@ -35,16 +37,16 @@ export type Append<Fn extends (...args: Tuple<any>) => unknown, A> = Fn extends 
 ) => infer Return
   ? If<
       IsNever<A>,
-      (...args: [...Args, A]) => Return,
+      (...args: Push<Args, A>) => Return,
       If<
         IsAny<A>,
-        (...args: [...Args, A]) => Return,
+        (...args: Push<Args, A>) => Return,
         If<
           IsUnion<A>,
-          (...args: [...Args, A]) => Return,
+          (...args: Push<Args, A>) => Return,
           A extends readonly [...infer Rest]
-            ? (...args: [...Args, ...Rest]) => Return
-            : (...args: [...Args, A]) => Return
+            ? (...args: Concat<Args, Rest>) => Return
+            : (...args: Push<Args, A>) => Return
         >
       >
     >

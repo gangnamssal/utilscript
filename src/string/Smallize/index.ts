@@ -1,4 +1,4 @@
-import { IsAlphabet } from '../../commonness';
+import { If, IsAlphabet } from '../../commonness';
 
 /**
  *
@@ -28,9 +28,13 @@ export type Smallize<
   Flag extends boolean = true,
   R extends string = '',
 > = S extends `${infer First}${infer Rest}`
-  ? IsAlphabet<First> extends true
-    ? Flag extends true
-      ? Smallize<Rest, false, `${R}${Lowercase<First>}`>
-      : Smallize<Rest, false, `${R}${First}`>
-    : Smallize<Rest, true, `${R}${First}`>
+  ? If<
+      IsAlphabet<First>,
+      If<
+        Flag,
+        Smallize<Rest, false, `${R}${Lowercase<First>}`>,
+        Smallize<Rest, false, `${R}${First}`>
+      >,
+      Smallize<Rest, true, `${R}${First}`>
+    >
   : R;
