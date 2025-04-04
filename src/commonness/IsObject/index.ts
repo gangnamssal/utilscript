@@ -31,9 +31,10 @@ export type IsObject<T> = If<
   If<
     IsAny<T>,
     false,
-    Equal<unknown, T> extends true
-      ? false
-      : T extends (...args: AnyArray) => unknown
+    If<
+      Equal<unknown, T>,
+      false,
+      T extends (...args: AnyArray) => unknown
         ? false
         : T extends AnyArray
           ? false
@@ -42,5 +43,6 @@ export type IsObject<T> = If<
             : object extends T
               ? true
               : false
+    >
   >
 >;

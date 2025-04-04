@@ -1,4 +1,5 @@
 import { Tuple } from '../../primitive';
+import { Push } from '../Push';
 import { ToIndex } from '../ToIndex';
 import { Zip } from '../Zip';
 import { ZipToMap } from '../ZipToMap';
@@ -7,7 +8,7 @@ type CapitalizeWords<T extends Tuple, R extends Tuple = []> = T extends readonly
   infer First extends string,
   ...infer Rest extends Tuple<string>,
 ]
-  ? CapitalizeWords<Rest, [...R, Capitalize<First>]>
+  ? CapitalizeWords<Rest, Push<R, Capitalize<First>>>
   : R;
 
 /**

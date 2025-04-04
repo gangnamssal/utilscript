@@ -17,7 +17,7 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<DeepReadonly<X>, { readonly x: { readonly y: { readonly z: string } } }>>,
  * ]
  *
- * @link https://www.utilscript.site/docs/usage-object/deepreadonly
+ * @link https://www.utilscript.site/docs/usage-object/deep-readonly
  *
  */
 

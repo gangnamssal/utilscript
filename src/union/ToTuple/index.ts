@@ -1,3 +1,4 @@
+import { Concat } from '../../array';
 import { ToFnIntersection } from '../ToFnIntersection';
 
 /**
@@ -24,4 +25,4 @@ import { ToFnIntersection } from '../ToFnIntersection';
  *
  */
 export type ToTuple<T> =
-  ToFnIntersection<T> extends () => infer R ? [...ToTuple<Exclude<T, R>>, R] : [];
+  ToFnIntersection<T> extends () => infer R ? Concat<ToTuple<Exclude<T, R>>, [R]> : [];

@@ -33,7 +33,7 @@ export type Filter<T extends Tuple, F, R extends Tuple = []> = T extends readonl
   infer First,
   ...infer Rest,
 ]
-  ? [First] extends readonly [F]
+  ? [First] extends Tuple<F>
     ? IsAny<First> extends true
       ? Filter<MatchReadonly<T, Rest>, F, R>
       : Filter<MatchReadonly<T, Rest>, F, Push<R, First>>

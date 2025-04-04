@@ -1,4 +1,4 @@
-import { Length } from '../../array';
+import { Length, Push } from '../../array';
 import { If } from '../../commonness';
 import { GreaterThan } from '../../number';
 import { Tuple } from '../../primitive';
@@ -16,10 +16,10 @@ type PositiveRange<
   Length<T> extends H
     ? Result | Length<T>
     : Length<T> extends L
-      ? PositiveRange<L, H, [...T, unknown], true, Length<T>>
+      ? PositiveRange<L, H, Push<T, unknown>, true, Length<T>>
       : Flag extends true
-        ? PositiveRange<L, H, [...T, unknown], Flag, Result | Length<T>>
-        : PositiveRange<L, H, [...T, unknown], Flag, Result>;
+        ? PositiveRange<L, H, Push<T, unknown>, Flag, Result | Length<T>>
+        : PositiveRange<L, H, Push<T, unknown>, Flag, Result>;
 
 type NegativeRange<
   L extends number,
@@ -31,10 +31,10 @@ type NegativeRange<
   Length<T> extends H
     ? Result | IsZeroOrNegative<Length<T>>
     : Length<T> extends L
-      ? NegativeRange<L, H, [...T, unknown], true, IsZeroOrNegative<Length<T>>>
+      ? NegativeRange<L, H, Push<T, unknown>, true, IsZeroOrNegative<Length<T>>>
       : Flag extends true
-        ? NegativeRange<L, H, [...T, unknown], Flag, Result | IsZeroOrNegative<Length<T>>>
-        : NegativeRange<L, H, [...T, unknown], Flag, Result>;
+        ? NegativeRange<L, H, Push<T, unknown>, Flag, Result | IsZeroOrNegative<Length<T>>>
+        : NegativeRange<L, H, Push<T, unknown>, Flag, Result>;
 
 /**
  *

@@ -21,6 +21,4 @@
  * @link https://www.utilscript.site/docs/usage-string/ends-with
  *
  */
-export type EndsWith<T extends string, U extends string> = T extends `${infer _}${U}`
-  ? true
-  : false;
+export type EndsWith<T extends string, U extends string> = T extends `${string}${U}` ? true : false;
