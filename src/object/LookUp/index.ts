@@ -56,7 +56,7 @@ import { IsNever } from '../../commonness';
  *   Expect<Equal<LookUp<Foo | Bar | Other, 'common'>, Foo | Bar>>,
  * ]
  *
- * @link https://www.utilscript.site/docs/usage-object/lookup
+ * @link https://www.utilscript.site/docs/usage-object/look-up
  *
  */
 

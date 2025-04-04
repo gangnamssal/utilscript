@@ -22,6 +22,8 @@ import { IsUnknown } from '../IsUnknown';
  *   Expect<Equal<Absolute<-5>, '5'>>,
  * ]
  *
+ * @link https://www.utilscript.site/docs/usage-commonness/absolute
+ *
  */
 
 export type Absolute<T extends number | string | bigint> = If<

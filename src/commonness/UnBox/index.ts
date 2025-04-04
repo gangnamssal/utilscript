@@ -20,7 +20,7 @@ import { Tuple } from '../../primitive';
  *   Expect<Equal<Unbox<Promise<boolean>>, boolean>>,
  * ]
  *
- * @link https://www.utilscript.site/docs/usage-commonness/unbox
+ * @link https://www.utilscript.site/docs/usage-commonness/un-box
  *
  */
 export type UnBox<T, Depth extends number = 10, Compare extends Tuple = []> = Depth extends 0
