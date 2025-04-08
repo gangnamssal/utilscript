@@ -4,6 +4,10 @@
 
 `utilscript`는 TypeScript 유틸 타입 모음으로, 복잡한 타입 조작을 간소화합니다. 타입 변환, 조건부 타입, 배열/객체 조작 등을 지원하며, 타입 안전성과 생산성을 높입니다.
 
+## 시도하기
+
+[TypeScript Playground](https://www.typescriptlang.org/play/?#code/PQKhCgAIUweDcSP3IHUCmAbAxgewLYsgC5aQCuBAlmgM4YBO5ADgZAApoCGAngOa1YkA7ACYBCSIF4NwAF7UGDMgAVABbkqkFZHaQqDdhnxFIKAB4MU9PAOYB3cgUWQABmUo16TBwBpIczQyxWzADMSNFIKNFtOSAiAI1p2WijArFoFTlMAZTpGAjFxQHJdwApyOTkAMRR0SEDaCsJiYwY0FPx2YUIUKmYANwTyflVnCIIo4dMqADo5AAl2BgYo7CFyAW48wGA9mWBwcHIcP1pmAG9IAEEvAGEvUq8AeS8WLwyvAFVIAF8qvhxIAHJB1xyPwA3NtsAJOhpaKkALyQADaAEYvAAmLwAZi8ABYvABWAC6GlUYM6IPAo3wpUoBDMQhOUMgsJO40paGptAAPOSsIFIbQUQA+IFAA)
+
 ## 설치하기
 
 명령줄에서 다음 명령어 중 하나를 사용하여 설치하세요.
