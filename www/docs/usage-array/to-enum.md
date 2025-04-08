@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 25
 ---
 
 # ToEnum
@@ -12,6 +12,10 @@ sidebar_position: 21
 
 ## 사용법
 
+:::info
+두 번째 인자로 `true`를 전달하면 값 대신 인덱스를 반환하는 열거형이 생성됩니다. 이는 숫자 기반 열거형이 필요한 경우 유용합니다.
+:::
+
 ```ts
 import { A } from 'utilscript';
 
@@ -23,10 +27,6 @@ type T = A.ToEnum<typeof OperatingSystem>;
 type T2 = A.ToEnum<typeof OperatingSystem, true>;
 // { readonly MacOS: 0; readonly Windows: 1; readonly Linux: 2; }
 ```
-
-:::info
-두 번째 인자로 `true`를 전달하면 값 대신 인덱스를 반환하는 열거형이 생성됩니다. 이는 숫자 기반 열거형이 필요한 경우 유용합니다.
-:::
 
 ## 주의 사항
 

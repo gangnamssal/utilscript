@@ -1,5 +1,5 @@
 ---
-sidebar_position: 27
+sidebar_position: 31
 ---
 
 # Without
@@ -12,6 +12,14 @@ sidebar_position: 27
 
 ## 사용법
 
+:::info
+중복된 값이 있는 경우 모두 제거됩니다.
+:::
+
+:::info
+Without의 두 번째 인자에 `튜플로 값을 전달`하면 여러 개의 값을 한 번에 제외할 수 있습니다.
+:::
+
 ```ts
 import { A } from 'utilscript';
 
@@ -21,14 +29,6 @@ type T2 = A.Without<[1, 2, 4, 1, 5], [1, 2]>; // [4, 5]
 
 type T3 = A.Without<[1, never, null, undefined], Falsy>; // [1]
 ```
-
-:::info
-중복된 값이 있는 경우 모두 제거됩니다.
-:::
-
-:::info
-Without의 두 번째 인자에 `튜플로 값을 전달`하면 여러 개의 값을 한 번에 제외할 수 있습니다.
-:::
 
 ## 주의 사항
 
@@ -54,6 +54,6 @@ type T = A.Without<typeof arr, 1>; // []
 
 ## 업데이트 내역
 
-:::info
-0.0.13 버전부터 readonly 튜플에 대한 처리가 개선되었습니다. 이제 입력 튜플의 readonly 속성이 결과 튜플에도 유지됩니다.
+:::note
+**0.0.13 버전**부터 readonly 튜플에 대한 처리가 개선되었습니다. 이제 입력 튜플의 readonly 속성이 결과 튜플에도 유지됩니다.
 :::
