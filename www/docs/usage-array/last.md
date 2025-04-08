@@ -29,7 +29,7 @@ type T2 = A.Last<[3, 2, 1]>; // 1
 import { A } from 'utilscript';
 
 const arr = [1, 2, 3, 4, 5];
-type T = A.Last<typeof arr>; // never
+type T = A.Last<typeof arr>; // number
 ```
 
 ## 지원 버전
@@ -43,6 +43,6 @@ type T = A.Last<typeof arr>; // never
 
 ## 업데이트 내역
 
-:::info
-0.0.13 버전부터 `string[]`와 같은 일반 배열 타입에서도 요소 타입(예: `string`)을 추론하도록 개선되었습니다. 이전 버전에서는 일반 배열 타입에 대해 `never`를 반환했습니다.
+:::note
+**0.0.13 버전**부터 `string[]`와 같은 일반 배열 타입에서도 요소 타입(예: `string`)을 추론하도록 개선되었습니다.
 :::

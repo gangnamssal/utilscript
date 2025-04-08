@@ -24,7 +24,7 @@ type T3 = A.First<[]>; // never
 
 ## 주의 사항
 
-:::caution
+:::warning
 튜플이 아닌 일반 Array 타입이 입력으로 주어질 경우 배열의 첫 번째 요소 타입이 반환됩니다.
 :::
 

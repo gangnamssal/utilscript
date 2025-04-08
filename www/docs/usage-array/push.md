@@ -1,5 +1,5 @@
 ---
-sidebar_position: 17
+sidebar_position: 19
 ---
 
 # Push
@@ -44,6 +44,6 @@ type T = A.Push<typeof arr, 4>; // [...number[], 4]
 
 ## 업데이트 내역
 
-:::info
-0.0.13 버전부터 readonly 튜플에 대한 처리가 개선되었습니다. 이제 입력 튜플의 readonly 속성이 결과 튜플에도 유지됩니다.
+:::note
+**0.0.13 버전**부터 readonly 튜플에 대한 처리가 개선되었습니다. 이제 입력 튜플의 readonly 속성이 결과 튜플에도 유지됩니다.
 :::

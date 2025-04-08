@@ -31,6 +31,6 @@ type T2 = S.Reverse<'world'>; // 'dlrow'
 
 ## 업데이트 내역
 
-:::info
-0.0.13 버전부터 `Reversed`에서 `Reverse`로 이름이 변경되었습니다.
+:::note
+**0.0.13 버전**부터 `Reversed`에서 `Reverse`로 이름이 변경되었습니다.
 :::

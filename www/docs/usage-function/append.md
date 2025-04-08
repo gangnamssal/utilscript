@@ -36,6 +36,6 @@ type T3 = F.Append<() => string, [undefined, boolean, null, number, string]>;
 
 ## 업데이트 내역
 
-:::info
-0.0.13 버전부터는 never와 any 타입에 대한 처리가 개선되었습니다. 이를 통해 더 안정적이고 정확한 결과를 제공합니다.
+:::note
+**0.0.13 버전**부터는 never와 any 타입에 대한 처리가 개선되었습니다. 이를 통해 더 안정적이고 정확한 결과를 제공합니다.
 :::
