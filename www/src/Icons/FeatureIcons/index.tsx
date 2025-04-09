@@ -1,11 +1,11 @@
-import styles from '../index.module.css';
+import styles from './index.module.css';
 
 type FeatureIconsProps = { id: 'Bundle' | 'Intuitive' | 'Size' | 'Utility' };
 
 export function FeatureIcons({ id }: FeatureIconsProps) {
   return (
     <svg
-      className={styles.descriptionCardIcon}
+      className={styles.featureIcon}
       xmlns='http://www.w3.org/2000/svg'
       width='48'
       height='48'

@@ -1,4 +1,4 @@
-import type { BrandedCode } from '../../types';
+import type { BrandedCode } from '@site/src/types';
 import styles from './index.module.css';
 import { Fragment, useCallback, useRef, useLayoutEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';

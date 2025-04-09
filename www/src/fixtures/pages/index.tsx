@@ -1,5 +1,5 @@
-import type { ActiveTextMap, AnimatedCodeDescriptionType, PositionMap } from '../../types';
-import { FeatureIcons } from '../../Icons';
+import type { ActiveTextMap, AnimatedCodeDescriptionType, PositionMap } from '@site/src/types';
+import { FeatureIcons } from '@site/src/Icons';
 
 /**
  *

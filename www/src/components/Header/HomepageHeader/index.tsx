@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Heading from '@theme/Heading';
 import { ScrollIndicator } from '../../ScrollIndicator';
-import { Logo } from '../../../Icons';
+import { Logo } from '@site/src/Icons';
 import styles from './index.module.css';
 import { useMemo } from 'react';
 

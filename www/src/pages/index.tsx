@@ -1,11 +1,11 @@
-import '../css/reset.css';
-import '../css/normalize.css';
+import '@site/src/css/reset.css';
+import '@site/src/css/normalize.css';
 import { useMemo, useRef } from 'react';
 import type { ReactNode } from 'react';
 import Layout from '@theme/Layout';
 import { Analytics } from '@vercel/analytics/react';
 import styles from './index.module.css';
-import { CodeBlock, DescriptionCard, HomepageHeader, List } from '../components';
+import { CodeBlock, DescriptionCard, HomepageHeader, List } from '@site/src/components';
 import { useCallback, useState } from 'react';
 import { AnimatePresence, useMotionValueEvent, useScroll } from 'motion/react';
 import {
@@ -13,14 +13,14 @@ import {
   animatedCodeDescriptionList,
   descriptionList,
   positionMap,
-} from '../fixtures';
+} from '@site/src/fixtures';
 import {
   BrandedActiveText,
   ActiveTextMap,
   PositionMap,
   BrandedCode,
   BrandedAnimatedCodeDescriptionDescription,
-} from '../types';
+} from '@site/src/types';
 import { motion } from 'motion/react';
 
 export default function Home(): ReactNode {
