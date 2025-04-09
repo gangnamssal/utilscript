@@ -40,8 +40,6 @@ export default function Home(): ReactNode {
    *
    * 스크롤 위치에 따라 코드 예제를 업데이트하는 함수
    *
-   * @param positionMap scrollPercentage 스크롤 진행률(0-100), code 코드 예제
-   *
    */
   const updateCodeByScrollPosition = useCallback(
     (currentPercentage: number, positionMap: PositionMap) => {
