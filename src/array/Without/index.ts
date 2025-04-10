@@ -1,5 +1,3 @@
-import { If } from '../../commonness/If';
-import { Extends } from '../../commonness/Extends';
 import { IsTuple } from '../../commonness/IsTuple';
 import { Tuple } from '../../primitive/Tuple';
 import { Includes } from '../Includes';
@@ -38,19 +36,13 @@ export type Without<T extends Tuple, U, R extends Tuple = []> = T extends readon
   infer TF,
   ...infer TR,
 ]
-  ? If<
-      IsTuple<U>,
-      U extends Tuple
-        ? If<
-            Includes<U, TF>,
-            Without<MatchReadonly<T, TR>, U, R>,
-            Without<MatchReadonly<T, TR>, U, Push<R, TF>>
-          >
-        : never,
-      If<
-        Extends<[TF], [U]>,
-        Without<MatchReadonly<T, TR>, U, R>,
-        Without<MatchReadonly<T, TR>, U, Push<R, TF>>
-      >
-    >
+  ? IsTuple<U> extends true
+    ? U extends Tuple
+      ? Includes<U, TF> extends true
+        ? Without<MatchReadonly<T, TR>, U, R>
+        : Without<MatchReadonly<T, TR>, U, Push<R, TF>>
+      : never
+    : [TF] extends [U]
+      ? Without<MatchReadonly<T, TR>, U, R>
+      : Without<MatchReadonly<T, TR>, U, Push<R, TF>>
   : MatchReadonly<T, R>;
