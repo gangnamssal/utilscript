@@ -29,6 +29,52 @@ type Result8 = (a: number, b: string) => number;
 type Case9 = Append<(a: number) => string, any>;
 type Result9 = (a: number, x: any) => string;
 
+// 성능 테스트
+type LargeTuple = [
+  number,
+  string,
+  boolean,
+  null,
+  undefined,
+  number,
+  string,
+  boolean,
+  null,
+  undefined,
+  number,
+  string,
+  boolean,
+  null,
+  undefined,
+  number,
+  string,
+  boolean,
+  null,
+  undefined,
+  number,
+  string,
+  boolean,
+  null,
+  undefined,
+];
+
+type ComplexFunction = (
+  a: number,
+  b: string,
+  c: boolean,
+  d: null,
+  e: undefined,
+  f: number[],
+  g: string[],
+  h: Record<string, number>,
+  i: Promise<boolean>,
+  j: () => void,
+) => string;
+
+type PerformanceCase1 = Append<ComplexFunction, LargeTuple>;
+type PerformanceCase2 = Append<ComplexFunction, [LargeTuple, LargeTuple]>;
+type PerformanceCase3 = Append<() => void, LargeTuple>;
+
 type cases = [
   Expect<Equal<Case1, Result1>>,
   Expect<Equal<Case2, Result2>>,
@@ -39,6 +85,8 @@ type cases = [
   Expect<Equal<Case7, Result7>>,
   Expect<Equal<Case8, Result8>>,
   Expect<Equal<Case9, Result9>>,
+
+  Expect<Equal<PerformanceCase3, (...args: [...LargeTuple]) => void>>,
 
   // @ts-expect-error: type error
   Append<unknown, undefined>,
