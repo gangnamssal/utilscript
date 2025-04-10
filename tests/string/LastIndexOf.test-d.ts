@@ -17,4 +17,16 @@ type cases = [
   Expect<Equal<LastIndexOf<'', ''>, -1>>,
   Expect<Equal<LastIndexOf<'abc', 'abc'>, 0>>,
   Expect<Equal<LastIndexOf<'123', '2'>, 1>>,
+
+  // 성능 테스트 케이스
+  Expect<Equal<LastIndexOf<'abcdefghijklmnopqrstuvwxyz', 'z'>, 25>>,
+  Expect<Equal<LastIndexOf<'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', 'z'>, 51>>,
+  Expect<Equal<LastIndexOf<'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', 'za'>, 51>>,
+  Expect<Equal<LastIndexOf<'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', '123'>, -1>>,
+  Expect<Equal<LastIndexOf<'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaa'>, 37>>,
+
+  // @ts-expect-error: type error
+  LastIndexOf<'hello', 1>,
+  // @ts-expect-error: type error
+  LastIndexOf<123, 'a'>,
 ];
