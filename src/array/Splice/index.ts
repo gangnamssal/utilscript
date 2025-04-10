@@ -1,5 +1,3 @@
-import { If } from '../../commonness/If';
-import { Extends } from '../../commonness/Extends';
 import { GreaterThan } from '../../number/GreaterThan';
 import { Tuple } from '../../primitive/Tuple';
 import { Concat } from '../Concat';
@@ -15,14 +13,12 @@ type SpliceImpl<
   CurrentIndex extends Tuple = [],
   DeletedCount extends Tuple = [],
 > = T extends readonly [infer First, ...infer Rest]
-  ? If<
-      // 현재 인덱스가 시작 인덱스와 같은지 확인
-      Extends<Length<CurrentIndex>, Start>,
-      // 삭제할 요소의 수가 삭제한 요소의 수와 같은지 확인
-      If<
-        Extends<Length<DeletedCount>, Delete>,
-        [...Acc, ...Insert, First, ...Rest],
-        SpliceImpl<
+  ? // 현재 인덱스가 시작 인덱스와 같은지 확인
+    Length<CurrentIndex> extends Start
+    ? // 삭제할 요소의 수가 삭제한 요소의 수와 같은지 확인
+      Length<DeletedCount> extends Delete
+      ? [...Acc, ...Insert, First, ...Rest]
+      : SpliceImpl<
           Rest,
           Start,
           Delete,
@@ -31,18 +27,14 @@ type SpliceImpl<
           Push<CurrentIndex, unknown>,
           Push<DeletedCount, unknown>
         >
-      >,
-      // 현재 인덱스가 시작 인덱스와 같지 않은 경우
-      If<
-        Extends<Length<CurrentIndex>, number>,
-        // 삭제할 요소의 수가 삭제한 요소의 수와 같은지 확인
-        If<
-          Extends<Length<DeletedCount>, Delete>,
-          [...Acc, ...Insert, First, ...Rest],
-          // 삭제할 요소의 수가 삭제한 요소의 수와 같지 않은 경우
-          If<
-            Extends<Length<CurrentIndex>, Start>,
-            SpliceImpl<
+    : // 현재 인덱스가 시작 인덱스와 같지 않은 경우
+      Length<CurrentIndex> extends number
+      ? // 삭제할 요소의 수가 삭제한 요소의 수와 같은지 확인
+        Length<DeletedCount> extends Delete
+        ? [...Acc, ...Insert, First, ...Rest]
+        : // 삭제할 요소의 수가 삭제한 요소의 수와 같지 않은 경우
+          Length<CurrentIndex> extends Start
+          ? SpliceImpl<
               Rest,
               Start,
               Delete,
@@ -50,11 +42,10 @@ type SpliceImpl<
               Acc,
               Push<CurrentIndex, unknown>,
               Push<DeletedCount, unknown>
-            >,
-            // 삭제한 요소의 수가 0인 경우
-            If<
-              Extends<Length<DeletedCount>, 0>,
-              SpliceImpl<
+            >
+          : // 삭제한 요소의 수가 0인 경우
+            Length<DeletedCount> extends 0
+            ? SpliceImpl<
                 Rest,
                 Start,
                 Delete,
@@ -62,8 +53,8 @@ type SpliceImpl<
                 Push<Acc, First>,
                 Push<CurrentIndex, unknown>,
                 DeletedCount
-              >,
-              SpliceImpl<
+              >
+            : SpliceImpl<
                 Rest,
                 Start,
                 Delete,
@@ -72,12 +63,7 @@ type SpliceImpl<
                 Push<CurrentIndex, unknown>,
                 Push<DeletedCount, unknown>
               >
-            >
-          >
-        >,
-        never
-      >
-    >
+      : never
   : Concat<Acc, Insert>;
 
 /**
@@ -111,8 +97,11 @@ export type Splice<
   Start extends number = 0,
   Delete extends number = Length<T>,
   Insert extends Tuple = [],
-> = If<
-  GreaterThan<Start, Length<T>>,
-  T,
-  If<Extends<Start, Length<T>>, T, If<Extends<Delete, 0>, T, SpliceImpl<T, Start, Delete, Insert>>>
->;
+> =
+  GreaterThan<Start, Length<T>> extends true
+    ? T
+    : Start extends Length<T>
+      ? T
+      : Delete extends 0
+        ? T
+        : SpliceImpl<T, Start, Delete, Insert>;
