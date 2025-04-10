@@ -1,8 +1,6 @@
 import { Length } from '../../array/Length';
 import { Push } from '../../array/Push';
 import { Tuple } from '../../primitive/Tuple';
-import { Extends } from '../Extends';
-import { If } from '../If';
 
 /**
  *
@@ -28,14 +26,12 @@ import { If } from '../If';
  */
 export type UnBox<T, Depth extends number = 10, Compare extends Tuple = []> = Depth extends 0
   ? UnBox<T, 10, Compare>
-  : If<
-      Extends<Depth, Length<Compare>>,
-      T,
-      T extends Tuple<infer A>
-        ? UnBox<A, Depth, Push<Compare, unknown>>
-        : T extends (...args: Tuple) => infer F
-          ? UnBox<F, Depth, Push<Compare, unknown>>
-          : T extends Promise<infer P>
-            ? UnBox<P, Depth, Push<Compare, unknown>>
-            : T
-    >;
+  : Depth extends Length<Compare>
+    ? T
+    : T extends Tuple<infer A>
+      ? UnBox<A, Depth, Push<Compare, unknown>>
+      : T extends (...args: Tuple) => infer F
+        ? UnBox<F, Depth, Push<Compare, unknown>>
+        : T extends Promise<infer P>
+          ? UnBox<P, Depth, Push<Compare, unknown>>
+          : T;
