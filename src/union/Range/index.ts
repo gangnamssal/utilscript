@@ -1,16 +1,22 @@
-import { Length, Push } from '../../array';
-import { If } from '../../commonness';
-import { GreaterThan } from '../../number';
-import { Tuple } from '../../primitive';
-import { ToNumber } from '../../string';
+import { Length } from '../../array/Length';
+import { Push } from '../../array/Push';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { GreaterThan } from '../../number/GreaterThan';
+import { Tuple } from '../../primitive/Tuple';
+import { ToNumber } from '../../string/ToNumber';
 
-type IsZeroOrNegative<T extends number> = T extends 0 ? 0 : ToNumber<`-${T}`>;
+type IsZeroOrNegative<T extends number> = If<
+  Extends<T, 0>,
+  0,
+  If<Extends<T, number>, ToNumber<`-${T}`>, never>
+>;
 
 type PositiveRange<
   L extends number,
   H extends number,
   T extends Tuple = [],
-  Flag = false,
+  Flag extends boolean = false,
   Result = never,
 > =
   Length<T> extends H
@@ -25,7 +31,7 @@ type NegativeRange<
   L extends number,
   H extends number,
   T extends Tuple = [],
-  Flag = false,
+  Flag extends boolean = false,
   Result = never,
 > =
   Length<T> extends H
@@ -63,9 +69,10 @@ type NegativeRange<
  *
  */
 
-export type Range<L extends number, H extends number> = L extends H
-  ? H
-  : `${L}` extends `-${infer R extends number}`
+export type Range<L extends number, H extends number> = If<
+  Extends<L, H>,
+  H,
+  `${L}` extends `-${infer R extends number}`
     ? `${H}` extends `-${infer S extends number}`
       ? If<
           GreaterThan<R, S>,
@@ -75,13 +82,16 @@ export type Range<L extends number, H extends number> = L extends H
           never
         >
       : NegativeRange<0, R> | PositiveRange<1, H>
-    : `${H}` extends `-${number}`
-      ? // L은 +, H는 -
-        never
-      : If<
+    : If<
+        Extends<`${H}`, `-${number}`>,
+        // L은 +, H는 -
+        never,
+        If<
           GreaterThan<L, H>,
           // 둘 다 +일 때, L이 더 큰 경우
           never,
           // 둘 다 +일 때, H가 더 큰 경우
           PositiveRange<L, H>
-        >;
+        >
+      >
+>;
