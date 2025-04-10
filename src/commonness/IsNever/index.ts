@@ -1,4 +1,5 @@
-import { Tuple } from '../../primitive';
+import { Extends } from '../Extends';
+import { If } from '../If';
 
 /**
  *
@@ -25,4 +26,4 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type IsNever<T> = [T] extends Tuple<never> ? true : false;
+export type IsNever<T> = If<Extends<T, never>, true, false>;

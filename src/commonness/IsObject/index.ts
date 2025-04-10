@@ -1,5 +1,6 @@
-import { AnyArray } from '../../primitive';
+import { AnyArray } from '../../primitive/AnyArray';
 import { Equal } from '../Equal';
+import { Extends } from '../Extends';
 import { If } from '../If';
 import { IsAny } from '../IsAny';
 import { IsNever } from '../IsNever';
@@ -34,15 +35,15 @@ export type IsObject<T> = If<
     If<
       Equal<unknown, T>,
       false,
-      T extends (...args: AnyArray) => unknown
-        ? false
-        : T extends AnyArray
-          ? false
-          : T extends Record<PropertyKey, unknown>
-            ? true
-            : object extends T
-              ? true
-              : false
+      If<
+        Extends<T, (...args: AnyArray) => unknown>,
+        false,
+        If<
+          Extends<T, AnyArray>,
+          false,
+          If<Extends<T, Record<PropertyKey, unknown>>, true, If<Extends<object, T>, true, false>>
+        >
+      >
     >
   >
 >;
