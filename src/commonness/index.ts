@@ -1,6 +1,7 @@
 export * from './Absolute';
 export * from './Equal';
 export * from './Expect';
+export * from './Extends';
 export * from './If';
 export * from './IsAlphabet';
 export * from './IsAny';
