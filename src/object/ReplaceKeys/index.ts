@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Replace the type of specified keys in an object
@@ -34,5 +37,5 @@
  */
 
 export type ReplaceKeys<U, T extends PropertyKey, Y extends Record<PropertyKey, any>> = {
-  [P in keyof U]: P extends T ? (P extends keyof Y ? Y[P] : never) : U[P];
+  [P in keyof U]: If<Extends<P, T>, P extends keyof Y ? Y[P] : never, U[P]>;
 };

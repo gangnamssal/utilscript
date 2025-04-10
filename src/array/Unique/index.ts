@@ -1,4 +1,5 @@
-import { Tuple } from '../../primitive';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
 import { Includes } from '../Includes';
 import { MatchReadonly } from '../MatchReadonly';
 import { Push } from '../Push';
@@ -28,7 +29,9 @@ export type Unique<T extends Tuple, R extends Tuple = []> = T extends readonly [
   infer Current,
   ...infer Rest,
 ]
-  ? Includes<R, Current> extends true
-    ? Unique<MatchReadonly<T, Rest>, R>
-    : Unique<MatchReadonly<T, Rest>, Push<R, Current>>
+  ? If<
+      Includes<R, Current>,
+      Unique<MatchReadonly<T, Rest>, R>,
+      Unique<MatchReadonly<T, Rest>, Push<R, Current>>
+    >
   : MatchReadonly<T, R>;

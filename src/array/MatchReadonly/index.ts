@@ -1,4 +1,6 @@
-import { Tuple } from '../../primitive';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
 
 /**
  *
@@ -21,5 +23,8 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type MatchReadonly<T extends Tuple, R extends Tuple> =
-  T extends Array<unknown> ? R : readonly [...R];
+export type MatchReadonly<T extends Tuple, R extends Tuple> = If<
+  Extends<T, Array<unknown>>,
+  R,
+  readonly [...R]
+>;

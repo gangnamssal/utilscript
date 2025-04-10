@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Returns an array of keys and values from an object.
@@ -30,6 +33,6 @@
  */
 export type Entries<T extends Record<PropertyKey, any>> = NonNullable<
   {
-    [K in keyof T]: [K, Required<T>[K] extends never ? T[K] : Required<T>[K]];
+    [K in keyof T]: [K, If<Extends<Required<T>[K], never>, T[K], Required<T>[K]>];
   }[keyof T]
 >;

@@ -1,13 +1,13 @@
-import { If, IsNever } from '../../commonness';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { IsNever } from '../../commonness/IsNever';
 import { Get } from '../Get';
 
 type GetToObjectHelper<T, K extends string> = K extends keyof T
   ? Pick<T, K>
   : K extends `${infer A}.${infer B}`
     ? A extends keyof T
-      ? B extends ''
-        ? T[A]
-        : { [k in A]: GetToObjectHelper<T[A], B> }
+      ? If<Extends<B, ''>, T[A], { [k in A]: GetToObjectHelper<T[A], B> }>
       : never
     : K extends keyof T
       ? { [k in K]: T[K] }

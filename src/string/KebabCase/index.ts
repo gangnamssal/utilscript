@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Convert a string to kebab case
@@ -22,9 +25,13 @@
  *
  */
 export type KebabCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
-  ? Center extends Uppercase<Center>
-    ? Center extends Lowercase<Center>
-      ? `${Lowercase<Left>}${KebabCase<`${Center}${Right}`>}`
-      : `${Lowercase<Left>}-${KebabCase<`${Center}${Right}`>}`
-    : `${Lowercase<Left>}${KebabCase<`${Center}${Right}`>}`
+  ? If<
+      Extends<Center, Uppercase<Center>>,
+      If<
+        Extends<Center, Lowercase<Center>>,
+        `${Lowercase<Left>}${KebabCase<`${Center}${Right}`>}`,
+        `${Lowercase<Left>}-${KebabCase<`${Center}${Right}`>}`
+      >,
+      `${Lowercase<Left>}${KebabCase<`${Center}${Right}`>}`
+    >
   : Lowercase<S>;

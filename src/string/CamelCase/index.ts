@@ -1,4 +1,5 @@
-import { IsAlphabet } from '../../commonness';
+import { IsAlphabet } from '../../commonness/IsAlphabet';
+import { If } from '../../commonness/If';
 
 /**
  *
@@ -22,8 +23,10 @@ import { IsAlphabet } from '../../commonness';
  */
 export type CamelCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
   ? Left extends '_' | '-'
-    ? IsAlphabet<Center> extends true
-      ? `${Uppercase<Center>}${CamelCase<Right>}`
-      : `${Left}${CamelCase<`${Center}${Right}`>}`
+    ? If<
+        IsAlphabet<Center>,
+        `${Uppercase<Center>}${CamelCase<Right>}`,
+        `${Left}${CamelCase<`${Center}${Right}`>}`
+      >
     : `${Lowercase<Left>}${CamelCase<`${Center}${Right}`>}`
   : Lowercase<S>;

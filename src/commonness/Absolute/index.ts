@@ -1,4 +1,5 @@
 import { Equal } from '../Equal';
+import { Extends } from '../Extends';
 import { If } from '../If';
 import { IsAny } from '../IsAny';
 import { IsUnknown } from '../IsUnknown';
@@ -34,12 +35,14 @@ export type Absolute<T extends number | string | bigint> = If<
     never,
     `${T}` extends `-${infer Rest extends number | bigint}`
       ? Absolute<Rest>
-      : T extends `${number}`
-        ? `${T}`
-        : T extends number
-          ? If<Equal<T, number>, never, `${T}`>
-          : T extends bigint
-            ? If<Equal<T, bigint>, never, `${T}`>
-            : never
+      : If<
+          Extends<T, `${number}`>,
+          `${T}`,
+          If<
+            Extends<T, number>,
+            If<Equal<T, number>, never, `${T}`>,
+            If<Extends<T, bigint>, If<Equal<T, bigint>, never, `${T}`>, never>
+          >
+        >
   >
 >;

@@ -1,14 +1,20 @@
-import { Tuple } from '../../primitive';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
+import { Length } from '../Length';
 import { MatchReadonly } from '../MatchReadonly';
+import { Push } from '../Push';
 import { Reverse } from '../Reverse';
 
-type TakePositive<N, A extends Tuple, R extends Tuple = []> = R['length'] extends N
-  ? MatchReadonly<A, R>
-  : A extends [infer First, ...infer Rest]
-    ? TakePositive<N, Rest, [...R, First]>
+type TakePositive<N, A extends Tuple, R extends Tuple = []> = If<
+  Extends<Length<R>, N>,
+  MatchReadonly<A, R>,
+  A extends [infer First, ...infer Rest]
+    ? TakePositive<N, Rest, Push<R, First>>
     : A extends readonly [infer First, ...infer Rest]
-      ? readonly [...TakePositive<N, Rest, [...R, First]>]
-      : MatchReadonly<A, R>;
+      ? readonly [...TakePositive<N, Rest, Push<R, First>>]
+      : MatchReadonly<A, R>
+>;
 
 type TakeNegative<N extends number, A extends Tuple> = Reverse<TakePositive<N, Reverse<A>>>;
 

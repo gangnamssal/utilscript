@@ -1,4 +1,6 @@
-import { IsNever } from '../../commonness';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { IsNever } from '../../commonness/IsNever';
 
 /**
  *
@@ -61,13 +63,9 @@ import { IsNever } from '../../commonness';
  */
 
 export type LookUp<U, F, T = never> = U extends any
-  ? IsNever<T> extends true
-    ? F extends keyof U
-      ? U
-      : never
-    : F extends keyof U
-      ? T extends U[F]
-        ? U
-        : never
-      : never
+  ? If<
+      IsNever<T>,
+      F extends keyof U ? U : never,
+      F extends keyof U ? If<Extends<T, U[F]>, U, never> : never
+    >
   : never;

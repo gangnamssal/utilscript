@@ -1,5 +1,6 @@
-import { Push } from '../../array';
-import { Tuple } from '../../primitive';
+import { Length as ArrayLength } from '../../array/Length';
+import { Push } from '../../array/Push';
+import { Tuple } from '../../primitive/Tuple';
 
 /**
  *
@@ -23,4 +24,4 @@ import { Tuple } from '../../primitive';
 
 export type Length<S extends string, T extends Tuple = []> = S extends `${string}${infer Rest}`
   ? Length<Rest, Push<T, unknown>>
-  : T['length'];
+  : ArrayLength<T>;

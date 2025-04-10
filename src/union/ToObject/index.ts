@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Convert a union type to an object
@@ -20,4 +23,7 @@
  * @link https://www.utilscript.site/docs/usage-union/to-object
  *
  */
-export type ToObject<T extends PropertyKey> = { [K in T as K extends PropertyKey ? K : never]: K };
+
+export type ToObject<T extends PropertyKey> = {
+  [K in T as If<Extends<K, PropertyKey>, K, never>]: K;
+};

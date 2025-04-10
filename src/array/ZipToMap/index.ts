@@ -1,5 +1,5 @@
-import { Append } from '../../object';
-import { Tuple } from '../../primitive';
+import { Tuple } from '../../primitive/Tuple';
+import { Append } from '../../object/Append';
 
 /**
  *

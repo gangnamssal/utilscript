@@ -1,5 +1,7 @@
 import { Push, Length } from '../../array';
 import { Reverse } from '../../boolean';
+import { If } from '../../commonness/If';
+import { Extends } from '../../commonness/Extends';
 import { Tuple } from '../../primitive';
 import { ToString } from '../ToString';
 
@@ -15,35 +17,33 @@ type NumberToArray<
 type CompareDigit<
   T extends number,
   U extends number,
-  A extends Tuple<unknown> = [],
-  B extends Tuple<unknown> = [],
-> =
-  Length<A> extends T
-    ? Length<B> extends U
-      ? 'equal'
-      : 'less'
-    : Length<B> extends U
-      ? 'greater'
-      : CompareDigit<T, U, Push<A, unknown>, Push<B, unknown>>;
+  A extends Tuple = [],
+  B extends Tuple = [],
+> = If<
+  Extends<Length<A>, T>,
+  If<Extends<Length<B>, U>, 'equal', 'less'>,
+  Length<B> extends U ? 'greater' : CompareDigit<T, U, Push<A, unknown>, Push<B, unknown>>
+>;
 
 type GreaterThanHelper<
   T extends number,
   U extends number,
   A extends Tuple<number> = NumberToArray<ToString<T>>,
   B extends Tuple<number> = NumberToArray<ToString<U>>,
-  Index extends Tuple<unknown> = [],
-> =
-  CompareDigit<Length<A>, Length<B>> extends 'greater'
-    ? true
-    : CompareDigit<Length<A>, Length<B>> extends 'less'
-      ? false
-      : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'greater'
-        ? true
-        : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'less'
+  Index extends Tuple = [],
+> = If<
+  Extends<CompareDigit<Length<A>, Length<B>>, 'greater'>,
+  true,
+  CompareDigit<Length<A>, Length<B>> extends 'less'
+    ? false
+    : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'greater'
+      ? true
+      : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'less'
+        ? false
+        : Length<Push<Index, unknown>> extends Length<A> | Length<B>
           ? false
-          : Length<Push<Index, unknown>> extends Length<A> | Length<B>
-            ? false
-            : GreaterThanHelper<T, U, A, B, Push<Index, unknown>>;
+          : GreaterThanHelper<T, U, A, B, Push<Index, unknown>>
+>;
 
 /**
  *
@@ -70,10 +70,8 @@ type GreaterThanHelper<
  * @link https://www.utilscript.site/docs/usage-number/greater-than
  *
  */
-export type GreaterThan<T extends number, U extends number> = `${T}` extends `-${number}`
-  ? `${U}` extends `-${number}`
-    ? Reverse<GreaterThanHelper<T, U>>
-    : false
-  : `${U}` extends `-${number}`
-    ? true
-    : GreaterThanHelper<T, U>;
+export type GreaterThan<T extends number, U extends number> = If<
+  Extends<`${T}`, `-${number}`>,
+  If<Extends<`${U}`, `-${number}`>, Reverse<GreaterThanHelper<T, U>>, false>,
+  If<Extends<`${U}`, `-${number}`>, true, GreaterThanHelper<T, U>>
+>;

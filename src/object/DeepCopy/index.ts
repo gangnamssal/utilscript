@@ -1,4 +1,5 @@
-import { If, IsObject } from '../../commonness';
+import { If } from '../../commonness/If';
+import { IsObject } from '../../commonness/IsObject';
 
 /**
  *

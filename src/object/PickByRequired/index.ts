@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Pick properties that are required in an object
@@ -18,5 +21,5 @@
  *
  */
 export type PickByRequired<T> = {
-  [K in keyof T as Pick<T, K> extends Pick<Required<T>, K> ? K : never]: T[K];
+  [K in keyof T as If<Extends<Pick<T, K>, Pick<Required<T>, K>>, K, never>]: T[K];
 };

@@ -1,5 +1,7 @@
-import { Equal } from '../../commonness';
-import { Tuple } from '../../primitive';
+import { Equal } from '../../commonness/Equal';
+import { If } from '../../commonness/If';
+import { Extends } from '../../commonness/Extends';
+import { Tuple } from '../../primitive/Tuple';
 
 /**
  *
@@ -25,8 +27,13 @@ import { Tuple } from '../../primitive';
  *
  */
 
-export type Includes<T extends Tuple, U> = {
-  [P in keyof T]: Equal<T[P], U> extends true ? true : false;
-} extends { [key: number]: false }
-  ? false
-  : true;
+export type Includes<T extends Tuple, U> = If<
+  Extends<
+    {
+      [P in keyof T]: If<Equal<T[P], U>, true, false>;
+    },
+    { [key: number]: false }
+  >,
+  false,
+  true
+>;

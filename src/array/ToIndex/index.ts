@@ -1,5 +1,5 @@
-import { ToNumber } from './../../string';
-import { Tuple } from '../../primitive';
+import { ToNumber } from './../../string/ToNumber';
+import { Tuple } from '../../primitive/Tuple';
 
 /**
  *

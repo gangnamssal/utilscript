@@ -1,4 +1,4 @@
-import { IsNever } from '../../commonness';
+import { IsNever } from '../../commonness/IsNever';
 import { GetToObject } from '../GetToObject';
 
 /**
