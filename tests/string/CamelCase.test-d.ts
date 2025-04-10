@@ -1,6 +1,7 @@
 import { Equal, Expect } from '../../src/commonness';
 import { CamelCase } from '../../src/string';
 
+// 기본 테스트 케이스
 type cases = [
   Expect<Equal<CamelCase<'foobar'>, 'foobar'>>,
   Expect<Equal<CamelCase<'FOOBAR'>, 'foobar'>>,
@@ -30,4 +31,12 @@ type cases = [
   Expect<Equal<CamelCase<'foo_-bar'>, 'foo_Bar'>>,
   Expect<Equal<CamelCase<'$_foo'>, '$Foo'>>,
   Expect<Equal<CamelCase<'foo_$_bar'>, 'foo_$Bar'>>,
+];
+
+// 성능 테스트 케이스
+type LongString = 'a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x_y_z';
+
+type PerformanceTests = [
+  // 중간 길이 문자열 테스트
+  Expect<Equal<CamelCase<LongString>, 'aBCDEFGHIJKLMNOPQRSTUVWXYZ'>>,
 ];
