@@ -14,6 +14,13 @@ type cases = [
   Expect<Equal<IndexOf<'abcabc', 'abc'>, 0>>,
   Expect<Equal<IndexOf<'안녕하세요', '하'>, 2>>,
 
+  // 성능 테스트 케이스
+  Expect<Equal<IndexOf<'abcdefghijklmnopqrstuvwxyz', 'z'>, 25>>,
+  Expect<Equal<IndexOf<'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', 'z'>, 25>>,
+  Expect<Equal<IndexOf<'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', 'za'>, 25>>,
+  Expect<Equal<IndexOf<'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', '123'>, -1>>,
+  Expect<Equal<IndexOf<'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaa'>, 0>>,
+
   // @ts-expect-error: type error
   IndexOf<'hello', 1>,
   // @ts-expect-error: type error
