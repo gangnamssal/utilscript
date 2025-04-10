@@ -21,3 +21,37 @@ type cases = [
   // @ts-expect-error: type error
   Pop<undefined>,
 ];
+
+// 성능 테스트
+type LargeTuple = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+type LargeReadonlyTuple = readonly [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+];
+
+// 일반 튜플 성능 테스트
+type TestLargeTuple = Pop<LargeTuple>;
+// 읽기 전용 튜플 성능 테스트
+type TestLargeReadonlyTuple = Pop<LargeReadonlyTuple>;
+
+// 중첩 호출 성능 테스트
+type NestedPop<T extends any[]> = Pop<Pop<Pop<T>>>;
+type TestNestedPop = NestedPop<LargeTuple>;
