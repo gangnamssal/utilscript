@@ -25,4 +25,11 @@ type cases = [
   // 복합 엣지 케이스
   Expect<Equal<IndexOf<readonly [1, 2, 3] | [1, 2, 3], 2>, 1>>,
   Expect<Equal<IndexOf<readonly [1] & [1], 1>, 0>>,
+  // 성능 테스트 케이스
+  Expect<
+    Equal<IndexOf<[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 20>, 19>
+  >,
+  Expect<
+    Equal<IndexOf<[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 21>, -1>
+  >,
 ];

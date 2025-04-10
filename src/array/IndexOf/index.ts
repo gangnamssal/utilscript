@@ -1,5 +1,4 @@
 import { Equal } from '../../commonness/Equal';
-import { If } from '../../commonness/If';
 import { Tuple } from '../../primitive/Tuple';
 import { Length } from '../Length';
 import { Push } from '../Push';
@@ -30,5 +29,7 @@ export type IndexOf<T extends Tuple, U, Accumulator extends Tuple = []> = T exte
   infer Current,
   ...infer Rest,
 ]
-  ? If<Equal<Current, U>, Length<Accumulator>, IndexOf<Rest, U, Push<Accumulator, unknown>>>
+  ? Equal<Current, U> extends true
+    ? Length<Accumulator>
+    : IndexOf<Rest, U, Push<Accumulator, unknown>>
   : -1;
