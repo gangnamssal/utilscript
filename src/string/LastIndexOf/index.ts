@@ -1,7 +1,8 @@
-import { Tuple } from '../../primitive';
-import { Push } from '../../array';
+import { Tuple } from '../../primitive/Tuple';
+import { Push } from '../../array/Push';
 import { Length } from '../../array/Length';
 import { StartsWith } from '../StartWith';
+import { If } from '../../commonness/If';
 
 /**
  *
@@ -33,7 +34,9 @@ export type LastIndexOf<
   Accumulate extends Tuple = [],
   R extends number = -1,
 > = T extends `${infer Current}${infer Rest}`
-  ? StartsWith<U, Current> extends true
-    ? LastIndexOf<Rest, U, Push<Accumulate, unknown>, Length<Accumulate>>
-    : LastIndexOf<Rest, U, Push<Accumulate, unknown>, R>
+  ? If<
+      StartsWith<U, Current>,
+      LastIndexOf<Rest, U, Push<Accumulate, unknown>, Length<Accumulate>>,
+      LastIndexOf<Rest, U, Push<Accumulate, unknown>, R>
+    >
   : R;

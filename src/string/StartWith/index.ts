@@ -1,4 +1,5 @@
-import { Equal, If } from '../../commonness';
+import { Equal } from '../../commonness/Equal';
+import { If } from '../../commonness/If';
 
 /**
  *

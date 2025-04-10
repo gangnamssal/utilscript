@@ -1,4 +1,4 @@
-import { Blank } from '../../primitive';
+import { Blank } from '../../primitive/Blank';
 
 /**
  *

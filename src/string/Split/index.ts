@@ -1,4 +1,7 @@
-import { Equal, If, IsNever } from '../../commonness';
+import { Equal } from '../../commonness/Equal';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { IsNever } from '../../commonness/IsNever';
 import { Concat } from '../../array';
 
 /**
@@ -36,10 +39,10 @@ export type Split<S extends string, D extends string | never = never> = If<
   If<
     Equal<S, ''>,
     If<Equal<D, ''>, [], [S]>,
-    string extends S
-      ? string[]
-      : S extends `${infer First}${D}${infer Rest}`
-        ? Concat<[First], Split<Rest, D>>
-        : [S]
+    If<
+      Extends<string, S>,
+      string[],
+      S extends `${infer First}${D}${infer Rest}` ? Concat<[First], Split<Rest, D>> : [S]
+    >
   >
 >;
