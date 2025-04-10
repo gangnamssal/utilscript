@@ -1,4 +1,6 @@
-import { Tuple } from '../../primitive';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
 import { Length } from '../Length';
 import { Push } from '../Push';
 
@@ -34,12 +36,14 @@ export type Chunk<
   Split extends number,
   Temp extends Tuple = [],
   R extends Tuple = [],
-> = Split extends 0
-  ? A
-  : A extends readonly [infer AF, ...infer AR]
-    ? Length<[...Temp, AF]> extends Split
-      ? Chunk<AR, Split, [], Push<R, [...Temp, AF]>>
-      : Chunk<AR, Split, Push<Temp, AF>, R>
-    : Length<Temp> extends 0
-      ? R
-      : [...R, Temp];
+> = If<
+  Extends<Split, 0>,
+  A,
+  A extends readonly [infer AF, ...infer AR]
+    ? If<
+        Extends<Length<Push<Temp, AF>>, Split>,
+        Chunk<AR, Split, [], Push<R, Push<Temp, AF>>>,
+        Chunk<AR, Split, Push<Temp, AF>, R>
+      >
+    : If<Extends<Length<Temp>, 0>, R, Push<R, Temp>>
+>;

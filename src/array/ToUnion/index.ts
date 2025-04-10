@@ -1,4 +1,4 @@
-import { Tuple } from './../../primitive';
+import { Tuple } from '../../primitive/Tuple';
 
 /**
  *

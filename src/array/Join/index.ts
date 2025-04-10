@@ -1,4 +1,6 @@
-import { Tuple } from '../../primitive';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
 import { Length } from '../Length';
 
 /**
@@ -34,7 +36,9 @@ export type Join<
   infer Current extends string | number,
   ...infer Rest extends Tuple<string | number>,
 ]
-  ? Length<Rest> extends 0
-    ? Join<Rest, U, `${R}${Current}`>
-    : Join<Rest, U, `${R}${Current}${U}`>
+  ? If<
+      Extends<Length<Rest>, 0>,
+      Join<Rest, U, `${R}${Current}`>,
+      Join<Rest, U, `${R}${Current}${U}`>
+    >
   : R;

@@ -1,4 +1,5 @@
 import { Length } from '../Length';
+import { Push } from '../Push';
 
 /**
  *
@@ -21,6 +22,7 @@ import { Length } from '../Length';
  * @link https://www.utilscript.site/docs/usage-array/from
  *
  */
+
 export type From<L extends number, T extends unknown[] = []> =
   // 음수인 경우 never 반환
   `${L}` extends `-${number}`
@@ -30,4 +32,4 @@ export type From<L extends number, T extends unknown[] = []> =
       ? never
       : Length<T> extends L
         ? T
-        : From<L, [...T, unknown]>;
+        : From<L, Push<T, unknown>>;

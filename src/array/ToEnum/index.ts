@@ -1,4 +1,4 @@
-import { Tuple } from '../../primitive';
+import { Tuple } from '../../primitive/Tuple';
 import { Push } from '../Push';
 import { ToIndex } from '../ToIndex';
 import { Zip } from '../Zip';

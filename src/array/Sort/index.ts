@@ -1,5 +1,5 @@
-import { If } from '../../commonness';
-import { Tuple } from '../../primitive';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
 import { IndexOf } from '../IndexOf';
 import { Length } from '../Length';
 import { Max } from '../Max';

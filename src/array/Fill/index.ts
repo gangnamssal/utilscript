@@ -1,4 +1,6 @@
-import { Tuple } from '../../primitive';
+import { If } from '../../commonness/If';
+import { Extends } from '../../commonness/Extends';
+import { Tuple } from '../../primitive/Tuple';
 import { Length } from '../Length';
 import { Push } from '../Push';
 
@@ -44,13 +46,21 @@ export type Fill<
   Result extends Tuple = [],
   InRange extends boolean = false,
 > = T extends readonly [infer First, ...infer Rest]
-  ? Start extends End
-    ? T
-    : Length<Result> extends Start
-      ? Fill<Rest, N, Start, End, Push<Result, N>, true>
-      : InRange extends true
-        ? Length<Result> extends End
-          ? Fill<Rest, N, Start, End, Push<Result, First>, false>
-          : Fill<Rest, N, Start, End, Push<Result, N>, true>
-        : Fill<Rest, N, Start, End, Push<Result, First>, false>
+  ? If<
+      Extends<Start, End>,
+      T,
+      If<
+        Extends<Length<Result>, Start>,
+        Fill<Rest, N, Start, End, Push<Result, N>, true>,
+        If<
+          InRange,
+          If<
+            Extends<Length<Result>, End>,
+            Fill<Rest, N, Start, End, Push<Result, First>, false>,
+            Fill<Rest, N, Start, End, Push<Result, N>, true>
+          >,
+          Fill<Rest, N, Start, End, Push<Result, First>, false>
+        >
+      >
+    >
   : Result;
