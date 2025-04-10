@@ -1,10 +1,4 @@
-import { IsAny } from '../IsAny';
-import { If } from '../If';
-import { IsUnion } from '../IsUnion';
-import { IsObject } from '../IsObject';
-import { IsUnknown } from '../IsUnknown';
-import { IsNever } from '../IsNever';
-
+import { Equal } from '../Equal';
 /**
  *
  * Check if the type is a pure number
@@ -25,16 +19,4 @@ import { IsNever } from '../IsNever';
  * @link https://www.utilscript.site/docs/usage-commonness/is-pure-number
  *
  */
-export type IsPureNumber<T> = If<
-  IsNever<T>,
-  false,
-  If<
-    IsAny<T>,
-    false,
-    If<
-      IsUnknown<T>,
-      false,
-      If<IsObject<T>, false, number extends T ? If<IsUnion<T>, false, true> : false>
-    >
-  >
->;
+export type IsPureNumber<T> = Equal<T, number>;
