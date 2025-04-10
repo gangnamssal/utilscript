@@ -29,5 +29,9 @@ export type Min<T extends Tuple<number>, R extends number = T[0]> = T extends re
   infer First extends number,
   ...infer Rest extends Tuple<number>,
 ]
-  ? If<GreaterThan<R, First>, Min<Rest, First>, Min<Rest, R>>
-  : If<Extends<R, undefined>, never, R>;
+  ? GreaterThan<R, First> extends true
+    ? Min<Rest, First>
+    : Min<Rest, R>
+  : Extends<R, undefined> extends true
+    ? never
+    : R;
