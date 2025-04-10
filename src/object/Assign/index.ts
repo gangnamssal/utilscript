@@ -1,5 +1,6 @@
-import { IsObject } from '../../commonness';
-import { Tuple } from '../../primitive';
+import { If } from '../../commonness/If';
+import { IsObject } from '../../commonness/IsObject';
+import { Tuple } from '../../primitive/Tuple';
 import { Merge } from '../Merge';
 
 /**
@@ -36,7 +37,5 @@ export type Assign<T extends Record<PropertyKey, unknown>, U extends Tuple> = U 
   infer First,
   ...infer Rest,
 ]
-  ? IsObject<First> extends true
-    ? Assign<Merge<T, First>, Rest>
-    : Assign<T, Rest>
+  ? If<IsObject<First>, Assign<Merge<T, First>, Rest>, Assign<T, Rest>>
   : T;

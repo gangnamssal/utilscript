@@ -1,8 +1,9 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 type RecursiveGetType<T, K extends string> = K extends `${infer First}.${infer Rest}`
   ? First extends keyof T
-    ? Rest extends ''
-      ? T[First]
-      : RecursiveGetType<T[First], Rest>
+    ? If<Extends<Rest, ''>, T[First], RecursiveGetType<T[First], Rest>>
     : never
   : K extends keyof T
     ? T[K]

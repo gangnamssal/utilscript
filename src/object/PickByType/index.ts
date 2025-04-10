@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Pick object properties by value type
@@ -28,4 +31,6 @@
  *
  */
 
-export type PickByType<T, U> = { [P in keyof T as T[P] extends U ? P : never]: T[P] };
+export type PickByType<T, U> = {
+  [P in keyof T as If<Extends<T[P], U>, P, never>]: T[P];
+};

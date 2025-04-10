@@ -1,4 +1,6 @@
-import { Tuple } from '../../primitive';
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+import { Tuple } from '../../primitive/Tuple';
 
 /**
  *
@@ -23,8 +25,6 @@ import { Tuple } from '../../primitive';
 
 export type DeepReadonly<T> = {
   readonly [k in keyof T]: T[k] extends Record<PropertyKey, any>
-    ? T[k] extends (...args: Tuple) => unknown
-      ? T[k]
-      : DeepReadonly<T[k]>
+    ? If<Extends<T[k], (...args: Tuple) => unknown>, T[k], DeepReadonly<T[k]>>
     : T[k];
 };

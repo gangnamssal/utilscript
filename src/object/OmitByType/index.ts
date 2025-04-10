@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Creates a new type by excluding properties of type U from object type T.
@@ -26,5 +29,5 @@
  *
  */
 export type OmitByType<T, U> = {
-  [P in keyof T as Exclude<T[P], U> extends never ? never : P]: Exclude<T[P], U>;
+  [P in keyof T as If<Extends<Exclude<T[P], U>, never>, never, P>]: Exclude<T[P], U>;
 };

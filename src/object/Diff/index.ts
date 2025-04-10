@@ -1,4 +1,5 @@
-import { Equal } from '../../commonness';
+import { Equal } from '../../commonness/Equal';
+import { If } from '../../commonness/If';
 
 /**
  *
@@ -43,9 +44,7 @@ import { Equal } from '../../commonness';
 export type Diff<O, O1> = {
   [K in keyof (O & O1) as K extends keyof O
     ? K extends keyof O1
-      ? Equal<O[K], O1[K]> extends true
-        ? never
-        : K
+      ? If<Equal<O[K], O1[K]>, never, K>
       : K
     : K extends keyof O1
       ? K

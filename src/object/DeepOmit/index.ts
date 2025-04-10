@@ -1,3 +1,6 @@
+import { Extends } from '../../commonness/Extends';
+import { If } from '../../commonness/If';
+
 /**
  *
  * Utility type to deeply omit properties from an object by a string path
@@ -36,10 +39,10 @@ export type DeepOmit<O extends Record<PropertyKey, unknown>, K extends string> =
   ? Omit<O, K>
   : {
       [P in keyof O]: K extends `${infer Key}.${infer Rest}`
-        ? Key extends P
-          ? O[Key] extends Record<PropertyKey, unknown>
-            ? DeepOmit<O[Key], Rest>
-            : O[P]
-          : O[P]
+        ? If<
+            Extends<Key, P>,
+            O[Key] extends Record<PropertyKey, unknown> ? DeepOmit<O[Key], Rest> : O[P],
+            O[P]
+          >
         : O[P];
     };
