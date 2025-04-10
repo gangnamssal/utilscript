@@ -14,16 +14,14 @@ type NumberToArray<
     ? NumberToArray<Rest, Push<T, Digit>>
     : T;
 
-type CompareDigit<
-  T extends number,
-  U extends number,
-  A extends Tuple = [],
-  B extends Tuple = [],
-> = If<
-  Extends<Length<A>, T>,
-  If<Extends<Length<B>, U>, 'equal', 'less'>,
-  Length<B> extends U ? 'greater' : CompareDigit<T, U, Push<A, unknown>, Push<B, unknown>>
->;
+type CompareDigit<T extends number, U extends number, A extends Tuple = [], B extends Tuple = []> =
+  Length<A> extends T
+    ? Length<B> extends U
+      ? 'equal'
+      : 'less'
+    : Length<B> extends U
+      ? 'greater'
+      : CompareDigit<T, U, Push<A, unknown>, Push<B, unknown>>;
 
 type GreaterThanHelper<
   T extends number,
@@ -31,19 +29,18 @@ type GreaterThanHelper<
   A extends Tuple<number> = NumberToArray<ToString<T>>,
   B extends Tuple<number> = NumberToArray<ToString<U>>,
   Index extends Tuple = [],
-> = If<
-  Extends<CompareDigit<Length<A>, Length<B>>, 'greater'>,
-  true,
-  CompareDigit<Length<A>, Length<B>> extends 'less'
-    ? false
-    : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'greater'
-      ? true
-      : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'less'
-        ? false
-        : Length<Push<Index, unknown>> extends Length<A> | Length<B>
+> =
+  CompareDigit<Length<A>, Length<B>> extends 'greater'
+    ? true
+    : CompareDigit<Length<A>, Length<B>> extends 'less'
+      ? false
+      : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'greater'
+        ? true
+        : CompareDigit<A[Length<Index>], B[Length<Index>]> extends 'less'
           ? false
-          : GreaterThanHelper<T, U, A, B, Push<Index, unknown>>
->;
+          : Length<Push<Index, unknown>> extends Length<A> | Length<B>
+            ? false
+            : GreaterThanHelper<T, U, A, B, Push<Index, unknown>>;
 
 /**
  *
