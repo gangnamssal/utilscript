@@ -50,6 +50,41 @@ type MaybeUser = { id: number; username: string } | null | undefined;
 type Animal = Cat | Dog;
 type People = Person | Employee;
 
+// 성능 테스트를 위한 복잡한 중첩 타입
+type NestedLevel1 = { a: string };
+type NestedLevel2 = { b: NestedLevel1 };
+type NestedLevel3 = { c: NestedLevel2 };
+type NestedLevel4 = { d: NestedLevel3 };
+type NestedLevel5 = { e: NestedLevel4 };
+type NestedLevel6 = { f: NestedLevel5 };
+type NestedLevel7 = { g: NestedLevel6 };
+type NestedLevel8 = { h: NestedLevel7 };
+type NestedLevel9 = { i: NestedLevel8 };
+type NestedLevel10 = { j: NestedLevel9 };
+
+// 대규모 유니온 타입
+type LargeUnion =
+  | { type: 'type1'; value: string }
+  | { type: 'type2'; value: number }
+  | { type: 'type3'; value: boolean }
+  | { type: 'type4'; value: string[] }
+  | { type: 'type5'; value: Record<string, any> }
+  | { type: 'type6'; value: Map<string, any> }
+  | { type: 'type7'; value: Set<any> }
+  | { type: 'type8'; value: Promise<any> }
+  | { type: 'type9'; value: () => void }
+  | { type: 'type10'; value: Date }
+  | { type: 'type11'; value: RegExp }
+  | { type: 'type12'; value: Error }
+  | { type: 'type13'; value: ArrayBuffer }
+  | { type: 'type14'; value: SharedArrayBuffer }
+  | { type: 'type15'; value: Uint8Array }
+  | { type: 'type16'; value: Int8Array }
+  | { type: 'type17'; value: Uint16Array }
+  | { type: 'type18'; value: Int16Array }
+  | { type: 'type19'; value: Uint32Array }
+  | { type: 'type20'; value: Int32Array };
+
 type cases = [
   Expect<Equal<LookUp<Animal, 'type', 'dog'>, Dog>>,
   Expect<Equal<LookUp<Animal, 'type', 'cat'>, Cat>>,
@@ -115,4 +150,25 @@ type cases = [
   Expect<Equal<LookUp<{ a: { b: 1 } } | { a: { b: 2 } }, 'a', { b: 1 }>, { a: { b: 1 } }>>,
   Expect<Equal<LookUp<{ a: any }, 'a'>, { a: any }>>,
   Expect<Equal<LookUp<{ a: unknown }, 'a'>, { a: unknown }>>,
+
+  // 성능 테스트 케이스
+  // 깊게 중첩된 객체 테스트
+  Expect<Equal<LookUp<NestedLevel10, 'j'>, NestedLevel10>>,
+
+  // 대규모 유니온 타입 테스트
+  Expect<Equal<LookUp<LargeUnion, 'type', 'type10'>, { type: 'type10'; value: Date }>>,
+
+  // 복잡한 조건부 타입 체인 테스트
+  Expect<Equal<LookUp<LargeUnion, 'value', string>, { type: 'type1'; value: string }>>,
+
+  // 대량의 유니온 타입 처리 테스트
+  Expect<Equal<LookUp<LargeUnion, 'type'>, LargeUnion>>,
+
+  // 재귀적 타입 처리 테스트
+  Expect<
+    Equal<
+      LookUp<NestedLevel10 | { recursive: NestedLevel10 }, 'recursive'>,
+      { recursive: NestedLevel10 }
+    >
+  >,
 ];

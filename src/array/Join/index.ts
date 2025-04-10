@@ -36,9 +36,7 @@ export type Join<
   infer Current extends string | number,
   ...infer Rest extends Tuple<string | number>,
 ]
-  ? If<
-      Extends<Length<Rest>, 0>,
-      Join<Rest, U, `${R}${Current}`>,
-      Join<Rest, U, `${R}${Current}${U}`>
-    >
+  ? Length<Rest> extends 0
+    ? Join<Rest, U, `${R}${Current}`>
+    : Join<Rest, U, `${R}${Current}${U}`>
   : R;

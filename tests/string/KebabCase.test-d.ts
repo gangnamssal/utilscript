@@ -17,4 +17,18 @@ type cases = [
   Expect<Equal<KebabCase<'Foo Bar'>, 'foo -bar'>>,
   Expect<Equal<KebabCase<'Foo--Bar'>, 'foo---bar'>>,
   Expect<Equal<KebabCase<'__FOO_BAR__'>, '__-f-o-o_-b-a-r__'>>,
+
+  // 성능 테스트 케이스
+  Expect<
+    Equal<
+      KebabCase<'ABCDEFGHIJKLMNOPQRSTUVWXYZ'>,
+      'a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z'
+    >
+  >,
+  Expect<
+    Equal<
+      KebabCase<'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'>,
+      'abcdefghijklmnopqrstuvwxyz-a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z'
+    >
+  >,
 ];

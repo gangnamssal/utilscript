@@ -34,3 +34,13 @@ type cases = [
   // @ts-expect-error: type error
   Expect<Equal<Absolute<unknown>, never>>,
 ];
+
+// 성능 테스트
+type PerformanceTest1 = Absolute<-9999999999999>;
+type PerformanceTest2 = Absolute<'-9999999999999'>;
+type PerformanceTest3 = Absolute<-9999999999999n>;
+type PerformanceTest5 = Absolute<'-123456789.123456789'>;
+
+// 대규모 중첩 테스트
+type Nested1 = Absolute<`-${Absolute<'-123'>}`>; // '123'
+type Nested2 = Absolute<`-${Absolute<`-${Absolute<'-456'>}`>}`>; // '456'

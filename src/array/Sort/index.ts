@@ -1,4 +1,3 @@
-import { If } from '../../commonness/If';
 import { Tuple } from '../../primitive/Tuple';
 import { IndexOf } from '../IndexOf';
 import { Length } from '../Length';
@@ -35,8 +34,6 @@ type SortDesc<T extends Tuple<number>, R extends Tuple = []> =
  *
  */
 
-export type Sort<T extends Tuple<number>, Desc extends boolean = false> = If<
-  Desc,
-  SortDesc<T>,
-  SortAsc<T>
->;
+export type Sort<T extends Tuple<number>, Desc extends boolean = false> = Desc extends true
+  ? SortDesc<T>
+  : SortAsc<T>;

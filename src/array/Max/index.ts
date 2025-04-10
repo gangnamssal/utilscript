@@ -1,5 +1,4 @@
 import { Extends } from '../../commonness/Extends';
-import { If } from '../../commonness/If';
 import { GreaterThan } from '../../number/GreaterThan';
 import { Tuple } from '../../primitive/Tuple';
 
@@ -28,5 +27,9 @@ export type Max<T extends Tuple<number>, R extends number = T[0]> = T extends re
   infer First extends number,
   ...infer Rest extends Tuple<number>,
 ]
-  ? If<GreaterThan<R, First>, Max<Rest, R>, Max<Rest, First>>
-  : If<Extends<R, undefined>, never, R>;
+  ? GreaterThan<R, First> extends true
+    ? Max<Rest, R>
+    : Max<Rest, First>
+  : Extends<R, undefined> extends true
+    ? never
+    : R;

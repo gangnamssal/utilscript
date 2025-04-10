@@ -30,3 +30,47 @@ type errors = [
   // @ts-expect-error: type error
   Shift<undefined>,
 ];
+
+// 성능 테스트
+type LargeTuple = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+];
+
+type ShiftPerformanceTest = Shift<LargeTuple>;
+type ShiftNestedTest = Shift<Shift<Shift<LargeTuple>>>;
+
+// 재귀적 성능 테스트
+type RecursiveShift<T extends any[], Count extends number = 5> = Count extends 0
+  ? T
+  : RecursiveShift<Shift<T>, [-1, 0, 1, 2, 3, 4][Count]>;
+
+type RecursiveShiftTest = RecursiveShift<LargeTuple>;

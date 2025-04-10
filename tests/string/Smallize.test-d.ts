@@ -18,3 +18,14 @@ type cases = [
   Expect<Equal<Smallize<'_FooBar'>, '_fooBar'>>,
   Expect<Equal<Smallize<'-FooBar'>, '-fooBar'>>,
 ];
+
+// 성능 테스트
+type LongString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+type SmallizedLongString =
+  'aBCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+type PerformanceTest = Expect<Equal<Smallize<LongString>, SmallizedLongString>>;
+
+// 복잡한 문자열 성능 테스트
+type ComplexString = 'A_B-C123DEF_GHI-JKL';
+type SmallizedComplexString = 'a_b-c123dEF_gHI-jKL';
+type ComplexPerformanceTest = Expect<Equal<Smallize<ComplexString>, SmallizedComplexString>>;

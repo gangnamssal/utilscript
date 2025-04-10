@@ -1,6 +1,7 @@
 import { Equal, Expect } from '../../src/commonness';
 import { Max } from '../../src/array';
 
+// 기본 테스트 케이스
 type cases = [
   Expect<Equal<Max<[3, 2, 1]>, 3>>,
   Expect<Equal<Max<[5, 4, 7, 2, 9]>, 9>>,
@@ -8,4 +9,64 @@ type cases = [
   Expect<Equal<Max<[-1, -2, -3]>, -1>>,
   Expect<Equal<Max<[0]>, 0>>,
   Expect<Equal<Max<[]>, never>>,
+];
+
+// 성능 테스트 케이스
+type LargeArray = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+];
+
+type PerformanceTest = [
+  Expect<Equal<Max<LargeArray>, 50>>,
+  Expect<Equal<Max<[...LargeArray, 100]>, 100>>,
+  Expect<Equal<Max<[100, ...LargeArray]>, 100>>,
 ];

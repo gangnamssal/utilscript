@@ -1,12 +1,12 @@
-import { Extends } from '../../commonness/Extends';
-import { If } from '../../commonness/If';
 import { Tuple } from '../../primitive/Tuple';
 import { Concat } from '../Concat';
 import { Length } from '../Length';
 import { Push } from '../Push';
 
 type IsDepthExist<T extends Tuple> = T extends readonly [infer First, ...infer Rest]
-  ? If<Extends<First, Tuple>, true, IsDepthExist<Rest>>
+  ? First extends Tuple
+    ? true
+    : IsDepthExist<Rest>
   : false;
 
 type FlattenHelper<T extends Tuple> = T extends readonly [infer First, ...infer Rest]
@@ -45,4 +45,6 @@ type FlattenHelper<T extends Tuple> = T extends readonly [infer First, ...infer 
 export type Flatten<T extends Tuple, D extends number = 1, A extends Tuple = []> =
   IsDepthExist<T> extends false
     ? T
-    : If<Extends<Length<A>, D>, T, Flatten<FlattenHelper<T>, D, Push<A, unknown>>>;
+    : Length<A> extends D
+      ? T
+      : Flatten<FlattenHelper<T>, D, Push<A, unknown>>;

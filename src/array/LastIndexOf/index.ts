@@ -1,5 +1,4 @@
 import { Equal } from '../../commonness/Equal';
-import { If } from '../../commonness/If';
 import { Push } from '../Push';
 import { Length } from '../Length';
 import { Tuple } from '../../primitive/Tuple';
@@ -34,9 +33,7 @@ export type LastIndexOf<
   Accumulate extends Tuple = [],
   R extends number = -1,
 > = T extends readonly [infer Current, ...infer Rest]
-  ? If<
-      Equal<Current, U>,
-      LastIndexOf<Rest, U, Push<Accumulate, unknown>, Length<Accumulate>>,
-      LastIndexOf<Rest, U, Push<Accumulate, unknown>, R>
-    >
+  ? Equal<Current, U> extends true
+    ? LastIndexOf<Rest, U, Push<Accumulate, unknown>, Length<Accumulate>>
+    : LastIndexOf<Rest, U, Push<Accumulate, unknown>, R>
   : R;

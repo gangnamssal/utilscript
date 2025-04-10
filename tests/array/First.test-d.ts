@@ -31,6 +31,43 @@ type cases = [
   Expect<Equal<First<[...(readonly string[])]>, string>>,
   Expect<Equal<First<[...(readonly number[])]>, number>>,
   Expect<Equal<First<[...(readonly boolean[])]>, boolean>>,
+  // 성능 테스트 케이스
+  Expect<Equal<First<[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]>, 1>>,
+  Expect<
+    Equal<
+      First<
+        [
+          'a',
+          'b',
+          'c',
+          'd',
+          'e',
+          'f',
+          'g',
+          'h',
+          'i',
+          'j',
+          'k',
+          'l',
+          'm',
+          'n',
+          'o',
+          'p',
+          'q',
+          'r',
+          's',
+          't',
+        ]
+      >,
+      'a'
+    >
+  >,
+  Expect<
+    Equal<
+      First<[...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], ...[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]>,
+      1
+    >
+  >,
 ];
 
 type errors = [

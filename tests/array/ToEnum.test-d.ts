@@ -21,6 +21,40 @@ const SingleItem = ['item'] as const;
 const EmptyArray = [] as const;
 const MixedCaseItems = ['camelCase', 'PascalCase', 'snake_case', 'kebab-case'] as const;
 
+// 성능 테스트를 위한 큰 배열
+const LargeArray = [
+  'item1',
+  'item2',
+  'item3',
+  'item4',
+  'item5',
+  'item6',
+  'item7',
+  'item8',
+  'item9',
+  'item10',
+  'item11',
+  'item12',
+  'item13',
+  'item14',
+  'item15',
+  'item16',
+  'item17',
+  'item18',
+  'item19',
+  'item20',
+  'item21',
+  'item22',
+  'item23',
+  'item24',
+  'item25',
+  'item26',
+  'item27',
+  'item28',
+  'item29',
+  'item30',
+] as const;
+
 type cases = [
   Expect<Equal<ToEnum<[]>, {}>>,
   Expect<Equal<ToEnum<typeof EmptyArray>, {}>>,
@@ -91,4 +125,7 @@ type cases = [
       }
     >
   >,
+  // 성능 테스트 케이스
+  Expect<ToEnum<typeof LargeArray> extends Record<string, string> ? true : false>,
+  Expect<ToEnum<typeof LargeArray, true> extends Record<string, number> ? true : false>,
 ];

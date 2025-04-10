@@ -11,6 +11,7 @@ const emptyTuple = [] as const;
 const singleElementTuple = ['single'] as const;
 const duplicateKeysTuple = ['a', 'b', 'a'] as const;
 
+// 기본 테스트 케이스
 type cases = [
   Expect<
     Equal<
@@ -26,6 +27,44 @@ type cases = [
   Expect<Equal<ToObject<typeof duplicateKeysTuple>, { a: 'a'; b: 'b' }>>,
 ];
 
+// 성능 테스트: 대규모 튜플 처리
+type LargeTuple = [
+  'a1',
+  'a2',
+  'a3',
+  'a4',
+  'a5',
+  'a6',
+  'a7',
+  'a8',
+  'a9',
+  'a10',
+  'b1',
+  'b2',
+  'b3',
+  'b4',
+  'b5',
+  'b6',
+  'b7',
+  'b8',
+  'b9',
+  'b10',
+  'c1',
+  'c2',
+  'c3',
+  'c4',
+  'c5',
+  'c6',
+  'c7',
+  'c8',
+  'c9',
+  'c10',
+];
+
+// 대규모 튜플에 대한 ToObject 성능 테스트
+type LargeObjectResult = ToObject<LargeTuple>;
+
+// 에러 케이스
 // @ts-expect-error: type error
 type error = ToObject<[[1, 2], object]>;
 

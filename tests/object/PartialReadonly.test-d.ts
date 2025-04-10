@@ -19,6 +19,7 @@ interface Expected {
   completed: boolean;
 }
 
+// 기본 테스트 케이스
 type cases = [
   Expect<Alike<PartialReadonly<Todo1>, Readonly<Todo1>>>,
   Expect<Alike<PartialReadonly<Todo1, 'title' | 'description'>, Expected>>,
@@ -49,6 +50,40 @@ type cases = [
   >,
   Expect<Equal<PartialReadonly<{ [k: number]: string }, number>, { readonly [k: number]: string }>>,
 ];
+
+// 성능 테스트
+type LargeObject = {
+  prop1: string;
+  prop2: number;
+  prop3: boolean;
+  prop4: string[];
+  prop5: { nested: string };
+  prop6: () => void;
+  prop7: Map<string, any>;
+  prop8: Set<number>;
+  prop9: Promise<void>;
+  prop10: Date;
+  // ... 더 많은 속성들
+  prop20: Record<string, unknown>;
+};
+
+// 대규모 객체에 대한 성능 테스트
+type LargeReadonlyTest = PartialReadonly<LargeObject, 'prop1' | 'prop5' | 'prop10'>;
+
+// 깊은 중첩 객체에 대한 성능 테스트
+type NestedObject = {
+  level1: {
+    level2: {
+      level3: {
+        level4: {
+          level5: string;
+        };
+      };
+    };
+  };
+};
+
+type NestedReadonlyTest = PartialReadonly<NestedObject, 'level1'>;
 
 // @ts-expect-error: not working in production
 type error = MyReadonly2<Todo1, 'title' | 'invalid'>;

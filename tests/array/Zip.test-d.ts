@@ -14,3 +14,12 @@ type cases = [
   Expect<Equal<Zip<[never], [unknown]>, [[never, unknown]]>>,
   Expect<Equal<Zip<[any], [string]>, [[any, string]]>>,
 ];
+
+// 성능 테스트 - 큰 배열에서의 동작 확인
+type LargeArray1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+type LargeArray2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'];
+
+type LargeZipResult = Zip<LargeArray1, LargeArray2>;
+
+// 중첩된 Zip 성능 테스트
+type NestedZipTest = Zip<Zip<[1, 2], [3, 4]>, Zip<[5, 6], [7, 8]>>;

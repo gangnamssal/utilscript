@@ -1,6 +1,3 @@
-import { Extends } from '../../commonness/Extends';
-import { If } from '../../commonness/If';
-
 /**
  *
  * Convert a string to snake case
@@ -29,13 +26,9 @@ import { If } from '../../commonness/If';
  */
 
 export type SnakeCase<S extends string> = S extends `${infer Left}${infer Center}${infer Right}`
-  ? If<
-      Extends<Center, Uppercase<Center>>,
-      If<
-        Extends<Center, Lowercase<Center>>,
-        `${Lowercase<Left>}${SnakeCase<`${Center}${Right}`>}`,
-        `${Lowercase<Left>}_${SnakeCase<`${Center}${Right}`>}`
-      >,
-      `${Lowercase<Left>}${SnakeCase<`${Center}${Right}`>}`
-    >
+  ? Center extends Uppercase<Center>
+    ? Center extends Lowercase<Center>
+      ? `${Lowercase<Left>}${SnakeCase<`${Center}${Right}`>}`
+      : `${Lowercase<Left>}_${SnakeCase<`${Center}${Right}`>}`
+    : `${Lowercase<Left>}${SnakeCase<`${Center}${Right}`>}`
   : Lowercase<S>;

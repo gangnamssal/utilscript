@@ -14,4 +14,15 @@ type cases = [
 
   // @ts-expect-error: type error
   Expect<Equal<From<string>, never>>,
+
+  // 성능 테스트 케이스
+  Expect<Equal<From<100>['length'], 100>>,
+  Expect<Equal<From<200>['length'], 200>>,
+  Expect<Equal<From<300>['length'], 300>>,
+  Expect<Equal<From<400>['length'], 400>>,
+  Expect<Equal<From<500>['length'], 500>>,
+  Expect<Equal<From<600>['length'], 600>>,
+  Expect<Equal<From<700>['length'], 700>>,
+  Expect<Equal<From<800>['length'], 800>>,
+  Expect<Equal<From<900>['length'], 900>>,
 ];

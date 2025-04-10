@@ -1,22 +1,29 @@
-import { Extends } from '../../commonness/Extends';
-import { If } from '../../commonness/If';
 import { Tuple } from '../../primitive/Tuple';
+import { From } from '../From';
 import { Length } from '../Length';
 import { MatchReadonly } from '../MatchReadonly';
 import { Push } from '../Push';
-import { Reverse } from '../Reverse';
 
-type TakePositive<N, A extends Tuple, R extends Tuple = []> = If<
-  Extends<Length<R>, N>,
-  MatchReadonly<A, R>,
-  A extends [infer First, ...infer Rest]
-    ? TakePositive<N, Rest, Push<R, First>>
-    : A extends readonly [infer First, ...infer Rest]
-      ? readonly [...TakePositive<N, Rest, Push<R, First>>]
-      : MatchReadonly<A, R>
->;
+type TakePositive<N, A extends Tuple, R extends Tuple = []> =
+  Length<R> extends N
+    ? MatchReadonly<A, R>
+    : A extends [infer First, ...infer Rest]
+      ? TakePositive<N, Rest, Push<R, First>>
+      : A extends readonly [infer First, ...infer Rest]
+        ? readonly [...TakePositive<N, Rest, Push<R, First>>]
+        : MatchReadonly<A, R>;
 
-type TakeNegative<N extends number, A extends Tuple> = Reverse<TakePositive<N, Reverse<A>>>;
+type TakeNegative<
+  N extends number,
+  A extends Tuple,
+  R extends Tuple = [],
+  CurrentIndex extends Tuple = From<Length<A>>,
+> =
+  Length<R> extends N
+    ? MatchReadonly<A, R>
+    : CurrentIndex extends readonly [...infer Rest, any]
+      ? TakeNegative<N, A, [A[Length<Rest>], ...R], Rest>
+      : MatchReadonly<A, R>;
 
 /**
  *
