@@ -1,3 +1,4 @@
+import { Tuple } from '../../primitive/Tuple';
 import { Length } from '../Length';
 import { Push } from '../Push';
 
@@ -23,7 +24,7 @@ import { Push } from '../Push';
  *
  */
 
-export type From<L extends number, T extends unknown[] = []> =
+export type From<L extends number, T extends Tuple = []> =
   // 음수인 경우 never 반환
   `${L}` extends `-${number}`
     ? never
