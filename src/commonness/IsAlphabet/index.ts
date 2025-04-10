@@ -1,6 +1,3 @@
-import { Extends } from '../Extends';
-import { If } from '../If';
-
 /**
  *
  * Check if the string is an alphabet
@@ -26,5 +23,7 @@ export type IsAlphabet<
   S extends string,
   R extends boolean = false,
 > = S extends `${infer First}${infer Rest}`
-  ? If<Extends<Uppercase<First>, Lowercase<First>>, false, IsAlphabet<Rest, true>>
+  ? Uppercase<First> extends Lowercase<First>
+    ? false
+    : IsAlphabet<Rest, true>
   : R;

@@ -40,3 +40,20 @@ type cases = [
   // @ts-expect-error: type error
   Expect<Equal<IsAlphabet<symbol>, false>>,
 ];
+
+// 성능 테스트
+type LongAlphabetString = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+type LongNonAlphabetString = '1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+type MixedString = 'abc123XYZ!@#';
+type VeryLongAlphabetString = `${LongAlphabetString}${LongAlphabetString}${LongAlphabetString}`;
+
+type PerformanceCases = [
+  // 긴 알파벳 문자열 테스트
+  Expect<Equal<IsAlphabet<LongAlphabetString>, true>>,
+  // 긴 비알파벳 문자열 테스트
+  Expect<Equal<IsAlphabet<LongNonAlphabetString>, false>>,
+  // 혼합 문자열 테스트
+  Expect<Equal<IsAlphabet<MixedString>, false>>,
+  // 매우 긴 알파벳 문자열 테스트 (재귀 깊이 테스트)
+  Expect<Equal<IsAlphabet<VeryLongAlphabetString>, true>>,
+];
