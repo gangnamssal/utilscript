@@ -36,14 +36,10 @@ export type Chunk<
   Split extends number,
   Temp extends Tuple = [],
   R extends Tuple = [],
-> = If<
-  Extends<Split, 0>,
-  A,
-  A extends readonly [infer AF, ...infer AR]
-    ? If<
-        Extends<Length<Push<Temp, AF>>, Split>,
-        Chunk<AR, Split, [], Push<R, Push<Temp, AF>>>,
-        Chunk<AR, Split, Push<Temp, AF>, R>
-      >
-    : If<Extends<Length<Temp>, 0>, R, Push<R, Temp>>
->;
+> = Split extends 0
+  ? A
+  : A extends readonly [infer AF, ...infer AR]
+    ? Length<Push<Temp, AF>> extends Split
+      ? Chunk<AR, Split, [], Push<R, Push<Temp, AF>>>
+      : Chunk<AR, Split, Push<Temp, AF>, R>
+    : If<Extends<Length<Temp>, 0>, R, Push<R, Temp>>;
