@@ -28,11 +28,13 @@
     "major": "pnpm run build && pnpm version major && pnpm publish --no-git-checks"
   },
   "keywords": [
-    "utilscript",
     "typescript",
-    "utility",
-    "types",
-    "utility types"
+    "utilscript",
+    "utility types",
+    "util types",
+    "utilType",
+    "front-end",
+    "backend"
   ],
   "license": "MIT",
   "devDependencies": {
